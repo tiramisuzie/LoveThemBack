@@ -64,7 +64,7 @@ The code generated should be testable:
 HTML/CSS stylings to provide clean looking website for User Experience.
 
 
-Data Flow
+## Data Flow
 
 The User will create an account, the user profile information will be added to the database.
 The Front Page will make API GET request to Petfinder to render all pets the user specified in the Search Form (POST).
