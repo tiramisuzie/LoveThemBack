@@ -34,5 +34,14 @@ namespace LoveThemBackAPI.Controllers
 
             return Ok(reviews);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Review review)
+        {
+            await _context.Reviews.AddAsync(review);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Get", new { id = review.PetID });
+        }
     }
 }
