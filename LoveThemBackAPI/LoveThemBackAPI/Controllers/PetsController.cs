@@ -9,7 +9,7 @@ using LoveThemBackAPI.Data;
 
 namespace LoveThemBackAPI.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("api/Pets")]
   [ApiController]
   public class PetsController : ControllerBase
   {
@@ -19,15 +19,32 @@ namespace LoveThemBackAPI.Controllers
     {
       _context = context;
 
-      if (_context.Reviews.Count() == 0)
+      if (_context.Pets.Count() == 0)
       {
         Pet SamplePet = new Pet();
-        SamplePet.PetID = 0;
+        SamplePet.PetID = 1;
         SamplePet.Name = "Sample Pet";
         SamplePet.Sex = Sex.Male;
         SamplePet.Description = "This is a sample Pet.";
         _context.Pets.Add(SamplePet);
+        _context.SaveChanges();
       }
+    }
+    [HttpGet]
+    public ActionResult<List<Pet>> GetAll()
+    {
+      return _context.Pets.ToList();
+    }
+
+    [HttpGet("{id}", Name = "GetPet")]
+    public ActionResult<Pet> GetById(int id)
+    {
+      var item = _context.Pets.Find(id);
+      if (item == null)
+      {
+        return NotFound();
+      }
+      return item;
     }
   }
 }

@@ -12,7 +12,16 @@ namespace LoveThemBackAPI.Data
 
     public LoveThemBackAPIDbContext(DbContextOptions<LoveThemBackAPIDbContext> options) : base(options)
     {
+    }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Review>().HasKey(
+        re => new {re.UserID, re.PetID }
+      );
+      modelBuilder.Entity<Pet>().HasKey(
+        pet => new {pet.PetID}
+      );
     }
 
     public DbSet<Pet> Pets { get; set; }

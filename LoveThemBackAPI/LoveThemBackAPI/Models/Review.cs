@@ -7,5 +7,7 @@ namespace LoveThemBackAPI.Models
 {
   public class Review
   {
+    public int UserID { get; set; }
+    public int PetID { get; set; }
   }
 }
