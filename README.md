@@ -13,26 +13,26 @@ A useful web application to help users find and review animals in animal shelter
 ## WireFrames:
 
 ### Home Page
-![Home Page Wireframe](assets/WireFrames/HomePage.png)
+![Home Page Wireframe](assets/WireFrames/HomePage.PNG)
 
 ### Profile Page
-![Profile Page Wireframe](assets/WireFrames/Profile.png)
+![Profile Page Wireframe](assets/WireFrames/Profile.PNG)
 
 ### Favorite Page
-![Favorite Page Wireframe](assets/WireFrames/FavoritePage.png)
+![Favorite Page Wireframe](assets/WireFrames/FavoritePage.PNG)
 
 ### Create Review Page
-![Create Review Page](assets/WireFrames/CreateReview.png)
+![Create Review Page](assets/WireFrames/CreateReview.PNG)
 
 ## Database Schema:
 
 ### API DB Schema
-![API Database Schema](assets/DBSchema/APIDBSchema.png)
+![API Database Schema](assets/DBSchema/APIDBSchema.PNG)
 
 The Pet table will store information for each pet that is coming from the PetFinder API.  The Name, Gender, Description of the pet will come from the third party API.  The Reviews will come from the web app.  Users will create new notes for the pets and it will be stored. The Reviews table will combine the UserId from the front end and the PEt ID from the other table.  An additional payload will consist of the impression and characteristics of the pet coming from the user.
 
 ### Web App DB Schema
-![Web App Database Schema](assets/DBSchema/WebAppDBSchema.png)
+![Web App Database Schema](assets/DBSchema/WebAppDBSchema.PNG)
 
 The Front end of the web application will store the user profiles consisting of the UserId, the UserName, password(conditional), and zip-code (used for narrowing the pet search down).  This will have a one-to-many relationship to the Favorites table.  This will be a join table consisting of the UserId and the PetId which will be coming from the API.  An additional payload will consist of the Notes made by the user for pets they choose to visit.
 
