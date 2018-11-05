@@ -10,5 +10,7 @@ namespace LoveThemBackWebApp.Models
         public int UserID { get; set; }
         public int PetID { get; set; }
         public string Notes { get; set; }
+
+        public Profile Profiles { get; set; }
     }
 }

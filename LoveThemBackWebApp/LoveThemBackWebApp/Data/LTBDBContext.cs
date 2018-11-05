@@ -13,8 +13,17 @@ namespace LoveThemBackWebApp.Data
         {
             
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Favorite>().HasKey(
+                fv => new { fv.UserID, fv.PetID }
+                );
+        }
 
+
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+
+      
     }
-    public DbSet<Profile> Profiles { get; set; }
-    public DbSet<Favorite> Favorites { get; set; }
 }
