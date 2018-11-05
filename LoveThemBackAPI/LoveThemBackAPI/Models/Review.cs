@@ -9,7 +9,6 @@ namespace LoveThemBackAPI.Models
   {
         public int UserID { get; set; }
         public int PetID { get; set; }
-
         public string Impression{ get; set; }
         public bool Affectionate { get; set; }
         public bool Friendly { get; set; }

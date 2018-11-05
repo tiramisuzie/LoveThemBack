@@ -21,9 +21,7 @@ namespace LoveThemBackAPI.Migrations
 
             modelBuilder.Entity("LoveThemBackAPI.Models.Pet", b =>
                 {
-                    b.Property<int>("PetID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("PetID");
 
                     b.Property<int>("Age");
 

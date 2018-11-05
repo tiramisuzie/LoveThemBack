@@ -7,23 +7,20 @@ using System.Threading.Tasks;
 
 namespace LoveThemBackAPI.Data
 {
-    public class LoveThemBackAPIDbContext : DbContext
+  public class LoveThemBackAPIDbContext : DbContext
+  {
+
+    public LoveThemBackAPIDbContext(DbContextOptions<LoveThemBackAPIDbContext> options) : base(options)
     {
 
-        public LoveThemBackAPIDbContext(DbContextOptions<LoveThemBackAPIDbContext> options) : base(options)
-        {
-
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Review>().HasKey(
-                r => new { r.PetID, r.UserID }
-            );
-        }
-
-        public DbSet<Pet> Pets { get; set; }
-        public DbSet<Review> Reviews { get; set; }
-
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Review>().HasKey(r => new { r.PetID, r.UserID });
+    }
+
+    public DbSet<Pet> Pets { get; set; }
+    public DbSet<Review> Reviews { get; set; }
+  }
 }
