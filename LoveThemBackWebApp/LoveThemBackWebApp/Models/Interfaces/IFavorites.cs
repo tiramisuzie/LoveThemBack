@@ -12,7 +12,7 @@ namespace LoveThemBackWebApp.Models.Interfaces
         //Read
         Task<Favorite> GetFavorite(int userId, int petId);
 
-        Task<IEnumerable<Favorite>> GetFavorites();
+        Task<IEnumerable<Favorite>> GetFavorites(int userId);
         //Update
         Task UpdateFavorite(Favorite favorite);
         //Delete

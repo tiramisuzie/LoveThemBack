@@ -35,9 +35,9 @@ namespace LoveThemBackWebApp.Models.Services
             return await _context.Favorites.FirstOrDefaultAsync(x => x.UserID == userId && x.PetID == petId);
         }
 
-        public async Task<IEnumerable<Favorite>> GetFavorites()
+        public async Task<IEnumerable<Favorite>> GetFavorites(int userId)
         {
-            return await _context.Favorites.ToListAsync();
+            return await _context.Favorites.ToListAsync(x => x.UserId == userId);
         }
 
         public async Task UpdateFavorite(Favorite hotel)

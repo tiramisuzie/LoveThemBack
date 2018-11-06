@@ -21,8 +21,9 @@ namespace LoveThemBackWebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.GetFavorites());
+            return View(await _context.GetFavorites(1));
         }
+
 
     }
 }

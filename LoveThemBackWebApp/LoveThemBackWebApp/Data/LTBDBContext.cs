@@ -29,7 +29,7 @@ namespace LoveThemBackWebApp.Data
 
                  new Favorite
                 {
-                    UserID = 2,
+                    UserID = 1,
                     PetID = 2,
                     Notes = "notes 2",
                 });
