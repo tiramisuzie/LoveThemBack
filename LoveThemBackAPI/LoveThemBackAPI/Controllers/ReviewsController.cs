@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LoveThemBackAPI.Data;
+using LoveThemBackAPI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,5 +13,35 @@ namespace LoveThemBackAPI.Controllers
     [ApiController]
     public class ReviewsController : ControllerBase
     {
+        private LoveThemBackAPIDbContext _context;
+
+        public ReviewsController(LoveThemBackAPIDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: api/Reviews
+        public ActionResult<IEnumerable<Review>> Get()
+        {
+            return _context.Reviews.ToList();
+        }
+
+        // GET: api/Reviews/id
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<Review>> Get(int id)
+        {
+            var reviews = _context.Reviews.Where(x => x.PetID == id).ToList();
+
+            return Ok(reviews);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Review review)
+        {
+            await _context.Reviews.AddAsync(review);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Get", new { id = review.PetID });
+        }
     }
 }
