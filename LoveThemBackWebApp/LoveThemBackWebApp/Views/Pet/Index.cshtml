@@ -1,0 +1,28 @@
+﻿@model List<LoveThemBackWebApp.Models.Pet>
+Is this me?1
+
+@{
+  Layout = "_Layout";
+}
+
+<table>
+
+  @foreach (var pet in Model)
+  {
+
+  <tr>
+    <td>
+      @Html.DisplayFor(modelItem => pet.name.tsju)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => pet.age.tsna)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => pet.description.tsnve)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => pet.contact.address1.tsa)
+    </td>
+  </tr>
+  }
+</table>
