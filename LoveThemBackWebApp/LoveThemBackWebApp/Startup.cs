@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LoveThemBackWebApp.Data;
+using LoveThemBackWebApp.Models.Interfaces;
+using LoveThemBackWebApp.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,8 +33,10 @@ namespace LoveThemBackWebApp
             services.AddMvc();
 
             services.AddDbContext<LTBDBContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:ProductionDB"])
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
             );
+
+            services.AddTransient<IFavorites, FavoriteService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
