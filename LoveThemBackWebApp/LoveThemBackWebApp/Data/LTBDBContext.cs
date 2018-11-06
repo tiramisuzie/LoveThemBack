@@ -23,7 +23,6 @@ namespace LoveThemBackWebApp.Data
 
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
-
       
     }
 }
