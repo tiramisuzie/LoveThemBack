@@ -7,6 +7,21 @@ namespace LoveThemBackAPI.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Pets",
+                columns: table => new
+                {
+                    PetID = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Age = table.Column<int>(nullable: false),
+                    Sex = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pets", x => x.PetID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Reviews",
                 columns: table => new
                 {
@@ -24,44 +39,22 @@ namespace LoveThemBackAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Reviews", x => new { x.PetID, x.UserID });
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pets",
-                columns: table => new
-                {
-                    PetID = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: false),
-                    Sex = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    ReviewPetID = table.Column<int>(nullable: true),
-                    ReviewUserID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pets", x => x.PetID);
                     table.ForeignKey(
-                        name: "FK_Pets_Reviews_ReviewPetID_ReviewUserID",
-                        columns: x => new { x.ReviewPetID, x.ReviewUserID },
-                        principalTable: "Reviews",
-                        principalColumns: new[] { "PetID", "UserID" },
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_Reviews_Pets_PetID",
+                        column: x => x.PetID,
+                        principalTable: "Pets",
+                        principalColumn: "PetID",
+                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Pets_ReviewPetID_ReviewUserID",
-                table: "Pets",
-                columns: new[] { "ReviewPetID", "ReviewUserID" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Pets");
+                name: "Reviews");
 
             migrationBuilder.DropTable(
-                name: "Reviews");
+                name: "Pets");
         }
     }
 }

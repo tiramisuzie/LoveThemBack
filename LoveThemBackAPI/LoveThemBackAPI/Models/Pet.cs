@@ -19,7 +19,7 @@ namespace LoveThemBackAPI.Models
     public int Age { get; set; }
     public Sex Sex { get; set; }
     public string Description { get; set; }
-    public Review Review { get; set; }
+    public List<Review> Reviews { get; set; }
   }
 
   [DataContract]

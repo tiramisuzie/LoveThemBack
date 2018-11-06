@@ -17,7 +17,5 @@ namespace LoveThemBackAPI.Models
         public bool Intelligent { get; set; }
         public bool Cheery { get; set; }
         public bool Playful { get; set; }
-
-        public ICollection<Pet> Pet { get; set; }
     }
 }

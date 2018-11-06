@@ -43,6 +43,10 @@ namespace LoveThemBackAPI.Controllers
     public ActionResult<List<Pet>> GetAll()
     {
       var pet = _context.Pets.ToList();
+      foreach (var item in pet)
+      {
+        var Reviews = _context.Reviews.Where(reviews => reviews.PetID == item.PetID).ToList();
+      }
       return pet;
     }
     /// <summary>
@@ -54,7 +58,7 @@ namespace LoveThemBackAPI.Controllers
     public ActionResult<Pet> GetById(int id)
     {
       var item = _context.Pets.Find(id);
-      var reviewItem = _context.Reviews.Where(reviews => reviews.PetID == item.PetID).ToList();
+      var Reviews = _context.Reviews.Where(reviews => reviews.PetID == item.PetID).ToList();
       if (item == null)
       {
         return NotFound();
