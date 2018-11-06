@@ -12,35 +12,37 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace LoveThemBackWebApp
 {
-  public class Startup
-  {
+    public class Startup
+    {
         public IConfiguration Configuration { get; set; }
 
-    // This method gets called by the runtime. Use this method to add services to the container.
-    // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        // This method gets called by the runtime. Use this method to add services to the container.
+        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
 
         }
         public void ConfigureServices(IServiceCollection services)
-    {
+        {
             services.AddMvc();
 
             services.AddDbContext<LTBDBContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
+            options.UseSqlServer(Configuration["ConnectionStrings:ProductionDB"])
             );
-    }
+        }
 
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-      if (env.IsDevelopment())
-      {
-        app.UseDeveloperExceptionPage();
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
 
-      }
+            }
 
             app.UseMvc(routes =>
            {
@@ -49,10 +51,7 @@ namespace LoveThemBackWebApp
                    template: "{controller=Home}/{action=Index}/{id?}");
            });
 
-      app.Run(async (context) =>
-      {
-        await context.Response.WriteAsync("Hello World!");
-      });
+            app.UseStaticFiles();
+        }
     }
-  }
 }
