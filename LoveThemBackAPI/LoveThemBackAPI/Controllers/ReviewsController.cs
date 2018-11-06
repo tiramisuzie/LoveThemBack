@@ -43,5 +43,24 @@ namespace LoveThemBackAPI.Controllers
 
             return RedirectToAction("Get", new { id = review.PetID });
         }
+
+        // PUT api/Reviews/UserID/PetID
+        //[HttpPut("{UserID}/{PetID}")]
+        //public async Task<IActionResult> Put(int UserID, int PetID, [FromBody] Review review)
+        //{
+        //    var result = _context.Reviews.FirstOrDefault(x => x.UserID == UserID && x.PetID == PetID);
+
+        //    if (result != null)
+        //    {
+        //        _context.Reviews.Update(review);
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    else
+        //    {
+        //        await Post(review);
+        //    }
+
+        //    return RedirectToAction("Get", new { id = PetID });
+        //}
     }
 }
