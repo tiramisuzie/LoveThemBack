@@ -29,6 +29,11 @@ namespace LoveThemBackWebApp.Migrations
                     b.HasKey("UserID", "PetID");
 
                     b.ToTable("Favorites");
+
+                    b.HasData(
+                        new { UserID = 1, PetID = 1, Notes = "notes 1" },
+                        new { UserID = 1, PetID = 2, Notes = "notes 2" }
+                    );
                 });
 
             modelBuilder.Entity("LoveThemBackWebApp.Models.Profile", b =>
@@ -46,11 +51,16 @@ namespace LoveThemBackWebApp.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Profiles");
+
+                    b.HasData(
+                        new { UserID = 1, LocationZip = 98144, Password = "password1", Username = "username1" },
+                        new { UserID = 2, LocationZip = 98144, Password = "password2", Username = "username2" }
+                    );
                 });
 
             modelBuilder.Entity("LoveThemBackWebApp.Models.Favorite", b =>
                 {
-                    b.HasOne("LoveThemBackWebApp.Models.Profile", "Profiles")
+                    b.HasOne("LoveThemBackWebApp.Models.Profile", "Profile")
                         .WithMany("Favorites")
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);

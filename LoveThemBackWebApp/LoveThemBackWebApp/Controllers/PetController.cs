@@ -20,14 +20,14 @@ namespace LoveThemBackWebApp.Controllers
       return View(PetList);
     }
 
-    public async Task<IActionResult> Details(int? id)
+    public IActionResult Details(int? id)
     {
       if (id == null) return NotFound();
       return View();
 
     }
 
-    public async Task<IActionResult> Create()
+    public IActionResult Create()
     {
       return View();
     }
