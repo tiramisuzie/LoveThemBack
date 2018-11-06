@@ -29,7 +29,8 @@ namespace LoveThemBackAPI.Controllers
         Pet SamplePet = new Pet();
         SamplePet.PetID = 1;
         SamplePet.Name = "Sample Pet";
-        SamplePet.Sex = Sex.Male;
+        SamplePet.Age = 0;
+        SamplePet.Sex = "Male";
         SamplePet.Description = "This is a sample Pet.";
         _context.Pets.Add(SamplePet);
         _context.SaveChanges();

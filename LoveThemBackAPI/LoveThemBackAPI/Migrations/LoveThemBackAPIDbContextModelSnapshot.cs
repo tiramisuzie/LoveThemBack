@@ -28,7 +28,7 @@ namespace LoveThemBackAPI.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("Sex");
+                    b.Property<string>("Sex");
 
                     b.HasKey("PetID");
 

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoveThemBackAPI.Migrations
 {
     [DbContext(typeof(LoveThemBackAPIDbContext))]
-    [Migration("20181106012930_initial")]
+    [Migration("20181106171137_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,7 +30,7 @@ namespace LoveThemBackAPI.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("Sex");
+                    b.Property<string>("Sex");
 
                     b.HasKey("PetID");
 

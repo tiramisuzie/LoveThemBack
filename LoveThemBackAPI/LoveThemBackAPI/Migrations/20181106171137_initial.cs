@@ -13,7 +13,7 @@ namespace LoveThemBackAPI.Migrations
                     PetID = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false),
-                    Sex = table.Column<int>(nullable: false),
+                    Sex = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
