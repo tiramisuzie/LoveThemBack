@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace LoveThemBackAPI.Models
 {
@@ -19,11 +22,13 @@ namespace LoveThemBackAPI.Models
     public Review Review { get; set; }
   }
 
+  [DataContract]
+  [JsonConverter(typeof(StringEnumConverter))]
   public enum Sex
   {
-    [System.ComponentModel.Description("Male")]
-    Male = 0,
-    [System.ComponentModel.Description("Female")]
-    Female = 1
+    [System.Runtime.Serialization.EnumMember(Value = "Male")]
+    Male,
+    [System.Runtime.Serialization.EnumMember(Value = "Female")]
+    Female
   }
 }

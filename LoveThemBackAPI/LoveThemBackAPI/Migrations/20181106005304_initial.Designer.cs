@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoveThemBackAPI.Migrations
 {
     [DbContext(typeof(LoveThemBackAPIDbContext))]
-    [Migration("20181105230644_initial")]
+    [Migration("20181106005304_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

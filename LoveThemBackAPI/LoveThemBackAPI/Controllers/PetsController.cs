@@ -16,6 +16,10 @@ namespace LoveThemBackAPI.Controllers
   {
 
     private readonly LoveThemBackAPIDbContext _context;
+    /// <summary>
+    /// this returns a sample pet if json string is initially null
+    /// </summary>
+    /// <param name="context"></param>
     public PetsController(LoveThemBackAPIDbContext context)
     {
       _context = context;
@@ -31,13 +35,21 @@ namespace LoveThemBackAPI.Controllers
         _context.SaveChanges();
       }
     }
+    /// <summary>
+    /// get list of all pet objects in json return
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public ActionResult<List<Pet>> GetAll()
     {
       var pet = _context.Pets.ToList();
       return pet;
     }
-
+    /// <summary>
+    /// get specific PET data
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("{id}", Name = "GetPet")]
     public ActionResult<Pet> GetById(int id)
     {
@@ -60,7 +72,7 @@ namespace LoveThemBackAPI.Controllers
       _context.Pets.Add(Pet);
       _context.SaveChanges();
 
-      return CreatedAtRoute("GetTodo", new { id = Pet.PetID }, Pet);
+      return CreatedAtRoute("GetPet", new { id = Pet.PetID }, Pet);
     }
     /// <summary>
     /// updates pet json content in api return
@@ -85,7 +97,7 @@ namespace LoveThemBackAPI.Controllers
 
       _context.Pets.Update(petReceived);
       _context.SaveChanges();
-      return NoContent();
+      return CreatedAtRoute("GetPet", new { id = Pet.PetID }, Pet);
     }
     /// <summary>
     /// deletes pet content in api return body if right password is given
