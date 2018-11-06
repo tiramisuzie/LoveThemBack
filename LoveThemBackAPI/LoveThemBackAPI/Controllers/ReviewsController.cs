@@ -52,7 +52,7 @@ namespace LoveThemBackAPI.Controllers
     [HttpPut("userid={userId}&petid={petId}")]
     public IActionResult Update(int userId, int petId, Review review)
     {
-      var reviewReceived = _context.Reviews.Find(userId, petId);
+      var reviewReceived = _context.Reviews.Find(petId, userId);
       if (reviewReceived == null)
       {
         return NotFound();
