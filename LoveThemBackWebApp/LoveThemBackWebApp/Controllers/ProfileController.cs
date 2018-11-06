@@ -8,5 +8,22 @@ namespace LoveThemBackWebApp.Controllers
 {
     public class ProfileController: Controller
     {
+
+        public async Task<IActionResult> Index()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null) return NotFound();
+            return View();
+
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
     }
 }
