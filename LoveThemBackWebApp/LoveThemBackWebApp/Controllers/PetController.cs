@@ -34,7 +34,7 @@ namespace LoveThemBackWebApp.Controllers
 
     public async Task<List<Pet>> GetJSON()
     {
-      string url = "http://api.petfinder.com/pet.find?key=26d124a65947581b27aa9500628f49ef&location=seattle,wa&format=json";
+      string url = "http://api.petfinder.com/pet.find?key=26d124a65947581b27aa9500628f49ef&location=98146&format=json";
       using (var httpClient = new HttpClient())
       {
         var json = await httpClient.GetStringAsync(url);
