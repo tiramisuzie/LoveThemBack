@@ -1,1 +1,18 @@
-﻿Is this me?1
+﻿@model List<LoveThemBackWebApp.Models.Pet>
+Is this me?1
+
+@foreach (var pet in Model)
+{
+  <tr>
+    <td>
+      @Html.DisplayFor(modelItem => pet.age)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => pet.description)
+    </td>
+    <td>
+      @Html.DisplayFor(modelItem => pet.contact.address1)
+    </td>
+    </tr>
+    }
+

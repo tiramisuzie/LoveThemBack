@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace LoveThemBackWebApp.Models
 {
-  public class Example
+  public class PetJSON
   {
 
     [JsonProperty("@encoding")]
@@ -50,7 +50,7 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("pet")]
-    public IList<Pet> pet { get; set; }
+    public List<Pet> pet { get; set; }
   }
 
   public class Timestamp
