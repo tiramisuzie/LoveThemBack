@@ -17,10 +17,8 @@ namespace LoveThemBackWebApp.Controllers
     private List<Pet> PetCollections;
     public async Task<IActionResult> Index(string searchString)
     {
-      List<Pet> PetList = await GetPetListJSON(searchString);
-      PetCollections = PetList;
-
-      return View(PetList);
+      PetCollections = await GetPetListJSON(searchString);
+      return View(PetCollections);
     }
 
     public async Task<IActionResult> Details(int? id)
@@ -29,9 +27,6 @@ namespace LoveThemBackWebApp.Controllers
       {
         return NotFound();
       }
-
-
-      return View(SelectedPet);
 
       List<PetPost> PetList = await GetPetFromCustomAPI();
       PetPost GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
