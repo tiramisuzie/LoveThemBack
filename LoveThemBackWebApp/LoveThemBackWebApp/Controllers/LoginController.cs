@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Routing;
 
 namespace LoveThemBackWebApp.Controllers
 {
@@ -30,8 +31,13 @@ namespace LoveThemBackWebApp.Controllers
             Profile profile = await _context.GetProfile(username, password);
             HttpContext.Session.SetString("profile", JsonConvert.SerializeObject(profile));
 
+
             //Session["profile"] = profile;
-            return RedirectToAction("Index", "Home");
+            if (profile != null)
+            {
+                return RedirectToAction("Index", "Pet", new { id = username });
+            }
+            else return View();
 
         }
     }

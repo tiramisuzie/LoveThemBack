@@ -1,26 +1,31 @@
-﻿@model List<LoveThemBackWebApp.Models.Pet>
+﻿@model dynamic
 
 @{
-  Layout = "_Layout";
+    var user = ViewBag.username;
+    Layout = "_Layout";
 }
-
+<h2>Welcome @Model.User.Username</h2>
+<p>@Model.User.UserID</p>
+<p>@Model.User.Password</p>
 
 <h3>Enter Zip Code</h3>
 <form asp-controller="Pet" asp-action="Index">
-  <p class="create">
-    <input type="text" name="SearchString">
-    <input type="submit" value="Filter" />
-  </p>
+    <p class="create">
+        <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
 </form>
 @if (Model != null)
 {
-  @foreach (var pet in Model)
-  {
-    <div class="card">
-      <img src="@pet.media.photos.photo[0].data" />
-      <h3>@Html.DisplayFor(modelItem => pet.name.data)</h3>
-      <p>@Html.DisplayFor(modelItem => pet.id.data)</p>
-      <a asp-action="Details" asp-route-id="@pet.id.data">Details</a>
-    </div>
-  }
+    @foreach (var pet in Model.Pets)
+    {
+        <div class="card">
+            <img src="@pet.media.photos.photo[0].data" />
+            <h3>@pet.name.data</h3>
+            <p>@pet.id.data</p>
+            <a asp-action="Details" asp-route-username="@user" asp-route-id="@pet.id.data" asp-route-search="@Model.Search">Details</a>
+        </div>
+    }
 }
+
+       
