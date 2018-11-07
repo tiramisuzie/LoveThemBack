@@ -19,9 +19,9 @@ namespace LoveThemBackWebApp.Controllers
 
         //Get list of favorites
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.GetFavorites(1));
+            return View(_context.GetFavorites(1));
         }
 
 
