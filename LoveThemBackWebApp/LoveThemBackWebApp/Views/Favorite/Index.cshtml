@@ -1,12 +1,26 @@
 ﻿@model IEnumerable<LoveThemBackWebApp.Models.PetPost>
 @*@model List<LoveThemBackWebApp.Models.PetPost>*@
 
+<h1> This is the favorites index page </h1>
+
+<table>
+    <tr>
+        <th>Animal</th>
+        <th>Breed</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Favorite</th>
+    </tr>
 @foreach (var item in Model)
 {
-    <h1>@item.Animal</h1>
-
+    <tr>
+        <td>@item.Animal</td>
+        <td>@item.Breed</td>
+        <td>@item.Name</td>
+        <td>@item.Sex</td>
+        <td><form action="/delete/@item.PetID" method="post">
+                <button type="submit">UnFavorite</button>
+            </form></td>
+    </tr>
 }
-
-
-<h1> This is the favorites index page </h1>
-<h2> </h2>
+</table>

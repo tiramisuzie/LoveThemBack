@@ -1,4 +1,5 @@
 ﻿using LoveThemBackWebApp.Data;
+using LoveThemBackWebApp.Models;
 using LoveThemBackWebApp.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,8 +22,20 @@ namespace LoveThemBackWebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var test = await _context.GetFavorites(1);
-            return View(test);
+            var favorites = await _context.GetFavorites(1);
+            return View(favorites);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("UserID, PetID, Notes")] Favorite favorite)
+        {
+            if (ModelState.IsValid)
+            {
+                await _context.CreateFavorite(favorite);
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View("Index");
         }
     }
 }

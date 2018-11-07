@@ -2,6 +2,7 @@
 using LoveThemBackWebApp.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,14 @@ namespace LoveThemBackWebApp.Models.Services
         public async Task<List<PetPost>> GetFavorites(int userId)
         {
             var pets = await GetJSON();
+            //foreach(var pet in pets)
+            //{
+            //    var breed = "";
+            //    for(int i=0; i<pet.Breed.Length; i++)
+            //    {
+
+            //    }
+            //}
             List<Favorite> favorites = _context.Favorites.Where(x => x.UserID == userId).ToList();
 
             List<PetPost> myFavPets = new List<PetPost>();
@@ -70,8 +79,8 @@ namespace LoveThemBackWebApp.Models.Services
             using (var httpClient = new HttpClient())
             {
                 
-                    var json = await httpClient.GetStringAsync(url);
-                    var retrieveJSON = JsonConvert.DeserializeObject<List<PetPost>>(json);
+                var json = await httpClient.GetStringAsync(url);
+                var retrieveJSON = JsonConvert.DeserializeObject<List<PetPost>>(json);
                 
                 // Now parse with JSON.Net
                 return retrieveJSON;
