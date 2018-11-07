@@ -30,8 +30,12 @@ namespace LoveThemBackWebApp.Controllers
         return NotFound();
       }
 
+
+      return View(SelectedPet);
+
       List<PetPost> PetList = await GetPetFromCustomAPI();
       PetPost GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
+
 
       if (GetPet != null)
       {
