@@ -23,18 +23,6 @@ namespace LoveThemBackAPI.Controllers
     public PetsController(LoveThemBackAPIDbContext context)
     {
       _context = context;
-
-      if (_context.Pets.Count() == 0)
-      {
-        Pet SamplePet = new Pet();
-        SamplePet.PetID = 1;
-        SamplePet.Name = "Sample Pet";
-        SamplePet.Age = 0;
-        SamplePet.Sex = "Male";
-        SamplePet.Description = "This is a sample Pet.";
-        _context.Pets.Add(SamplePet);
-        _context.SaveChanges();
-      }
     }
     /// <summary>
     /// get list of all pet objects in json return
@@ -95,12 +83,24 @@ namespace LoveThemBackAPI.Controllers
       }
 
       petReceived.PetID = Pet.PetID;
+      petReceived.Animal = Pet.Animal;
+      petReceived.Breed = Pet.Breed;
+      petReceived.Mix = Pet.Mix;
       petReceived.Name = Pet.Name;
       petReceived.Age = Pet.Age;
       petReceived.Sex = Pet.Sex;
+      petReceived.Size = Pet.Size;
       petReceived.Description = Pet.Description;
-
-      _context.Pets.Update(petReceived);
+      petReceived.ShelterID = Pet.ShelterID;
+      petReceived.ShelterName = Pet.ShelterName;
+      petReceived.Photos = Pet.Photos;
+      petReceived.Address = Pet.Address;
+      petReceived.City = Pet.City;
+      petReceived.Zip = Pet.Zip;
+      petReceived.State = Pet.State;
+      petReceived.Phone = Pet.Phone;
+      petReceived.Email = Pet.Email;
+    _context.Pets.Update(petReceived);
       _context.SaveChanges();
       return CreatedAtRoute("GetPet", new { id = Pet.PetID }, Pet);
     }

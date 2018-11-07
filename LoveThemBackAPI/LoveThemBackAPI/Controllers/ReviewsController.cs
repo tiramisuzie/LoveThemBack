@@ -36,10 +36,10 @@ namespace LoveThemBackAPI.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Review review)
+    public IActionResult Create(Review review)
     {
-      await _context.Reviews.AddAsync(review);
-      await _context.SaveChangesAsync();
+      _context.Reviews.Add(review);
+      _context.SaveChanges();
 
       return NoContent();
     }
@@ -66,11 +66,11 @@ namespace LoveThemBackAPI.Controllers
       reviewReceived.Intelligent = review.Intelligent;
       reviewReceived.Cheery = review.Cheery;
       reviewReceived.Playful = review.Playful;
-
+      reviewReceived.Drool = review.Drool;
       _context.Reviews.Update(reviewReceived);
       _context.SaveChanges();
       return NoContent();
-    }
+  }
 
     [HttpDelete("userid={id}&petid={pet}")]
     public IActionResult Delete(int id, int pet)

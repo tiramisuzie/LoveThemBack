@@ -10,11 +10,12 @@ namespace LoveThemBackWebApp.Models
   public class PetJSON
   {
 
-    [JsonProperty("@encoding")]
-    public string @encoding { get; set; }
+
+
+    public string encoding { get; set; }
 
     [JsonProperty("@version")]
-    public string @version { get; set; }
+    public string version { get; set; }
 
     [JsonProperty("petfinder")]
     public Petfinder petfinder { get; set; }
@@ -24,7 +25,7 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("@xmlns:xsi")]
-    public string @xmlns { get; set; }
+    public string xmlns { get; set; }
 
     [JsonProperty("lastOffset")]
     public LastOffset lastOffset { get; set; }
@@ -36,7 +37,10 @@ namespace LoveThemBackWebApp.Models
     public Header header { get; set; }
 
     [JsonProperty("@xsi:noNamespaceSchemaLocation")]
-    public string @xsi { get; set; }
+    public string xsi { get; set; }
+
+    [JsonProperty("pet")]
+    public Pet pet { get; set; }
   }
 
   public class Header
@@ -57,7 +61,8 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
-    public DateTime ts { get; set; }
+
+    public DateTime data { get; set; }
   }
 
   public class Pet
@@ -110,13 +115,15 @@ namespace LoveThemBackWebApp.Models
 
     [JsonProperty("animal")]
     public Animal animal { get; set; }
+    public List<PetReview> review { get; set; }
   }
 
   public class LastOffset
   {
 
     [JsonProperty("$t")]
-    public string tsl { get; set; }
+
+    public string data { get; set; }
   }
 
   public class Options
@@ -130,21 +137,21 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
-    public string tse { get; set; }
+    public string data { get; set; }
   }
 
   public class Phone
   {
 
     [JsonProperty("$t")]
-    public string tsb { get; set; }
+    public string data { get; set; }
   }
 
   public class State
   {
 
     [JsonProperty("$t")]
-    public string tsp { get; set; }
+    public string data { get; set; }
   }
 
   public class Address2
@@ -155,21 +162,21 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
-    public string tsn { get; set; }
+    public string data { get; set; }
   }
 
   public class City
   {
 
     [JsonProperty("$t")]
-    public string tsb { get; set; }
+    public string data { get; set; }
   }
 
   public class Zip
   {
 
     [JsonProperty("$t")]
-    public string tsv { get; set; }
+    public string data { get; set; }
   }
 
   public class Fax
@@ -180,7 +187,7 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
-    public string tsa { get; set; }
+    public string data { get; set; }
   }
 
   public class Contact
@@ -215,14 +222,14 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
-    public string tsna { get; set; }
+    public string data { get; set; }
   }
 
   public class Size
   {
 
     [JsonProperty("$t")]
-    public string tsme { get; set; }
+    public string data { get; set; }
   }
 
   public class Photo
@@ -232,7 +239,7 @@ namespace LoveThemBackWebApp.Models
     public string @size { get; set; }
 
     [JsonProperty("$t")]
-    public string tser { get; set; }
+    public string data { get; set; }
 
     [JsonProperty("@id")]
     public string id { get; set; }
@@ -256,14 +263,14 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
-    public string tspo { get; set; }
+    public string data { get; set; }
   }
 
   public class ShelterPetId
   {
 
     [JsonProperty("$t")]
-    public string tsner { get; set; }
+    public string data { get; set; }
   }
 
   public class Breeds
@@ -277,48 +284,48 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
-    public string tsju { get; set; }
+    public string data { get; set; }
   }
 
   public class Sex
   {
 
     [JsonProperty("$t")]
-    public string tsoe { get; set; }
+    public string data { get; set; }
   }
 
   public class Description
   {
 
     [JsonProperty("$t")]
-    public string tsnve { get; set; }
+    public string data { get; set; }
   }
 
   public class Mix
   {
 
     [JsonProperty("$t")]
-    public string tsci { get; set; }
+    public string data { get; set; }
   }
 
   public class ShelterId
   {
 
     [JsonProperty("$t")]
-    public string teqw { get; set; }
+    public string data { get; set; }
   }
 
   public class LastUpdate
   {
 
     [JsonProperty("$t")]
-    public DateTime rsgh { get; set; }
+    public DateTime data { get; set; }
   }
 
   public class Animal
   {
 
     [JsonProperty("$t")]
-    public string tsgh { get; set; }
+    public string data { get; set; }
   }
 }

@@ -1,4 +1,5 @@
 ﻿body {
+
     background-color: whitesmoke;
     font-family: sans-serif;
     text-align: center;
@@ -34,3 +35,10 @@
 tr {
     margin-bottom: 30px;
 }
+
+}
+
+.card {
+  border:dashed;
+}
+
