@@ -27,11 +27,12 @@ namespace LoveThemBackWebApp
 
         }
         public void ConfigureServices(IServiceCollection services)
+
         {
             services.AddMvc();
 
             services.AddDbContext<LTBDBContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:ProductionDB"])
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
             );
         }
 
