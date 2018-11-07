@@ -1,32 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<form action="/" method="post">
-    <label for="impression"></label>
-    <textarea name="impression">  </textarea>
+﻿@model List<LoveThemBackWebApp.Models.Reviews>
 
-    <label for="affectionate">Was this animal affectionate?</label>
-    <input type="checkbox" name="affectionate" value="" />
 
-    <label for="friendly">Was this animal friendly?</label>
-    <input type="checkbox" name="friendly" value="" />
+<form method="post">
+    <label for="UserID">user id</label>
+    <input type="number" name="UserID" value="" />
 
-    <label for="energy">Did this animal have a lot of energy?</label>
-    <input type="checkbox" name="energy" value="" />
+    <label for="PetID">pet id</label>
+    <input type="number" name="PetID" value="" />
 
-    <label for="healthy">Did this animal appear to be in good health?</label>
-    <input type="checkbox" name="health" value="" />
+    <label for="Impression"></label>
+    <textarea name="Impression">  </textarea>
 
-    <label for="intelligent">Did this animal seem particularly intelligent?</label>
-    <input type="checkbox" name="intelligent" value="" />
+    <label for="Affectionate">Was this animal affectionate?</label>
+    <input type="checkbox" name="Affectionate" value="" />
 
-    <label for="cheery">Would you say this animal had a cheery disposition?</label>
-    <input type="checkbox" name="cheery" value="" />
+    <label for="Friendly">Was this animal friendly?</label>
+    <input type="checkbox" name="Friendly" value="" />
 
-    <label for="playful">Was this animal playful?</label>
-    <input type="checkbox" name="playful" value="" />
+    <label for="HighEnergy">Did this animal have a lot of energy?</label>
+    <input type="checkbox" name="HighEnergy" value="" />
 
-    <input type="submit"/>
+    <label for="Healthy">Did this animal appear to be in good health?</label>
+    <input type="checkbox" name="Health" value="" />
+
+    <label for="Intelligent">Did this animal seem particularly intelligent?</label>
+    <input type="checkbox" name="Intelligent" value="" />
+
+    <label for="Cheery">Would you say this animal had a cheery disposition?</label>
+    <input type="checkbox" name="Cheery" value="" />
+
+    <label for="Playful">Was this animal playful?</label>
+    <input type="checkbox" name="Playful" value="" />
+
+    <input type="submit" asp-action="Create" />
 </form>

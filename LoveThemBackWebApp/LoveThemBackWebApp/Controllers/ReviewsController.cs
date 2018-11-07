@@ -1,5 +1,6 @@
-﻿using LoveThemBackWebApp.Data;
-using LoveThemBackWebApp.Models;
+﻿using LoveThemBackWebApp.Models;
+using LoveThemBackWebApp.Models.Interfaces;
+using LoveThemBackWebApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -12,9 +13,9 @@ namespace LoveThemBackWebApp.Controllers
 {
     public class ReviewsController : Controller
     {
-        private readonly LTBDBContext _context;
+        private readonly IReviews _context;
 
-        public ReviewsController(LTBDBContext context)
+        public ReviewsController(IReviews context)
         {
             _context = context;
         }
@@ -23,6 +24,14 @@ namespace LoveThemBackWebApp.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("UserID, PetID, Impression, Affectionate, Friendly, Energy, Health, Intelligent, Cheery, Playful")] Reviews review)
+        {
+            var newReview = await _context.PostReview(review);
+            return RedirectToAction("Index");
+        }
+
 
         
     }
