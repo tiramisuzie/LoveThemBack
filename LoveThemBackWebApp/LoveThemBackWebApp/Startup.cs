@@ -30,13 +30,19 @@ namespace LoveThemBackWebApp
         }
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
             services.AddMvc();
 
             services.AddDbContext<LTBDBContext>(options =>
             options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
             );
 
+
+
             services.AddTransient<IFavorites, FavoriteService>();
+            services.AddTransient<IProfiles, ProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +53,7 @@ namespace LoveThemBackWebApp
                 app.UseDeveloperExceptionPage();
 
             }
-
+            app.UseSession();
             app.UseMvc(routes =>
            {
                routes.MapRoute(
@@ -56,6 +62,8 @@ namespace LoveThemBackWebApp
            });
 
             app.UseStaticFiles();
+            app.UseSession();
+
         }
     }
 }
