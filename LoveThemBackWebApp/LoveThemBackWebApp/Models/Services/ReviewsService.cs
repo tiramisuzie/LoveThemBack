@@ -48,7 +48,7 @@ namespace LoveThemBackWebApp.Models.Services
                     }
                 }
             }
-            return NoContent();
+            return null;
         }
     }
 }

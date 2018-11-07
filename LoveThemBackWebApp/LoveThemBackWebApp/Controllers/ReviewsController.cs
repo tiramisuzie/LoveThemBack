@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using LoveThemBackWebApp.Models.Interfaces;
 
 namespace LoveThemBackWebApp.Controllers
 {
@@ -24,6 +25,11 @@ namespace LoveThemBackWebApp.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Post(Reviews review)
+        {
+            PostReview(review);
+        }
 
 
         
