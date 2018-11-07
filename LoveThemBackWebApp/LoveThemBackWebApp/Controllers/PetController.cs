@@ -35,7 +35,12 @@ namespace LoveThemBackWebApp.Controllers
             Models.User = userProfile;
             return View(Models);
         }
-
+        
+        public async Task<IActionResult> Review([Bind("UserID, PetID")] Reviews review)
+        {
+            return RedirectToAction("Index", "Reviews", review);
+        }
+        
         public async Task<IActionResult> Details(int? id, string search)
         {
             var userJSON = HttpContext.Session.GetString("profile");
@@ -111,7 +116,7 @@ namespace LoveThemBackWebApp.Controllers
                 return retrieveJSON.petfinder.pet;
             }
         }
-
+        
         public async Task<List<PetReview>> GetReviewJSON()
         {
             string url = "https://lovethembackapi2.azurewebsites.net/api/Reviews";

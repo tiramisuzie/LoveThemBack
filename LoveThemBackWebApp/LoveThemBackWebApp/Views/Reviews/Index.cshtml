@@ -1,12 +1,10 @@
-﻿@model List<LoveThemBackWebApp.Models.Reviews>
+﻿@model LoveThemBackWebApp.Models.Reviews
 
 
 <form method="post">
-    <label for="UserID">user id</label>
-    <input type="number" name="UserID" value="" />
+    <input type="hidden" name="UserID" value="@Model.UserID" />
 
-    <label for="PetID">pet id</label>
-    <input type="number" name="PetID" value="" />
+    <input type="hidden" name="PetID" value="@Model.PetID" />
 
     <label for="Impression"></label>
     <textarea name="Impression">  </textarea>

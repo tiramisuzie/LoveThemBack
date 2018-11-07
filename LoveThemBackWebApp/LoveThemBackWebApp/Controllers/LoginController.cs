@@ -38,7 +38,6 @@ namespace LoveThemBackWebApp.Controllers
                 return RedirectToAction("Index", "Pet", new { id = username });
             }
             else return View();
-
         }
     }
 }

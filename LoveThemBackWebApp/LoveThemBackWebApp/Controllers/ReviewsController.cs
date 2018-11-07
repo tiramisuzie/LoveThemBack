@@ -20,9 +20,9 @@ namespace LoveThemBackWebApp.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(Reviews review)
         {
-            return View();
+            return View(review);
         }
 
         [HttpPost]

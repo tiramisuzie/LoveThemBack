@@ -36,6 +36,14 @@
     </p>
 </form>
 <section class="review">
+
+    <form method="get">
+        <input type="hidden" name="UserID" value="1" />
+        <input type="hidden" name="PetID" value="@Model.PetID" />
+
+        <input type="submit" asp-action="Review" value="Add A Review"/>
+    </form>
+    
     <h3>Reviews</h3>
     @if (Model.GetPet.Review != null)
     {
