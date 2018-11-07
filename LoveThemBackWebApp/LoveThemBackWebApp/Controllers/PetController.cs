@@ -9,31 +9,42 @@ using LoveThemBackWebApp.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Dynamic;
+using LoveThemBackWebApp.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace LoveThemBackWebApp.Controllers
 {
     public class PetController : Controller
     {
+        private readonly LTBDBContext _context;
+
+        public PetController(LTBDBContext context)
+        {
+            _context = context;
+        }
 
         private List<Pet> PetCollections { get; set; }
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string id, string searchString)
         {
+            var user = HttpContext.Session.GetString("profile");
+            var ret = JsonConvert.DeserializeObject<Profile>(user);
             dynamic Models = new ExpandoObject();
             PetCollections = await GetPetListJSON(searchString);
             Models.Pets = PetCollections;
             Models.Search = searchString;
+            Models.User = ret;
             return View(Models);
         }
 
-        public async Task<IActionResult> Details(int? id, string search)
+        public async Task<IActionResult> Details(int? petid, string search)
         {
-            if (id == null)
+            if (petid == null)
             {
                 return NotFound();
             }
 
             List<PetPost> PetList = await GetPetFromCustomAPI();
-            PetPost GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
+            PetPost GetPet = PetList.Where(pet => pet.PetID == petid).FirstOrDefault();
             dynamic Models = new ExpandoObject();
             Models.Search = search;
 
@@ -44,9 +55,9 @@ namespace LoveThemBackWebApp.Controllers
             }
             else
             {
-                await PetAPIPost(id, search);
+                await PetAPIPost(petid, search);
                 PetList = await GetPetFromCustomAPI();
-                GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
+                GetPet = PetList.Where(pet => pet.PetID == petid).FirstOrDefault();
                 Models.GetPet = GetPet;
                 return View(Models);
             }
