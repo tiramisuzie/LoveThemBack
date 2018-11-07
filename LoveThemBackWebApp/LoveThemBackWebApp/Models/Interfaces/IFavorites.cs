@@ -10,7 +10,7 @@ namespace LoveThemBackWebApp.Models.Interfaces
         //Create
         Task CreateFavorite(Favorite favorite);
         //Read
-        Task<Favorite> GetFavorite(int userId, int petId);
+        Task<Favorite> GetFavorite(int UserID, int PetID);
 
         Task<List<PetPost>> GetFavorites(int userId);
         //Update

@@ -1,7 +1,9 @@
 ﻿using LoveThemBackWebApp.Data;
 using LoveThemBackWebApp.Models;
 using LoveThemBackWebApp.Models.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,20 +24,51 @@ namespace LoveThemBackWebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var favorites = await _context.GetFavorites(1);
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
+            var favorites = await _context.GetFavorites(userProfile.UserID);
             return View(favorites);
         }
 
+        //Post to update new favorite
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("UserID, PetID, Notes")] Favorite favorite)
+        public async Task<IActionResult> Update(int PetID, string Notes)
         {
-            if (ModelState.IsValid)
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
+
+            Favorite favorite = new Favorite()
             {
-                await _context.CreateFavorite(favorite);
-                return RedirectToAction(nameof(Index));
+                UserID = userProfile.UserID,
+                PetID = PetID,
+                Notes = Notes
+            };
+
+            await _context.UpdateFavorite(favorite);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Favorites/Delete/5
+        public async Task<IActionResult> Delete(int UserID, int PetID)
+        {
+            var favorite = await _context.GetFavorite(UserID, PetID);
+
+            if (favorite == null)
+            {
+                return NotFound();
             }
 
-            return View("Index");
+            return View();
+        }
+
+        // POST: Favorite/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int UserID, int PetID)
+        {
+            await _context.DeleteFavorite(UserID, PetID);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

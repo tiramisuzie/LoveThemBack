@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LoveThemBackWebApp.Models.Services
@@ -41,14 +42,24 @@ namespace LoveThemBackWebApp.Models.Services
         public async Task<List<PetPost>> GetFavorites(int userId)
         {
             var pets = await GetJSON();
-            //foreach(var pet in pets)
-            //{
-            //    var breed = "";
-            //    for(int i=0; i<pet.Breed.Length; i++)
-            //    {
+            foreach (var pet in pets)
+            {
+                string[] photos = pet.Photos.Split(",");
+                pet.Photos = photos[2];
 
-            //    }
-            //}
+                string[] breeds = pet.Breed.Split(",");
+                string newPetBreed = "";
+                foreach (var breed in breeds)
+                {
+                    string pattern = @"[A-Z]";
+                    Regex rgx = new Regex(pattern);
+                    Match match = rgx.Match(pet.Breed);
+                    string b1 = breed.Substring(match.Index);
+                    newPetBreed += b1.Substring(0,b1.Length-4);
+                }
+                pet.Breed = newPetBreed;
+            }
+
             List<Favorite> favorites = _context.Favorites.Where(x => x.UserID == userId).ToList();
 
             List<PetPost> myFavPets = new List<PetPost>();
@@ -72,16 +83,16 @@ namespace LoveThemBackWebApp.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        //public async Task<List<Pet>> GetJSON()
+        //Custom API call to get pets in a list
         public async Task<List<PetPost>> GetJSON()
         {
             string url = "https://lovethembackapi2.azurewebsites.net/api/Pets";
             using (var httpClient = new HttpClient())
             {
-                
+
                 var json = await httpClient.GetStringAsync(url);
                 var retrieveJSON = JsonConvert.DeserializeObject<List<PetPost>>(json);
-                
+
                 // Now parse with JSON.Net
                 return retrieveJSON;
             }

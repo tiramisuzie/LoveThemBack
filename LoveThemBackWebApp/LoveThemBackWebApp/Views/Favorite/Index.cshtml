@@ -5,6 +5,7 @@
 
 <table>
     <tr>
+        <td></td>
         <th>Animal</th>
         <th>Breed</th>
         <th>Name</th>
@@ -14,6 +15,7 @@
 @foreach (var item in Model)
 {
     <tr>
+        <td><img src="@item.Photos" alt="image of pet"/></td>
         <td>@item.Animal</td>
         <td>@item.Breed</td>
         <td>@item.Name</td>
