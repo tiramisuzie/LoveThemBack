@@ -29,7 +29,7 @@ namespace LoveThemBackWebApp.Controllers
         public async Task<IActionResult> Create([Bind("UserID, PetID, Impression, Affectionate, Friendly, Energy, Health, Intelligent, Cheery, Playful")] Reviews review)
         {
             var newReview = await _context.PostReview(review);
-            return RedirectToAction();
+            return RedirectToAction("Index");
         }
 
 

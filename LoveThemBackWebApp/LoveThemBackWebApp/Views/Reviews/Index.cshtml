@@ -1,7 +1,7 @@
 ﻿@model List<LoveThemBackWebApp.Models.Reviews>
 
 
-<form action="/" method="post">
+<form method="post">
     <label for="UserID">user id</label>
     <input type="number" name="UserID" value="" />
 
@@ -32,5 +32,5 @@
     <label for="Playful">Was this animal playful?</label>
     <input type="checkbox" name="Playful" value="" />
 
-    <input type="submit" />
+    <input type="submit" asp-action="Create" />
 </form>
