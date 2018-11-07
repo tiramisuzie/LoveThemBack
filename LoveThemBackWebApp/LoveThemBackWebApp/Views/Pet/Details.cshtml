@@ -22,14 +22,22 @@
 </section>
 
 <section class="review">
-  <h3>Reviews</h3>
-  @if (Model.Review != null)
-  {
-    @foreach (var review in Model.Review)
+
+    <form method="get">
+        <input type="hidden" name="UserID" value="1" />
+        <input type="hidden" name="PetID" value="@Model.PetID" />
+
+        <input type="submit" asp-action="Review" value="Add A Review"/>
+    </form>
+
+    <h3>Reviews</h3>
+    @if (Model.Review != null)
     {
-      <div>
-        <p>@Html.DisplayFor(modelItem => review.Impression)</p>
-      </div>
+        @foreach (var review in Model.Review)
+        {
+            <div>
+                <p>@Html.DisplayFor(modelItem => review.Impression)</p>
+            </div>
+        }
     }
-  }
 </section>
