@@ -11,10 +11,23 @@ namespace LoveThemBackAPI.Migrations
                 columns: table => new
                 {
                     PetID = table.Column<int>(nullable: false),
+                    Animal = table.Column<string>(nullable: true),
+                    Breed = table.Column<string>(nullable: true),
+                    Mix = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    Age = table.Column<int>(nullable: false),
+                    Age = table.Column<string>(nullable: true),
                     Sex = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Size = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    ShelterID = table.Column<string>(nullable: true),
+                    ShelterName = table.Column<string>(nullable: true),
+                    Photos = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Zip = table.Column<string>(nullable: true),
+                    State = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,7 +47,8 @@ namespace LoveThemBackAPI.Migrations
                     Healthy = table.Column<bool>(nullable: false),
                     Intelligent = table.Column<bool>(nullable: false),
                     Cheery = table.Column<bool>(nullable: false),
-                    Playful = table.Column<bool>(nullable: false)
+                    Playful = table.Column<bool>(nullable: false),
+                    Drool = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

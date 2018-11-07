@@ -1,0 +1,35 @@
+﻿@model LoveThemBackWebApp.Models.PetPost
+
+@{
+  ViewData["Title"] = "Details";
+}
+
+@{
+  Layout = "_Layout";
+}
+
+@{ 
+    string[] image = Model.Photos.Split(",");
+}
+
+<section>
+  <img src="@image[1]" />
+  <div>
+    <h3>@Html.DisplayFor(modelItem => Model.Name)</h3>
+    <p>@Html.DisplayFor(modelItem => Model.Animal)</p>
+    <p>@Html.DisplayFor(modelItem => Model.Description)</p>
+  </div>
+</section>
+
+<section class="review">
+  <h3>Reviews</h3>
+  @if (Model.Review != null)
+  {
+    @foreach (var review in Model.Review)
+    {
+      <div>
+        <p>@Html.DisplayFor(modelItem => review.Impression)</p>
+      </div>
+    }
+  }
+</section>

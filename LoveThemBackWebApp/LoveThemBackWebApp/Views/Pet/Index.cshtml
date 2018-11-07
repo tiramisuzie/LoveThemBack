@@ -1,0 +1,25 @@
+﻿@model List<LoveThemBackWebApp.Models.Pet>
+
+@{
+  Layout = "_Layout";
+}
+
+<h3>Enter Zip Code</h3>
+<form asp-controller="Pet" asp-action="Index">
+  <p class="create">
+    <input type="text" name="SearchString">
+    <input type="submit" value="Filter" />
+  </p>
+</form>
+@if (Model != null)
+{
+  @foreach (var pet in Model)
+  {
+    <div class="card">
+      <img src="@pet.media.photos.photo[0].data" />
+      <h3>@Html.DisplayFor(modelItem => pet.name.data)</h3>
+      <p>@Html.DisplayFor(modelItem => pet.id.data)</p>
+      <a asp-action="Details" asp-route-id="@pet.id.data">Details</a>
+    </div>
+  }
+}
