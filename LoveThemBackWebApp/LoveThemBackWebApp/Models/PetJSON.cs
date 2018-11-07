@@ -9,9 +9,6 @@ namespace LoveThemBackWebApp.Models
 {
   public class PetJSON
   {
-
-
-
     public string encoding { get; set; }
 
     [JsonProperty("@version")]
