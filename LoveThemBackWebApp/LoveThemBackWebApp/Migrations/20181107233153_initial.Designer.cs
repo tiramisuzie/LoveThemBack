@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoveThemBackWebApp.Migrations
 {
     [DbContext(typeof(LTBDBContext))]
-    [Migration("20181106224842_seeding5")]
-    partial class seeding5
+    [Migration("20181107233153_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

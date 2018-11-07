@@ -49,26 +49,31 @@ namespace LoveThemBackWebApp.Controllers
         }
 
         // GET: Favorites/Delete/5
-        public async Task<IActionResult> Delete(int UserID, int PetID)
+        [HttpPost]
+        public async Task<IActionResult> Delete(int PetID)
         {
-            var favorite = await _context.GetFavorite(UserID, PetID);
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
+
+            var favorite = await _context.GetFavorite(userProfile.UserID, PetID);
+            await _context.DeleteFavorite(userProfile.UserID, PetID);
 
             if (favorite == null)
             {
                 return NotFound();
             }
 
-            return View();
-        }
-
-        // POST: Favorite/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int UserID, int PetID)
-        {
-            await _context.DeleteFavorite(UserID, PetID);
-
             return RedirectToAction(nameof(Index));
         }
+
+        //// POST: Favorite/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int UserID, int PetID)
+        //{
+        //    await _context.DeleteFavorite(UserID, PetID);
+
+        //    return RedirectToAction(nameof(Index));
+        //}
     }
 }

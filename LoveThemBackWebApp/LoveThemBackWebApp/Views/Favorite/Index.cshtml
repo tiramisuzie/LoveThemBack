@@ -20,7 +20,8 @@
         <td>@item.Breed</td>
         <td>@item.Name</td>
         <td>@item.Sex</td>
-        <td><form action="/delete/@item.PetID" method="post">
+        <td><form action="/favorite/Delete" method="post">
+                <input type="hidden" name="PetID" value="@item.PetID" />
                 <button type="submit">UnFavorite</button>
             </form></td>
     </tr>

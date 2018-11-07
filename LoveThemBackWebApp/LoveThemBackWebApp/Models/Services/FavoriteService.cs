@@ -42,7 +42,22 @@ namespace LoveThemBackWebApp.Models.Services
         public async Task<List<PetPost>> GetFavorites(int userId)
         {
             var pets = await GetJSON();
-            foreach (var pet in pets)
+            List<Favorite> favorites = _context.Favorites.Where(x => x.UserID == userId).ToList();
+
+            List<PetPost> myFavPets = new List<PetPost>();
+
+            foreach (var pet in favorites)
+            {
+                foreach (var item in pets)
+                {
+                    if (item.PetID == pet.PetID)
+                    {
+                        myFavPets.Add(item);
+                    }
+                }
+            }
+
+            foreach (var pet in myFavPets)
             {
                 string[] photos = pet.Photos.Split(",");
                 pet.Photos = photos[2];
@@ -60,21 +75,7 @@ namespace LoveThemBackWebApp.Models.Services
                 pet.Breed = newPetBreed;
             }
 
-            List<Favorite> favorites = _context.Favorites.Where(x => x.UserID == userId).ToList();
-
-            List<PetPost> myFavPets = new List<PetPost>();
-
-            //foreach (var pet in favorites)
-            //{
-            //    foreach (var item in pets)
-            //    //{
-            //    //    if (item.id. == pet.PetID.ToString())
-            //    //    {
-            //    //        myFavPets.Add(item);
-            //    //    }
-            //    //}
-            //}
-            return pets;
+            return myFavPets;
         }
 
         public async Task UpdateFavorite(Favorite favorite)
