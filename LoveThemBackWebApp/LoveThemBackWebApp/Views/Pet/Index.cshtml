@@ -4,27 +4,15 @@
   Layout = "_Layout";
 }
 
-<table>
 
-  @foreach (var pet in Model)
-  {
+@foreach (var pet in Model)
+{
 
-  <tr>
-    <td>
-    <a asp-action="Details" asp-route-id="@pet.id.tspo">Details</a>
-      </td>
-    <td>
-      @Html.DisplayFor(modelItem => pet.id.tspo)
-    </td>
-    <td>
-      @Html.DisplayFor(modelItem => pet.name.tsju)
-    </td>
-    <td>
-      @Html.DisplayFor(modelItem => pet.age.tsna)
-    </td>
-    <td>
-      @Html.DisplayFor(modelItem => pet.description.tsnve)
-    </td>
-  </tr>
-  }
-</table>
+
+  <div class="card">
+    <img src="@pet.media.photos.photo[0].data" />
+    <h3>@Html.DisplayFor(modelItem => pet.name.data)</h3>
+    <a asp-action="Details" asp-route-id="@pet.id.data">Details</a>
+  </div>
+}
+

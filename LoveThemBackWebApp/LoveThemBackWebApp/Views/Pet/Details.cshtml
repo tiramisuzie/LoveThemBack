@@ -1,4 +1,4 @@
-﻿@model List<LoveThemBackWebApp.Models.Pet>
+﻿@model LoveThemBackWebApp.Models.PetPost
 
 @{
   ViewData["Title"] = "Details";
@@ -8,31 +8,28 @@
   Layout = "_Layout";
 }
 
-
-@foreach (var pet in Model)
-{
-  <table>
-    <tr>
-      <td>
-        @Html.DisplayFor(modelItem => pet.id.tspo)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => pet.name.tsju)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => pet.age.tsna)
-      </td>
-      <td>
-        @Html.DisplayFor(modelItem => pet.description.tsnve)
-      </td>
-    </tr>
-  </table>
-
-  @foreach (var review in pet.review)
-  {
-    <div>
-      <p>Reviews:</p>
-      <p>@Html.DisplayFor(modelItem => review.Impression)</p>
-    </div>
-  }
+@{ 
+  string[] image = Model.Photos.Split(",");
 }
+
+<section>
+  <img src="@image[1]" />
+  <div>
+    <h3>@Html.DisplayFor(modelItem => Model.Name)</h3>
+    <p>@Html.DisplayFor(modelItem => Model.Animal)</p>
+    <p>@Html.DisplayFor(modelItem => Model.Description)</p>
+  </div>
+</section>
+
+<section class="review">
+  <h3>Reviews</h3>
+  @if (Model.Review != null)
+  {
+    @foreach (var review in Model.Review)
+    {
+      <div>
+        <p>@Html.DisplayFor(modelItem => review.Impression)</p>
+      </div>
+    }
+  }
+</section>

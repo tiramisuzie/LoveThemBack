@@ -22,13 +22,39 @@ namespace LoveThemBackAPI.Migrations
                 {
                     b.Property<int>("PetID");
 
-                    b.Property<int>("Age");
+                    b.Property<string>("Address");
+
+                    b.Property<string>("Age");
+
+                    b.Property<string>("Animal");
+
+                    b.Property<string>("Breed");
+
+                    b.Property<string>("City");
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Mix");
+
                     b.Property<string>("Name");
 
+                    b.Property<string>("Phone");
+
+                    b.Property<string>("Photos");
+
                     b.Property<string>("Sex");
+
+                    b.Property<string>("ShelterID");
+
+                    b.Property<string>("ShelterName");
+
+                    b.Property<string>("Size");
+
+                    b.Property<string>("State");
+
+                    b.Property<string>("Zip");
 
                     b.HasKey("PetID");
 
@@ -44,6 +70,8 @@ namespace LoveThemBackAPI.Migrations
                     b.Property<bool>("Affectionate");
 
                     b.Property<bool>("Cheery");
+
+                    b.Property<bool>("Drool");
 
                     b.Property<bool>("Friendly");
 
