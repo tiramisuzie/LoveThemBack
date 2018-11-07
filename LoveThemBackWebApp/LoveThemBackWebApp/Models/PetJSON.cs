@@ -22,7 +22,7 @@ namespace LoveThemBackWebApp.Models
 
   public class Petfinder
   {
-
+    
     [JsonProperty("@xmlns:xsi")]
     public string xmlns { get; set; }
 
@@ -37,6 +37,9 @@ namespace LoveThemBackWebApp.Models
 
     [JsonProperty("@xsi:noNamespaceSchemaLocation")]
     public string xsi { get; set; }
+
+    [JsonProperty("pet")]
+    public Pet pet { get; set; }
   }
 
   public class Header
