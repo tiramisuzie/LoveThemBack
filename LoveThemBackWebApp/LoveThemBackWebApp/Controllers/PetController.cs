@@ -34,17 +34,21 @@ namespace LoveThemBackWebApp.Controllers
 
             List<PetPost> PetList = await GetPetFromCustomAPI();
             PetPost GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
+            dynamic Models = new ExpandoObject();
+            Models.Search = search;
 
             if (GetPet != null)
             {
-                return View(GetPet);
+                Models.GetPet = GetPet;
+                return View(Models);
             }
             else
             {
                 await PetAPIPost(id, search);
                 PetList = await GetPetFromCustomAPI();
                 GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
-                return View(GetPet);
+                Models.GetPet = GetPet;
+                return View(Models);
             }
         }
 
