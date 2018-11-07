@@ -13,11 +13,13 @@ namespace LoveThemBackWebApp.Controllers
 {
   public class PetController : Controller
   {
+
     private List<Pet> PetCollections;
     public async Task<IActionResult> Index(string searchString)
     {
       List<Pet> PetList = await GetPetListJSON(searchString);
       PetCollections = PetList;
+
       return View(PetList);
     }
 

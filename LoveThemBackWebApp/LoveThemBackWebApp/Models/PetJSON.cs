@@ -10,7 +10,8 @@ namespace LoveThemBackWebApp.Models
   public class PetJSON
   {
 
-    [JsonProperty("@encoding")]
+
+
     public string encoding { get; set; }
 
     [JsonProperty("@version")]
@@ -22,7 +23,7 @@ namespace LoveThemBackWebApp.Models
 
   public class Petfinder
   {
-    
+
     [JsonProperty("@xmlns:xsi")]
     public string xmlns { get; set; }
 
@@ -60,6 +61,7 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
+
     public DateTime data { get; set; }
   }
 
@@ -113,7 +115,6 @@ namespace LoveThemBackWebApp.Models
 
     [JsonProperty("animal")]
     public Animal animal { get; set; }
-
     public List<PetReview> review { get; set; }
   }
 
@@ -121,6 +122,7 @@ namespace LoveThemBackWebApp.Models
   {
 
     [JsonProperty("$t")]
+
     public string data { get; set; }
   }
 

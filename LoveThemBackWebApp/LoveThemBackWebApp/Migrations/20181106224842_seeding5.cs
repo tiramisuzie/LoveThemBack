@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LoveThemBackWebApp.Migrations
 {
-    public partial class initial : Migration
+    public partial class seeding5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,6 +40,26 @@ namespace LoveThemBackWebApp.Migrations
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Profiles",
+                columns: new[] { "UserID", "LocationZip", "Password", "Username" },
+                values: new object[] { 1, 98144, "password1", "username1" });
+
+            migrationBuilder.InsertData(
+                table: "Profiles",
+                columns: new[] { "UserID", "LocationZip", "Password", "Username" },
+                values: new object[] { 2, 98144, "password2", "username2" });
+
+            migrationBuilder.InsertData(
+                table: "Favorites",
+                columns: new[] { "UserID", "PetID", "Notes" },
+                values: new object[] { 1, 1, "notes 1" });
+
+            migrationBuilder.InsertData(
+                table: "Favorites",
+                columns: new[] { "UserID", "PetID", "Notes" },
+                values: new object[] { 1, 2, "notes 2" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

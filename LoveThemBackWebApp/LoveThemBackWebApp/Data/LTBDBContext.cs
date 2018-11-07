@@ -18,6 +18,38 @@ namespace LoveThemBackWebApp.Data
             modelBuilder.Entity<Favorite>().HasKey(
                 fv => new { fv.UserID, fv.PetID }
                 );
+            modelBuilder.Entity<Profile>().HasData(
+               new Profile
+               {
+                   UserID = 1,
+                   Username = "username1",
+                   Password = "password1",
+                   LocationZip = 98144
+               },
+
+                new Profile
+                {
+                    UserID = 2,
+                    Username = "username2",
+                    Password = "password2",
+                    LocationZip = 98144,
+                });
+            modelBuilder.Entity<Favorite>().HasData(
+                new Favorite
+                {
+                    UserID = 1,
+                    PetID = 1,
+                    Notes = "notes 1"
+                },
+
+                 new Favorite
+                {
+                    UserID = 1,
+                    PetID = 2,
+                    Notes = "notes 2",
+                });
+
+            
         }
 
 
