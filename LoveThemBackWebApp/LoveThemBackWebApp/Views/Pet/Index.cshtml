@@ -1,5 +1,4 @@
 ﻿@model List<LoveThemBackWebApp.Models.Pet>
-Is this me?1
 
 @{
   Layout = "_Layout";
@@ -11,6 +10,9 @@ Is this me?1
   {
 
   <tr>
+    <td>
+    <a asp-action="Details" asp-route-id="@pet.id.tspo">Details</a>
+      </td>
     <td>
       @Html.DisplayFor(modelItem => pet.id.tspo)
     </td>

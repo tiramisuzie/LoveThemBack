@@ -110,6 +110,8 @@ namespace LoveThemBackWebApp.Models
 
     [JsonProperty("animal")]
     public Animal animal { get; set; }
+
+    public List<PetReview> review { get; set; }
   }
 
   public class LastOffset

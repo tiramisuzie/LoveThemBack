@@ -13,6 +13,7 @@ namespace LoveThemBackWebApp.Controllers
 {
   public class PetController : Controller
   {
+    private static readonly HttpClient client = new HttpClient();
 
     public async Task<IActionResult> Index()
     {
@@ -24,9 +25,14 @@ namespace LoveThemBackWebApp.Controllers
     {
       if (id == null) return NotFound();
       List<Pet> PetList = await GetJSON();
+      List<PetReview> petReviews = await GetReviewJSON();
       var SelectedPet = PetList.Where(x => x.id.tspo == id.ToString()).ToList();
-
-      return View(SelectedPet);h
+      var getReviews = petReviews.Where(item => item.PetID == id).ToList();
+      foreach (var item in SelectedPet)
+      {
+        item.review = getReviews;
+      }
+      return View(SelectedPet);
 
     }
 
@@ -48,6 +54,27 @@ namespace LoveThemBackWebApp.Controllers
       }
     }
 
+    public async Task<List<PetReview>> GetReviewJSON()
+    {
+      string url = "https://lovethembackapi2.azurewebsites.net/api/Reviews";
+      using (var httpClient = new HttpClient())
+      {
+        var json = await httpClient.GetStringAsync(url);
+        var retrieveJSON = JsonConvert.DeserializeObject<List<PetReview>>(json);
 
+        // Now parse with JSON.Net
+        return retrieveJSON;
+      }
+    }
+
+    public async Task<IActionResult> PetAPIPost(int id)
+    {
+      object testPet = new object();
+
+      var response = await client.PostAsync("http://www.example.com/recepticle.aspx", content);
+
+      var responseString = await response.Content.ReadAsStringAsync();
+      return NoContent();
+    }
   }
 }

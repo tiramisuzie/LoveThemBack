@@ -36,10 +36,10 @@ namespace LoveThemBackAPI.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Review review)
+    public IActionResult Create(Review review)
     {
-      await _context.Reviews.AddAsync(review);
-      await _context.SaveChangesAsync();
+      _context.Reviews.Add(review);
+      _context.SaveChanges();
 
       return NoContent();
     }
