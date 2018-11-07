@@ -26,27 +26,31 @@ namespace LoveThemBackWebApp.Controllers
         private List<Pet> PetCollections { get; set; }
         public async Task<IActionResult> Index(string id, string searchString)
         {
-            var user = HttpContext.Session.GetString("profile");
-            var ret = JsonConvert.DeserializeObject<Profile>(user);
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile  = JsonConvert.DeserializeObject<Profile>(userJSON);
             dynamic Models = new ExpandoObject();
             PetCollections = await GetPetListJSON(searchString);
             Models.Pets = PetCollections;
             Models.Search = searchString;
-            Models.User = ret;
+            Models.User = userProfile;
             return View(Models);
         }
 
-        public async Task<IActionResult> Details(int? petid, string search)
+        public async Task<IActionResult> Details(int? id, string search)
         {
-            if (petid == null)
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
+
+            if (id == null)
             {
                 return NotFound();
             }
 
             List<PetPost> PetList = await GetPetFromCustomAPI();
-            PetPost GetPet = PetList.Where(pet => pet.PetID == petid).FirstOrDefault();
+            PetPost GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
             dynamic Models = new ExpandoObject();
             Models.Search = search;
+            Models.User = userProfile;
 
             if (GetPet != null)
             {
@@ -55,15 +59,27 @@ namespace LoveThemBackWebApp.Controllers
             }
             else
             {
-                await PetAPIPost(petid, search);
+                await PetAPIPost(id, search);
                 PetList = await GetPetFromCustomAPI();
-                GetPet = PetList.Where(pet => pet.PetID == petid).FirstOrDefault();
+                GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
                 Models.GetPet = GetPet;
                 return View(Models);
             }
         }
+        public async Task<IActionResult> AddFavorites(int userID, int petID)
+        {
+            Favorite FavoritePet = new Favorite()
+            {
+                UserID = userID,
+                PetID = petID,
+            };
+            _context.Favorites.Add(FavoritePet);
+            await _context.SaveChangesAsync();
 
-        public async Task<IActionResult> CreateReview()
+            return RedirectToAction("Details", "Pet", new { id = petID });
+        }
+
+            public async Task<IActionResult> CreateReview()
         {
             return View();
         }

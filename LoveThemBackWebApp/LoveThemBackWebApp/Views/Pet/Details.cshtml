@@ -28,7 +28,13 @@
         <input type="submit" value="Back to List" />
     </p>
 </form>
-
+<form asp-controller="Pet" asp-action="AddFavorites">
+    <p class="create">
+        <input type="hidden" name="userID" value="@Model.User.UserID">
+        <input type="hidden" name="petID" value="@Model.GetPet.PetID">
+        <input type="submit" value="Add to Favorites" />
+    </p>
+</form>
 <section class="review">
     <h3>Reviews</h3>
     @if (Model.GetPet.Review != null)
