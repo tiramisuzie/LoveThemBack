@@ -1,9 +1,11 @@
-﻿@model IEnumerable<LoveThemBackWebApp.Models.Pet>
-    @foreach (var item in Model)
-    {
-        <h1>@item.animal</h1>
-        
-    }
+﻿@model IEnumerable<LoveThemBackWebApp.Models.PetPost>
+@*@model List<LoveThemBackWebApp.Models.PetPost>*@
+
+@foreach (var item in Model)
+{
+    <h1>@item.Animal</h1>
+
+}
 
 
 <h1> This is the favorites index page </h1>

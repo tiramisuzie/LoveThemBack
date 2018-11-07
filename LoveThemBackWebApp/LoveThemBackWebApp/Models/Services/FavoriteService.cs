@@ -37,25 +37,24 @@ namespace LoveThemBackWebApp.Models.Services
             return await _context.Favorites.FirstOrDefaultAsync(x => x.UserID == userId && x.PetID == petId);
         }
 
-        public List<Pet> GetFavorites(int userId)
+        public async Task<List<PetPost>> GetFavorites(int userId)
         {
-            //List<Pet> pets = await GetJSON();
+            var pets = await GetJSON();
             List<Favorite> favorites = _context.Favorites.Where(x => x.UserID == userId).ToList();
 
-            List<Pet> myFavPets = new List<Pet>();
+            List<PetPost> myFavPets = new List<PetPost>();
 
             //foreach (var pet in favorites)
             //{
-            //     foreach(var item in pets)
-            //    {
-            //        if(item.id.tspo == pet.PetID.ToString())
-            //        {
-            //            myFavPets.Add(item);
-            //        }
-            //    }
+            //    foreach (var item in pets)
+            //    //{
+            //    //    if (item.id. == pet.PetID.ToString())
+            //    //    {
+            //    //        myFavPets.Add(item);
+            //    //    }
+            //    //}
             //}
-
-            return myFavPets;
+            return pets;
         }
 
         public async Task UpdateFavorite(Favorite favorite)
@@ -65,16 +64,18 @@ namespace LoveThemBackWebApp.Models.Services
         }
 
         //public async Task<List<Pet>> GetJSON()
-        //{
-        //    string url = "https://lovethembackapi2.azurewebsites.net/api/Pets";
-        //    using (var httpClient = new HttpClient())
-        //    {
-        //        var json = await httpClient.GetStringAsync(url);
-        //        PetJSON retrieveJSON = JsonConvert.DeserializeObject<PetJSON>(json);
-
-        //        // Now parse with JSON.Net
-        //        return retrieveJSON.petfinder.pets.pet.ToList();
-        //    }
-        //}
+        public async Task<List<PetPost>> GetJSON()
+        {
+            string url = "https://lovethembackapi2.azurewebsites.net/api/Pets";
+            using (var httpClient = new HttpClient())
+            {
+                
+                    var json = await httpClient.GetStringAsync(url);
+                    var retrieveJSON = JsonConvert.DeserializeObject<List<PetPost>>(json);
+                
+                // Now parse with JSON.Net
+                return retrieveJSON;
+            }
+        }
     }
 }
