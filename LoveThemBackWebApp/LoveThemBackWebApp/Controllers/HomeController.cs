@@ -13,8 +13,9 @@ namespace LoveThemBackWebApp.Controllers
     public class HomeController : Controller
     {
 
-        public IActionResult Index()
+        public IActionResult Index(string id)
         {
+            ViewBag.username = id;
             var value = HttpContext.Session.GetString("profile");
             Profile result;
             if (value != null)
