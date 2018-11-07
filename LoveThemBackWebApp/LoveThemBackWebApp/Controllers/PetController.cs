@@ -20,13 +20,13 @@ namespace LoveThemBackWebApp.Controllers
       return View(PetList);
     }
 
-    public IActionResult Details(int? id)
+    public async Task<IActionResult> Details(int? id)
     {
       if (id == null) return NotFound();
       List<Pet> PetList = await GetJSON();
       var SelectedPet = PetList.Where(x => x.id.tspo == id.ToString()).ToList();
 
-      return View(SelectedPet);h
+      return View(SelectedPet);
 
     }
 

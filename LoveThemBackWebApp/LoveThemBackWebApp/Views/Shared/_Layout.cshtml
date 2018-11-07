@@ -1,11 +1,22 @@
-﻿<!DOCTYPE html>
-
-<html>
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta name="viewport" content="width=device-width" />
-  <link href="~/StyleSheet.css" rel="stylesheet" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
+
 <body>
-  @RenderBody()
+    <div>
+        <h1 class="title">Love Them Back</h1>
+    </div>
+
+    <ul class="nav_menu">
+        <li>
+            <a href="/Home">Home</a>
+        </li>
+        <li>
+            <a href="/Favorite">My Favorites</a>
+        </li>
+    </ul>
 </body>
 </html>
+
+@RenderBody()
