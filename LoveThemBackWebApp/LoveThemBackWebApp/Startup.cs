@@ -43,6 +43,7 @@ namespace LoveThemBackWebApp
 
             services.AddTransient<IFavorites, FavoriteService>();
             services.AddTransient<IProfiles, ProfileService>();
+            services.AddTransient<IReviews, ReviewsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
