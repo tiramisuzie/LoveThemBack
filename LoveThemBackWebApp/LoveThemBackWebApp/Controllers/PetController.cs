@@ -25,7 +25,7 @@ namespace LoveThemBackWebApp.Controllers
             return View(Models);
         }
 
-        public async Task<IActionResult> Review([Bind("UserID, PetID")] Reviews review)
+        public IActionResult Review([Bind("PetID")] Reviews review)
         {
             return RedirectToAction("Index", "Reviews", review);
         }
