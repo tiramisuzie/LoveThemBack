@@ -31,9 +31,13 @@ namespace LoveThemBackWebApp.Controllers
             Profile profile = await _context.GetProfile(username, password);
             HttpContext.Session.SetString("profile", JsonConvert.SerializeObject(profile));
 
-            //Session["profile"] = profile;
-            return RedirectToAction("Index", "Pet", new { id = username });
 
+            //Session["profile"] = profile;
+            if (profile != null)
+            {
+                return RedirectToAction("Index", "Pet", new { id = username });
+            }
+            else return View();
         }
     }
 }
