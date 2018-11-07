@@ -12,7 +12,7 @@ namespace LoveThemBackWebApp.Models
         public string Impression { get; set; }
         public bool Affectionate { get; set; }
         public bool Friendly { get; set; }
-        public bool Energy { get; set; }
+        public bool HighEnergy { get; set; }
         public bool Healthy { get; set; }
         public bool Intelligent { get; set; }
         public bool Cheery { get; set; }
