@@ -32,6 +32,7 @@ namespace LoveThemBackWebApp.Controllers
       {
         item.review = getReviews;
       }
+      await PetAPIPost(id);
       return View(SelectedPet);
 
     }
@@ -67,13 +68,28 @@ namespace LoveThemBackWebApp.Controllers
       }
     }
 
-    public async Task<IActionResult> PetAPIPost(int id)
+    public async Task<IActionResult> PetAPIPost(int? id)
     {
-      object testPet = new object();
+      List<Pet> PetList = await GetJSON();
+      var SelectedPet = PetList.Where(x => x.id.tspo == id.ToString()).ToList();
+      PetPost testPet = new PetPost()
+      {
+        PetID = (int)id,
+        Name = SelectedPet[0].name.tsju
+      };
 
-      var response = await client.PostAsync("http://www.example.com/recepticle.aspx", content);
-
-      var responseString = await response.Content.ReadAsStringAsync();
+      string output = await Task.Run(() => JsonConvert.SerializeObject(testPet));
+      var httpContent = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+      using (var httpClient = new HttpClient())
+      {
+        // Error here
+        var httpResponse = await httpClient.PostAsync("https://lovethembackapi2.azurewebsites.net/api/Pets", httpContent);
+        if (httpResponse.Content != null)
+        {
+          // Error Here
+          var responseContent = await httpResponse.Content.ReadAsStringAsync();
+        }
+      }
       return NoContent();
     }
   }
