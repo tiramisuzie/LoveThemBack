@@ -29,5 +29,7 @@ namespace LoveThemBackWebApp.Models
     public bool Cheery { get; set; }
     [JsonProperty("playful")]
     public bool Playful { get; set; }
+    [JsonProperty("drool")]
+    public bool Drool { get; set; }
   }
 }
