@@ -1,10 +1,10 @@
-﻿@model LoveThemBackWebApp.Models.Reviews
+﻿@model dynamic
 
 
 <form method="post">
-    <input type="hidden" name="UserID" value="@Model.UserID" />
+    <input type="hidden" name="UserID" value="@Model.User.UserID" />
 
-    <input type="hidden" name="PetID" value="@Model.PetID" />
+    <input type="hidden" name="PetID" value="@Model.Review.PetID" />
 
     <label for="Impression"></label>
     <textarea name="Impression">  </textarea>

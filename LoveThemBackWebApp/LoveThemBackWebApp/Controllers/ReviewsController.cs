@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using System.Dynamic;
 
 namespace LoveThemBackWebApp.Controllers
 {
@@ -22,7 +24,12 @@ namespace LoveThemBackWebApp.Controllers
 
         public IActionResult Index(Reviews review)
         {
-            return View(review);
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
+            dynamic model = new ExpandoObject();
+            model.Review = review;
+            model.User = userProfile;
+            return View(model);
         }
 
         [HttpPost]

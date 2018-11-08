@@ -35,11 +35,11 @@
         <input type="submit" value="Add to Favorites" />
     </p>
 </form>
+
 <section class="review">
 
     <form method="get">
-        <input type="hidden" name="UserID" value="1" />
-        <input type="hidden" name="PetID" value="@Model.PetID" />
+        <input type="hidden" name="PetID" value="@Model.GetPet.PetID" />
 
         <input type="submit" asp-action="Review" value="Add A Review"/>
     </form>
