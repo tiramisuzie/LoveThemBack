@@ -9,5 +9,8 @@ namespace LoveThemBackWebApp.Models.Interfaces
     {
         //Read
         Task<Profile> GetProfile(string userName);
+
+        //create
+        Task CreateProfile(Profile profile);
     }
 }

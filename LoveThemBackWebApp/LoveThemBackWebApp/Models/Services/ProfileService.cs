@@ -21,5 +21,12 @@ namespace LoveThemBackWebApp.Models.Services
         {
             return await _context.Profiles.FirstOrDefaultAsync(x => x.Username == username);
         }
+
+        // Saves userprofile to database
+        public async Task CreateProfile(Profile profile)
+        {
+            _context.Profiles.Add(profile);
+            await _context.SaveChangesAsync();
+        }
     }
 }
