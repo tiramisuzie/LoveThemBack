@@ -1,4 +1,6 @@
 ﻿ using LoveThemBackAPI.Data;
+using LoveThemBackAPI.Models.Interfaces;
+using LoveThemBackAPI.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +27,10 @@ namespace LoveThemBackAPI
 
       services.AddDbContext<LoveThemBackAPIDbContext>(options =>
       options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+      services.AddTransient<IPet, PetsService>();
     }
+
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
