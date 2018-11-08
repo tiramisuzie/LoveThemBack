@@ -7,250 +7,250 @@ using Newtonsoft.Json;
 
 namespace LoveThemBackWebApp.Models
 {
-  public class PetJSON
-  {
-    public string encoding { get; set; }
+    public class PetJSON
+    {
+        public string encoding { get; set; }
 
-    [JsonProperty("@version")]
-    public string version { get; set; }
+        [JsonProperty("@version")]
+        public string version { get; set; }
 
-    [JsonProperty("petfinder")]
-    public Petfinder petfinder { get; set; }
-  }
+        [JsonProperty("petfinder")]
+        public Petfinder petfinder { get; set; }
+    }
 
-  public class Petfinder
-  {
+    public class Petfinder
+    {
 
-    [JsonProperty("@xmlns:xsi")]
-    public string xmlns { get; set; }
+        [JsonProperty("@xmlns:xsi")]
+        public string xmlns { get; set; }
 
-    [JsonProperty("lastOffset")]
-    public LastOffset lastOffset { get; set; }
+        [JsonProperty("lastOffset")]
+        public LastOffset lastOffset { get; set; }
 
-    [JsonProperty("pets")]
-    public Pets pets { get; set; }
+        [JsonProperty("pets")]
+        public Pets pets { get; set; }
 
-    [JsonProperty("header")]
-    public Header header { get; set; }
+        [JsonProperty("header")]
+        public Header header { get; set; }
 
-    [JsonProperty("@xsi:noNamespaceSchemaLocation")]
-    public string xsi { get; set; }
+        [JsonProperty("@xsi:noNamespaceSchemaLocation")]
+        public string xsi { get; set; }
 
-    [JsonProperty("pet")]
-    public Pet pet { get; set; }
-  }
+        [JsonProperty("pet")]
+        public Pet pet { get; set; }
+    }
 
-  public class Header
-  {
+    public class Header
+    {
 
-    [JsonProperty("timestamp")]
-    public Timestamp timestamp { get; set; }
-  }
+        [JsonProperty("timestamp")]
+        public Timestamp timestamp { get; set; }
+    }
 
-  public class Pets
-  {
+    public class Pets
+    {
 
-    [JsonProperty("pet")]
-    public List<Pet> pet { get; set; }
-  }
+        [JsonProperty("pet")]
+        public List<Pet> pet { get; set; }
+    }
 
-  public class Timestamp
-  {
+    public class Timestamp
+    {
 
-    [JsonProperty("$t")]
+        [JsonProperty("$t")]
 
-    public DateTime data { get; set; }
-  }
+        public DateTime data { get; set; }
+    }
 
-  public class Pet
-  {
+    public class Pet
+    {
 
-    [JsonProperty("options")]
-    public Options options { get; set; }
+        [JsonProperty("options")]
+        public Options options { get; set; }
 
-    [JsonProperty("status")]
-    public Status status { get; set; }
+        [JsonProperty("status")]
+        public Status status { get; set; }
 
-    [JsonProperty("contact")]
-    public Contact contact { get; set; }
+        [JsonProperty("contact")]
+        public Contact contact { get; set; }
 
-    [JsonProperty("age")]
-    public Age age { get; set; }
+        [JsonProperty("age")]
+        public Age age { get; set; }
 
-    [JsonProperty("size")]
-    public Size size { get; set; }
+        [JsonProperty("size")]
+        public Size size { get; set; }
 
-    [JsonProperty("media")]
-    public Media media { get; set; }
+        [JsonProperty("media")]
+        public Media media { get; set; }
 
-    [JsonProperty("id")]
-    public Id id { get; set; }
+        [JsonProperty("id")]
+        public Id id { get; set; }
 
-    [JsonProperty("shelterPetId")]
-    public ShelterPetId shelterPetId { get; set; }
+        [JsonProperty("shelterPetId")]
+        public ShelterPetId shelterPetId { get; set; }
 
-    [JsonProperty("breeds")]
-    public Breeds breeds { get; set; }
+        [JsonProperty("breeds")]
+        public Breeds breeds { get; set; }
 
-    [JsonProperty("name")]
-    public Name name { get; set; }
+        [JsonProperty("name")]
+        public Name name { get; set; }
 
-    [JsonProperty("sex")]
-    public Sex sex { get; set; }
+        [JsonProperty("sex")]
+        public Sex sex { get; set; }
 
-    [JsonProperty("description")]
-    public Description description { get; set; }
+        [JsonProperty("description")]
+        public Description description { get; set; }
 
-    [JsonProperty("mix")]
-    public Mix mix { get; set; }
+        [JsonProperty("mix")]
+        public Mix mix { get; set; }
 
-    [JsonProperty("shelterId")]
-    public ShelterId shelterId { get; set; }
+        [JsonProperty("shelterId")]
+        public ShelterId shelterId { get; set; }
 
-    [JsonProperty("lastUpdate")]
-    public LastUpdate lastUpdate { get; set; }
+        [JsonProperty("lastUpdate")]
+        public LastUpdate lastUpdate { get; set; }
 
-    [JsonProperty("animal")]
-    public Animal animal { get; set; }
-    public List<PetReview> review { get; set; }
-  }
+        [JsonProperty("animal")]
+        public Animal animal { get; set; }
+        public List<PetReview> review { get; set; }
+    }
 
-  public class LastOffset
-  {
+    public class LastOffset
+    {
 
-    [JsonProperty("$t")]
+        [JsonProperty("$t")]
 
-    public string data { get; set; }
-  }
+        public string data { get; set; }
+    }
 
-  public class Options
-  {
+    public class Options
+    {
 
-    [JsonProperty("option")]
-    public object option { get; set; }
-  }
+        [JsonProperty("option")]
+        public object option { get; set; }
+    }
 
-  public class Status
-  {
+    public class Status
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class Phone
-  {
+    public class Phone
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class State
-  {
+    public class State
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class Address2
-  {
-  }
+    public class Address2
+    {
+    }
 
-  public class Email
-  {
+    public class Email
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class City
-  {
+    public class City
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class Zip
-  {
+    public class Zip
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class Fax
-  {
-  }
+    public class Fax
+    {
+    }
 
-  public class Address1
-  {
+    public class Address1
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class Contact
-  {
+    public class Contact
+    {
 
-    [JsonProperty("phone")]
-    public Phone phone { get; set; }
+        [JsonProperty("phone")]
+        public Phone phone { get; set; }
 
-    [JsonProperty("state")]
-    public State state { get; set; }
+        [JsonProperty("state")]
+        public State state { get; set; }
 
-    [JsonProperty("address2")]
-    public Address2 address2 { get; set; }
+        [JsonProperty("address2")]
+        public Address2 address2 { get; set; }
 
-    [JsonProperty("email")]
-    public Email email { get; set; }
+        [JsonProperty("email")]
+        public Email email { get; set; }
 
-    [JsonProperty("city")]
-    public City city { get; set; }
+        [JsonProperty("city")]
+        public City city { get; set; }
 
-    [JsonProperty("zip")]
-    public Zip zip { get; set; }
+        [JsonProperty("zip")]
+        public Zip zip { get; set; }
 
-    [JsonProperty("fax")]
-    public Fax fax { get; set; }
+        [JsonProperty("fax")]
+        public Fax fax { get; set; }
 
-    [JsonProperty("address1")]
-    public Address1 address1 { get; set; }
-  }
+        [JsonProperty("address1")]
+        public Address1 address1 { get; set; }
+    }
 
-  public class Age
-  {
+    public class Age
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class Size
-  {
+    public class Size
+    {
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
-  }
+        [JsonProperty("$t")]
+        public string data { get; set; }
+    }
 
-  public class Photo
-  {
+    public class Photo
+    {
 
-    [JsonProperty("@size")]
-    public string @size { get; set; }
+        [JsonProperty("@size")]
+        public string @size { get; set; }
 
-    [JsonProperty("$t")]
-    public string data { get; set; }
+        [JsonProperty("$t")]
+        public string data { get; set; }
 
-    [JsonProperty("@id")]
-    public string id { get; set; }
-  }
+        [JsonProperty("@id")]
+        public string id { get; set; }
+    }
 
-  public class Photos
-  {
+    public class Photos
+    {
 
-    [JsonProperty("photo")]
-    public IList<Photo> photo { get; set; }
-  }
+        [JsonProperty("photo")]
+        public IList<Photo> photo { get; set; }
+    }
 
-  public class Media
-  {
+    public class Media
+    {
 
     [JsonProperty("photos")]
     public Photos photos { get; set; }
@@ -323,9 +323,6 @@ namespace LoveThemBackWebApp.Models
     [JsonProperty("$t")]
     public DateTime data { get; set; }
   }
-
-  public class Animal
-  {
 
     [JsonProperty("$t")]
     public string data { get; set; }
