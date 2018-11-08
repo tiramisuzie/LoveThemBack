@@ -26,9 +26,9 @@ namespace LoveThemBackWebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(string username, string password)
+        public async Task<IActionResult> Index(string username)
         {
-            Profile profile = await _context.GetProfile(username, password);
+            Profile profile = await _context.GetProfile(username);
             HttpContext.Session.SetString("profile", JsonConvert.SerializeObject(profile));
 
 

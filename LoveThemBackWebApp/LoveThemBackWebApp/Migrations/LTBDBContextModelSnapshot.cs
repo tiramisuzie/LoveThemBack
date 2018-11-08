@@ -44,8 +44,6 @@ namespace LoveThemBackWebApp.Migrations
 
                     b.Property<int>("LocationZip");
 
-                    b.Property<string>("Password");
-
                     b.Property<string>("Username");
 
                     b.HasKey("UserID");
@@ -53,8 +51,8 @@ namespace LoveThemBackWebApp.Migrations
                     b.ToTable("Profiles");
 
                     b.HasData(
-                        new { UserID = 1, LocationZip = 98144, Password = "password1", Username = "username1" },
-                        new { UserID = 2, LocationZip = 98144, Password = "password2", Username = "username2" }
+                        new { UserID = 1, LocationZip = 98144, Username = "username1" },
+                        new { UserID = 2, LocationZip = 98144, Username = "username2" }
                     );
                 });
 

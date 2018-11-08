@@ -8,6 +8,6 @@ namespace LoveThemBackWebApp.Models.Interfaces
     public interface IProfiles
     {
         //Read
-        Task<Profile> GetProfile(string userName, string password);
+        Task<Profile> GetProfile(string userName);
     }
 }
