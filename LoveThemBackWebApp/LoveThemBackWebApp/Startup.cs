@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
 
 namespace LoveThemBackWebApp
 {
@@ -27,6 +28,7 @@ namespace LoveThemBackWebApp
             builder.AddUserSecrets<Startup>();
             Configuration = builder.Build();
 
+
         }
         public void ConfigureServices(IServiceCollection services)
         {
@@ -36,10 +38,7 @@ namespace LoveThemBackWebApp
             services.AddMvc();
 
             services.AddDbContext<LTBDBContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
-            );
-
-
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IFavorites, FavoriteService>();
             services.AddTransient<IProfiles, ProfileService>();
