@@ -14,7 +14,6 @@ namespace LoveThemBackWebApp.Migrations
                     UserID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Username = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
                     LocationZip = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -43,13 +42,13 @@ namespace LoveThemBackWebApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Profiles",
-                columns: new[] { "UserID", "LocationZip", "Password", "Username" },
-                values: new object[] { 1, 98144, "password1", "username1" });
+                columns: new[] { "UserID", "LocationZip", "Username" },
+                values: new object[] { 1, 98144, "username1" });
 
             migrationBuilder.InsertData(
                 table: "Profiles",
-                columns: new[] { "UserID", "LocationZip", "Password", "Username" },
-                values: new object[] { 2, 98144, "password2", "username2" });
+                columns: new[] { "UserID", "LocationZip", "Username" },
+                values: new object[] { 2, 98144, "username2" });
 
             migrationBuilder.InsertData(
                 table: "Favorites",

@@ -252,110 +252,107 @@ namespace LoveThemBackWebApp.Models
     public class Media
     {
 
-        [JsonProperty("photos")]
-        public Photos photos { get; set; }
-    }
+    [JsonProperty("photos")]
+    public Photos photos { get; set; }
+  }
 
-    public class Id
+  public class Id
+  {
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class ShelterPetId
+  {
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class Breeds
+  {
+    [JsonProperty("breed")]
+    [JsonConverter(typeof(SingleValueArrayConverter<Breed>))]
+    public List<Breed> breed { get; set; }
+  }
+  public class Breed
+  {
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class Name
+  {
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class Sex
+  {
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class Description
+  {
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class Mix
+  {
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class ShelterId
+  {
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class LastUpdate
+  {
+
+    [JsonProperty("$t")]
+    public DateTime data { get; set; }
+  }
+
+    [JsonProperty("$t")]
+    public string data { get; set; }
+  }
+
+  public class SingleValueArrayConverter<T> : JsonConverter
+  {
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
+      throw new NotImplementedException();
     }
 
-    public class ShelterPetId
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
+      object retVal = new Object();
+      if (reader.TokenType == JsonToken.StartObject)
+      {
+        T instance = (T)serializer.Deserialize(reader, typeof(T));
+        retVal = new List<T>() { instance };
+      }
+      else if (reader.TokenType == JsonToken.StartArray)
+      {
+        retVal = serializer.Deserialize(reader, objectType);
+      }
+      return retVal;
     }
 
-    public class Breeds
+    public override bool CanConvert(Type objectType)
     {
-        [JsonProperty("breed")]
-        [JsonConverter(typeof(SingleValueArrayConverter<Breed>))]
-        public List<Breed> breed { get; set; }
+      return true;
     }
-    public class Breed
-    {
-        [JsonProperty("$t")]
-        public string data { get; set; }
-    }
-
-    public class Name
-    {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
-    }
-
-    public class Sex
-    {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
-    }
-
-    public class Description
-    {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
-    }
-
-    public class Mix
-    {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
-    }
-
-    public class ShelterId
-    {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
-    }
-
-    public class LastUpdate
-    {
-
-        [JsonProperty("$t")]
-        public DateTime data { get; set; }
-    }
-
-    public class Animal
-    {
-
-        [JsonProperty("$t")]
-        public string data { get; set; }
-    }
-
-    public class SingleValueArrayConverter<T> : JsonConverter
-    {
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            object retVal = new Object();
-            if (reader.TokenType == JsonToken.StartObject)
-            {
-                T instance = (T)serializer.Deserialize(reader, typeof(T));
-                retVal = new List<T>() { instance };
-            }
-            else if (reader.TokenType == JsonToken.StartArray)
-            {
-                retVal = serializer.Deserialize(reader, objectType);
-            }
-            return retVal;
-        }
-        public override bool CanConvert(Type objectType)
-        {
-            return true;
-        }
-    }
+  }
 }
-
-
