@@ -1,6 +1,9 @@
 ﻿@model dynamic
 
-
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout2";
+}
 <form method="post">
     <input type="hidden" name="UserID" value="@Model.User.UserID" />
 

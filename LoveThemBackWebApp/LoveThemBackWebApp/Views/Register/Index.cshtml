@@ -1,0 +1,34 @@
+﻿@model LoveThemBackWebApp.Models.RegisterError
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout";
+}
+
+@if (Model != null && Model.userExist)
+{
+    <p>Please try another username. Username Already Exist</p>
+}
+<div class="register-container">
+    <div class="register-img-container">
+        <img src="~/assets/puppies.jpg" class="register-img" />
+    </div>
+    <div>
+
+        <h2>Create Account</h2>
+
+        <form method="post">
+            <div class="register-input-container">
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+            </div>
+
+            <div class="register-input-container">
+                <label for="Zipcode"><b>Zipcode</b></label>
+                <input type="text" placeholder="Enter Zipcode" name="locationZip" required>
+            </div>
+
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</div>

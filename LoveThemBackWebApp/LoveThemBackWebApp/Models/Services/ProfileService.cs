@@ -17,9 +17,16 @@ namespace LoveThemBackWebApp.Models.Services
             _context = context;
         }
 
-        public async Task<Profile> GetProfile (string username, string password)
+        public async Task<Profile> GetProfile (string username)
         {
-            return await _context.Profiles.FirstOrDefaultAsync(x => x.Username == username && x.Password == password);
+            return await _context.Profiles.FirstOrDefaultAsync(x => x.Username == username);
+        }
+
+        // Saves userprofile to database
+        public async Task CreateProfile(Profile profile)
+        {
+            _context.Profiles.Add(profile);
+            await _context.SaveChangesAsync();
         }
     }
 }
