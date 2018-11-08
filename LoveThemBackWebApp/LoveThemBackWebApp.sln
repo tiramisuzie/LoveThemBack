@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoveThemBackWebApp", "LoveThemBackWebApp\LoveThemBackWebApp.csproj", "{54E589D1-74A1-4AF6-B672-EBB5533F80DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoveThemBackWebApp", "LoveThemBackWebApp\LoveThemBackWebApp.csproj", "{54E589D1-74A1-4AF6-B672-EBB5533F80DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoveThemBackTest", "LoveThemBackTest\LoveThemBackTest.csproj", "{30C2EF9D-3688-4217-933D-428189A1EA53}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{54E589D1-74A1-4AF6-B672-EBB5533F80DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54E589D1-74A1-4AF6-B672-EBB5533F80DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54E589D1-74A1-4AF6-B672-EBB5533F80DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30C2EF9D-3688-4217-933D-428189A1EA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30C2EF9D-3688-4217-933D-428189A1EA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30C2EF9D-3688-4217-933D-428189A1EA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30C2EF9D-3688-4217-933D-428189A1EA53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

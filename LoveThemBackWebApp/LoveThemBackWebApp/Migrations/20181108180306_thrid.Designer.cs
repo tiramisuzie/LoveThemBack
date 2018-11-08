@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoveThemBackWebApp.Migrations
 {
     [DbContext(typeof(LTBDBContext))]
-    [Migration("20181107233153_initial")]
-    partial class initial
+    [Migration("20181108180306_thrid")]
+    partial class thrid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -46,8 +46,6 @@ namespace LoveThemBackWebApp.Migrations
 
                     b.Property<int>("LocationZip");
 
-                    b.Property<string>("Password");
-
                     b.Property<string>("Username");
 
                     b.HasKey("UserID");
@@ -55,8 +53,8 @@ namespace LoveThemBackWebApp.Migrations
                     b.ToTable("Profiles");
 
                     b.HasData(
-                        new { UserID = 1, LocationZip = 98144, Password = "password1", Username = "username1" },
-                        new { UserID = 2, LocationZip = 98144, Password = "password2", Username = "username2" }
+                        new { UserID = 1, LocationZip = 98144, Username = "username1" },
+                        new { UserID = 2, LocationZip = 98144, Username = "username2" }
                     );
                 });
 
