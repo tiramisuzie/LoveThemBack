@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LoveThemBackWebApp.Migrations
 {
     [DbContext(typeof(LTBDBContext))]
-    [Migration("20181108052814_deletepass")]
-    partial class deletepass
+    [Migration("20181108191055_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
