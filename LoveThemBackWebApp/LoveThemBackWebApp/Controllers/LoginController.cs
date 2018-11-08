@@ -11,33 +11,38 @@ using Microsoft.AspNetCore.Routing;
 
 namespace LoveThemBackWebApp.Controllers
 {
-    public class LoginController : Controller
+  public class LoginController : Controller
+  {
+    private readonly IProfiles _context;
+
+    public LoginController(IProfiles context)
     {
-        private readonly IProfiles _context;
-
-        public LoginController(IProfiles context)
-        {
-            _context = context;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Index(string username)
-        {
-            Profile profile = await _context.GetProfile(username);
-            HttpContext.Session.SetString("profile", JsonConvert.SerializeObject(profile));
-
-
-            //Session["profile"] = profile;
-            if (profile != null)
-            {
-                return RedirectToAction("Index", "Pet", new { id = username });
-            }
-            else return View();
-        }
+      _context = context;
     }
+
+    public IActionResult Index()
+    {
+      var userJSON = HttpContext.Session.GetString("profile");
+      if (userJSON != null)
+      {
+        return RedirectToAction("Index","Pet");
+      }
+      return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Index(string username)
+    {
+      Profile profile = await _context.GetProfile(username);
+      HttpContext.Session.SetString("profile", JsonConvert.SerializeObject(profile));
+
+
+      //Session["profile"] = profile;
+      if (profile != null)
+      {
+        return RedirectToAction("Index", "Pet");
+      }
+      else return View();
+    }
+  }
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using LoveThemBackAPI.Models;
 using LoveThemBackAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using LoveThemBackAPI.Models.Interfaces;
 
 namespace LoveThemBackAPI.Controllers
 {
@@ -15,12 +16,12 @@ namespace LoveThemBackAPI.Controllers
   public class PetsController : ControllerBase
   {
 
-    private readonly LoveThemBackAPIDbContext _context;
+    private readonly IPet _context;
     /// <summary>
     /// this returns a sample pet if json string is initially null
     /// </summary>
     /// <param name="context"></param>
-    public PetsController(LoveThemBackAPIDbContext context)
+    public PetsController(IPet context)
     {
       _context = context;
     }
@@ -29,14 +30,11 @@ namespace LoveThemBackAPI.Controllers
     /// </summary>
     /// <returns></returns>
     [HttpGet]
-    public ActionResult<List<Pet>> GetAll()
+    public ActionResult<List<Pet>> Get()
     {
-      var pet = _context.Pets.ToList();
-      foreach (var item in pet)
-      {
-        var Reviews = _context.Reviews.Where(reviews => reviews.PetID == item.PetID).ToList();
-      }
-      return pet;
+       var pet = _context.GetAll();
+
+       return pet;
     }
     /// <summary>
     /// get specific PET data
@@ -44,10 +42,9 @@ namespace LoveThemBackAPI.Controllers
     /// <param name="id"></param>
     /// <returns></returns>
     [HttpGet("{id}", Name = "GetPet")]
-    public ActionResult<Pet> GetById(int id)
+    public ActionResult<Pet> Get(int id)
     {
-      var item = _context.Pets.Find(id);
-      var Reviews = _context.Reviews.Where(reviews => reviews.PetID == item.PetID).ToList();
+      var item = _context.GetById(id);
       if (item == null)
       {
         return NotFound();
@@ -60,10 +57,9 @@ namespace LoveThemBackAPI.Controllers
     /// <param name="Pet">pet object</param>
     /// <returns></returns>
     [HttpPost]
-    public IActionResult Create(Pet Pet)
+    public ActionResult Create(Pet Pet)
     {
-      _context.Pets.Add(Pet);
-      _context.SaveChanges();
+      _context.AddPet(Pet);
 
       return CreatedAtRoute("GetPet", new { id = Pet.PetID }, Pet);
     }
@@ -74,34 +70,15 @@ namespace LoveThemBackAPI.Controllers
     /// <param name="Pet"></param>
     /// <returns></returns>
     [HttpPut("{id}")]
-    public IActionResult Update(int id, Pet Pet)
+    public ActionResult<Pet> Update(int id, Pet Pet)
     {
-      var petReceived = _context.Pets.Find(id);
+      var petReceived = _context.UpdatePet(id, Pet);
+
       if (petReceived == null)
       {
         return NotFound();
       }
-
-      petReceived.PetID = Pet.PetID;
-      petReceived.Animal = Pet.Animal;
-      petReceived.Breed = Pet.Breed;
-      petReceived.Mix = Pet.Mix;
-      petReceived.Name = Pet.Name;
-      petReceived.Age = Pet.Age;
-      petReceived.Sex = Pet.Sex;
-      petReceived.Size = Pet.Size;
-      petReceived.Description = Pet.Description;
-      petReceived.ShelterID = Pet.ShelterID;
-      petReceived.ShelterName = Pet.ShelterName;
-      petReceived.Photos = Pet.Photos;
-      petReceived.Address = Pet.Address;
-      petReceived.City = Pet.City;
-      petReceived.Zip = Pet.Zip;
-      petReceived.State = Pet.State;
-      petReceived.Phone = Pet.Phone;
-      petReceived.Email = Pet.Email;
-    _context.Pets.Update(petReceived);
-      _context.SaveChanges();
+        
       return CreatedAtRoute("GetPet", new { id = Pet.PetID }, Pet);
     }
     /// <summary>
@@ -111,19 +88,9 @@ namespace LoveThemBackAPI.Controllers
     /// <param name="pass">the password</param>
     /// <returns></returns>
     [HttpDelete("{id}/{pass}")]
-    public IActionResult Delete(int id, int pass)
+    public ActionResult Delete(int id, int pass)
     {
-      if (pass == 8675309)
-      {
-        var petReceived = _context.Pets.Find(id);
-        if (petReceived == null)
-        {
-          return NotFound();
-        }
-
-        _context.Pets.Remove(petReceived);
-        _context.SaveChanges();
-      }
+      _context.DeletePet(id, pass);
       return NoContent();
     }
   }
