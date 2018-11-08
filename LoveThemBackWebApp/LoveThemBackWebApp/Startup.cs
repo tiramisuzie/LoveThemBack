@@ -38,6 +38,7 @@ namespace LoveThemBackWebApp
             services.AddMvc();
 
             services.AddDbContext<LTBDBContext>(options =>
+
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IFavorites, FavoriteService>();
