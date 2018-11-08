@@ -1,10 +1,21 @@
-﻿<h2>Create Account</h2>
-<form method="post">
-    <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required>
+﻿@model LoveThemBackWebApp.Models.RegisterError
 
-    <label for="Zipcode"><b>Zipcode</b></label>
-    <input type="text" placeholder="Enter Zipcode" name="locationZip" required>
+@{
+    ViewData["Title"] = "Index";
 
-    <button type="submit">Create</button>
-</form>
+}
+
+<h2>Create Account</h2>
+@if (Model != null && Model.userExist)
+{
+    <p>Please try another username. Username Already Exist</p>
+}
+    <form method="post">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+
+        <label for="Zipcode"><b>Zipcode</b></label>
+        <input type="text" placeholder="Enter Zipcode" name="locationZip" required>
+
+        <button type="submit">Create</button>
+    </form>

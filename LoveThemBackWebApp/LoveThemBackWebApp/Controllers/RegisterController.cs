@@ -27,19 +27,26 @@ namespace LoveThemBackWebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(string username, int locationZip)
         {
-            Profile profile = new Profile();
-            profile.Username = username;
-            profile.LocationZip = locationZip;
-            await _context.CreateProfile(profile);
-            HttpContext.Session.SetString("profile", JsonConvert.SerializeObject(profile));
-
-
-            //Session["profile"] = profile;
-            if (profile != null)
+            var existProfile = await _context.GetProfile(username);
+            if (existProfile == null)
             {
-                return RedirectToAction("Index", "Pet", new { id = username });
+                Profile profile = new Profile();
+                profile.Username = username;
+                profile.LocationZip = locationZip;
+                await _context.CreateProfile(profile);
+                HttpContext.Session.SetString("profile", JsonConvert.SerializeObject(profile));
+
+
+                //Session["profile"] = profile;
+                if (profile != null)
+                {
+                    return RedirectToAction("Index", "Pet", new { id = username });
+                }
             }
-            else return View();
+            var error = new RegisterError();
+            error.userExist = true;
+            return View(error);
+
         }
     }
 }
