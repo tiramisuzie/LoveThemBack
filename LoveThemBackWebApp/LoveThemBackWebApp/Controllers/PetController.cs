@@ -27,7 +27,7 @@ namespace LoveThemBackWebApp.Controllers
         public async Task<IActionResult> Index(string id, string searchString)
         {
             var userJSON = HttpContext.Session.GetString("profile");
-            var userProfile  = JsonConvert.DeserializeObject<Profile>(userJSON);
+            var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
             dynamic Models = new ExpandoObject();
             PetCollections = await GetPetListJSON(searchString);
             Models.Pets = PetCollections;
@@ -40,7 +40,7 @@ namespace LoveThemBackWebApp.Controllers
         {
             return RedirectToAction("Index", "Reviews", review);
         }
-        
+
         public async Task<IActionResult> Details(int? id, string search)
         {
             var userJSON = HttpContext.Session.GetString("profile");
@@ -73,18 +73,21 @@ namespace LoveThemBackWebApp.Controllers
         }
         public async Task<IActionResult> AddFavorites(int userID, int petID)
         {
-            Favorite FavoritePet = new Favorite()
+            Favorite favorite = await _context.Favorites.FirstOrDefaultAsync(x => x.UserID == userID && x.PetID == petID);
+            if (favorite == null)
             {
-                UserID = userID,
-                PetID = petID,
-            };
-            _context.Favorites.Add(FavoritePet);
-            await _context.SaveChangesAsync();
-
+                Favorite FavoritePet = new Favorite()
+                {
+                    UserID = userID,
+                    PetID = petID,
+                };
+                _context.Favorites.Add(FavoritePet);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToAction("Details", "Pet", new { id = petID });
         }
 
-            public async Task<IActionResult> CreateReview()
+        public async Task<IActionResult> CreateReview()
         {
             return View();
         }
@@ -116,7 +119,7 @@ namespace LoveThemBackWebApp.Controllers
                 return retrieveJSON.petfinder.pet;
             }
         }
-        
+
         public async Task<List<PetReview>> GetReviewJSON()
         {
             string url = "https://lovethembackapi2.azurewebsites.net/api/Reviews";

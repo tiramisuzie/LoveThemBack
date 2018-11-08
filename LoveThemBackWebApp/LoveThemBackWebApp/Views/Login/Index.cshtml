@@ -2,17 +2,14 @@
     Layout = "_Layout";
 }
 <div class="login-container">
-    <div>
-        <img src="~/assets/dog1.jpg" class="login-img"/>
-    </div>
     <div class="login-form-container">
         <form method="post">
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
-
-
             <button type="submit">Login</button>
         </form>
-        Don't have an account? <a asp-controller="Register" asp-action="Index">Click Here</a>
+        <div class="register">
+            <a asp-controller="Register" asp-action="Index">Create New Account</a>
+        </div>
     </div>
 </div>
