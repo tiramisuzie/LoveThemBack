@@ -143,18 +143,25 @@ namespace LoveThemBackWebApp.Controllers
         {
             PetCollections = await GetPetListJSON(search);
             Pet SelectedPet = PetCollections.Where(x => x.id.data == id.ToString()).FirstOrDefault();
-            string photos = null;
             if (SelectedPet != null)
             {
-                foreach (var imageString in SelectedPet.media.photos.photo)
+                string[] image = new string[SelectedPet.media.photos.photo.Count()];
+                string[] breed = new string[SelectedPet.breeds.breed.Count()];
+                for (int i = 0; i < SelectedPet.media.photos.photo.Count(); i++)
                 {
-                    photos = photos + "," + imageString.data;
+                    image[i] = SelectedPet.media.photos.photo[i].data;
                 }
+                for (int i = 0; i < SelectedPet.breeds.breed.Count(); i++)
+                {
+                    breed[i] = SelectedPet.breeds.breed[i].data;
+                }
+                string images = string.Join(",", image);
+                string breeds = string.Join(",", breed);
                 PetPost AddPet = new PetPost()
                 {
                     PetID = (int)id,
                     Animal = SelectedPet.animal.data,
-                    Breed = SelectedPet.breeds.breed.ToString(),
+                    Breed = breeds,
                     Mix = SelectedPet.mix.data,
                     Name = SelectedPet.name.data,
                     Age = SelectedPet.age.data,
@@ -163,7 +170,7 @@ namespace LoveThemBackWebApp.Controllers
                     Description = SelectedPet.description.data,
                     ShelterID = SelectedPet.shelterId.data,
                     ShelterName = "",
-                    Photos = photos,
+                    Photos = images,
                     Address = SelectedPet.contact.address1.data,
                     City = SelectedPet.contact.city.data,
                     Zip = SelectedPet.contact.zip.data,
@@ -171,7 +178,6 @@ namespace LoveThemBackWebApp.Controllers
                     Phone = SelectedPet.contact.phone.data,
                     Email = SelectedPet.contact.email.data,
                 };
-
                 string output = await Task.Run(() => JsonConvert.SerializeObject(AddPet));
                 var httpContent = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
                 using (HttpClient httpClient = new HttpClient())

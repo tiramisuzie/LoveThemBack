@@ -64,14 +64,11 @@ namespace LoveThemBackWebApp.Models.Services
 
                 string[] breeds = pet.Breed.Split(",");
                 string newPetBreed = "";
-                foreach (var breed in breeds)
+                foreach(var breed in breeds)
                 {
-                    string pattern = @"[A-Z]";
-                    Regex rgx = new Regex(pattern);
-                    Match match = rgx.Match(pet.Breed);
-                    string b1 = breed.Substring(match.Index);
-                    newPetBreed += b1.Substring(0,b1.Length-4);
+                    newPetBreed += breed + " ";
                 }
+                
                 pet.Breed = newPetBreed;
             }
 
