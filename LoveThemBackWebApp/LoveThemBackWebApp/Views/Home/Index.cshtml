@@ -1,8 +1,8 @@
 @model string
 @{ ViewData["Title"] = "Index";}
-<head>
-    Homepage
-</head>
-<body>
-    @ViewBag.username
-</body>
+
+@{
+    Layout = "_Layout2";
+}
+
+@ViewBag.username
