@@ -9,19 +9,30 @@ using LoveThemBackWebApp.Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Dynamic;
+using LoveThemBackWebApp.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace LoveThemBackWebApp.Controllers
 {
     public class PetController : Controller
     {
+        private readonly LTBDBContext _context;
+
+        public PetController(LTBDBContext context)
+        {
+            _context = context;
+        }
 
         private List<Pet> PetCollections { get; set; }
-        public async Task<IActionResult> Index(string searchString)
+        public async Task<IActionResult> Index(string id, string searchString)
         {
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile  = JsonConvert.DeserializeObject<Profile>(userJSON);
             dynamic Models = new ExpandoObject();
             PetCollections = await GetPetListJSON(searchString);
             Models.Pets = PetCollections;
             Models.Search = searchString;
+            Models.User = userProfile;
             return View(Models);
         }
 
@@ -29,10 +40,12 @@ namespace LoveThemBackWebApp.Controllers
         {
             return RedirectToAction("Index", "Reviews", review);
         }
-
-
+        
         public async Task<IActionResult> Details(int? id, string search)
         {
+            var userJSON = HttpContext.Session.GetString("profile");
+            var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
+
             if (id == null)
             {
                 return NotFound();
@@ -40,21 +53,38 @@ namespace LoveThemBackWebApp.Controllers
 
             List<PetPost> PetList = await GetPetFromCustomAPI();
             PetPost GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
+            dynamic Models = new ExpandoObject();
+            Models.Search = search;
+            Models.User = userProfile;
 
             if (GetPet != null)
             {
-                return View(GetPet);
+                Models.GetPet = GetPet;
+                return View(Models);
             }
             else
             {
                 await PetAPIPost(id, search);
                 PetList = await GetPetFromCustomAPI();
                 GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
-                return View(GetPet);
+                Models.GetPet = GetPet;
+                return View(Models);
             }
         }
+        public async Task<IActionResult> AddFavorites(int userID, int petID)
+        {
+            Favorite FavoritePet = new Favorite()
+            {
+                UserID = userID,
+                PetID = petID,
+            };
+            _context.Favorites.Add(FavoritePet);
+            await _context.SaveChangesAsync();
 
-        public async Task<IActionResult> CreateReview()
+            return RedirectToAction("Details", "Pet", new { id = petID });
+        }
+
+            public async Task<IActionResult> CreateReview()
         {
             return View();
         }
@@ -86,7 +116,7 @@ namespace LoveThemBackWebApp.Controllers
                 return retrieveJSON.petfinder.pet;
             }
         }
-
+        
         public async Task<List<PetReview>> GetReviewJSON()
         {
             string url = "https://lovethembackapi2.azurewebsites.net/api/Reviews";

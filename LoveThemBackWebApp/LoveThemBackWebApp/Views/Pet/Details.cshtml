@@ -1,41 +1,56 @@
-﻿@model LoveThemBackWebApp.Models.PetPost
+﻿@model dynamic
 
 @{
-  ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details";
 }
 
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 
-@{ 
-    string[] image = Model.Photos.Split(",");
+@{
+    string[] image = Model.GetPet.Photos.Split(",");
 }
+<h2>Welcome @ViewBag.username</h2>
 
 <section>
-  <img src="@image[1]" />
-  <div>
-    <h3>@Html.DisplayFor(modelItem => Model.Name)</h3>
-    <p>@Html.DisplayFor(modelItem => Model.Animal)</p>
-    <p>@Html.DisplayFor(modelItem => Model.Description)</p>
-  </div>
+    <img src="@image[1]" />
+    <div>
+        <h3>@Model.GetPet.Name</h3>
+        <p>@Model.GetPet.Animal</p>
+        <p>@Model.GetPet.Description</p>
+    </div>
 </section>
+
+<form asp-controller="Pet" asp-action="Index">
+    <p class="create">
+        <input type="hidden" name="SearchString" value="@Model.Search">
+        <input type="submit" value="Back to List" />
+    </p>
+</form>
+<form asp-controller="Pet" asp-action="AddFavorites">
+    <p class="create">
+        <input type="hidden" name="userID" value="@Model.User.UserID">
+        <input type="hidden" name="petID" value="@Model.GetPet.PetID">
+        <input type="submit" value="Add to Favorites" />
+    </p>
+</form>
 
 <section class="review">
 
     <form method="get">
-        <input type="hidden" name="PetID" value="@Model.PetID" />
+        <input type="hidden" name="PetID" value="@Model.GetPet.PetID" />
 
         <input type="submit" asp-action="Review" value="Add A Review"/>
     </form>
-
+    
     <h3>Reviews</h3>
-    @if (Model.Review != null)
+    @if (Model.GetPet.Review != null)
     {
-        @foreach (var review in Model.Review)
+        @foreach (var review in Model.GetPet.Review)
         {
             <div>
-                <p>@Html.DisplayFor(modelItem => review.Impression)</p>
+                <p>@review.Impression</p>
             </div>
         }
     }
