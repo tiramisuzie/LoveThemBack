@@ -29,6 +29,7 @@ namespace LoveThemBackAPI
       options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
       services.AddTransient<IPet, PetsService>();
+      services.AddTransient<IReview, ReviewsService>();
     }
 
 

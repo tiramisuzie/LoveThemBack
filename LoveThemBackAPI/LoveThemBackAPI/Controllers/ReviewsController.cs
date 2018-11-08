@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LoveThemBackAPI.Data;
 using LoveThemBackAPI.Models;
+using LoveThemBackAPI.Models.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +14,9 @@ namespace LoveThemBackAPI.Controllers
   [ApiController]
   public class ReviewsController : ControllerBase
   {
-    private LoveThemBackAPIDbContext _context;
+    private IReview _context;
 
-    public ReviewsController(LoveThemBackAPIDbContext context)
+    public ReviewsController(IReview context)
     {
       _context = context;
     }
@@ -23,25 +24,24 @@ namespace LoveThemBackAPI.Controllers
     // GET: api/Reviews
     public ActionResult<IEnumerable<Review>> Get()
     {
-      return _context.Reviews.ToList();
+      return _context.GetAll();
     }
 
     // GET: api/Reviews/Pet=id
-    [HttpGet("Pet={id}")]
+    [HttpGet("{id}", Name = "GetReview")]
     public ActionResult<IEnumerable<Review>> Get(int id)
     {
-      var reviews = _context.Reviews.Where(x => x.PetID == id).ToList();
+      var reviews = _context.GetById(id);
 
       return Ok(reviews);
     }
 
     [HttpPost]
-    public IActionResult Create(Review review)
+    public async Task<ActionResult> Create(Review review)
     {
-      _context.Reviews.Add(review);
-      _context.SaveChanges();
+      await _context.AddReview(review);
 
-      return NoContent();
+      return CreatedAtRoute("GetReview", new { id = review.PetID }, review);
     }
     /// <summary>
     /// updates reviews
@@ -49,42 +49,22 @@ namespace LoveThemBackAPI.Controllers
     /// <param name="id"></param>
     /// <param name="Pet"></param>
     /// <returns></returns>
-    [HttpPut("userid={userId}&petid={petId}")]
+    [HttpPut("{userId}/{petId}")]
     public IActionResult Update(int userId, int petId, Review review)
     {
-      var reviewReceived = _context.Reviews.Find(petId, userId);
+      var reviewReceived = _context.UpdateReview(userId, petId, review);
       if (reviewReceived == null)
       {
         return NotFound();
       }
 
-      reviewReceived.Impression = review.Impression;
-      reviewReceived.Affectionate = review.Affectionate;
-      reviewReceived.Friendly = review.Friendly;
-      reviewReceived.HighEnergy = review.HighEnergy;
-      reviewReceived.Healthy = review.Healthy;
-      reviewReceived.Intelligent = review.Intelligent;
-      reviewReceived.Cheery = review.Cheery;
-      reviewReceived.Playful = review.Playful;
-      reviewReceived.Drool = review.Drool;
-      _context.Reviews.Update(reviewReceived);
-      _context.SaveChanges();
-      return NoContent();
-  }
+      return CreatedAtRoute("GetReview", new { id = review.PetID }, review);
+    }
 
-    [HttpDelete("userid={id}&petid={pet}")]
-    public IActionResult Delete(int id, int pet)
+    [HttpDelete("{userId}/{petId}")]
+    public ActionResult Delete(int userId, int petId)
     {
-
-        var reviewReceived = _context.Reviews.Find(id, pet);
-        if (reviewReceived == null)
-        {
-          return NotFound();
-        }
-
-        _context.Reviews.Remove(reviewReceived);
-        _context.SaveChanges();
-
+      _context.DeleteReview(userId, petId);
       return NoContent();
     }
   }
