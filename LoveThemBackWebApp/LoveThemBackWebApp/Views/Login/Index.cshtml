@@ -1,17 +1,18 @@
-﻿<html>
-    <head>
-        <title>
-            Login
-        </title>
-    </head>
-    <body>
+﻿@{
+    Layout = "_Layout";
+}
+<div class="register-container">
+    <div>
+        <img src="~/assets/dog1.jpg" class="register-img"/>
+    </div>
+    <div class="register-form-container">
         <form method="post">
             <label for="username"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required>
 
-            
+
             <button type="submit">Login</button>
         </form>
         Don't have an account? <a asp-controller="Register" asp-action="Index">Click Here</a>
-    </body>
-</html>
+    </div>
+</div>

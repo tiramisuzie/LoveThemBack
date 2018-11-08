@@ -36,9 +36,24 @@ tr {
     margin-bottom: 30px;
 }
 
-}
 
 .card {
   border:dashed;
 }
 
+/*===================Login page=====================*/
+
+.register-container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.register-form-container {
+    margin-top: 20px;
+    width: 80%;
+    margin-left: 10%;
+}
+.register-img {
+    width: 80%;
+    height: auto;
+}
