@@ -43,17 +43,39 @@ tr {
 
 /*===================Login page=====================*/
 
-.register-container {
+.login-container {
     margin-left: 10%;
     margin-right: 10%;
 }
 
-.register-form-container {
+.login-form-container {
     margin-top: 20px;
     width: 80%;
     margin-left: 10%;
 }
-.register-img {
+.login-img {
     width: 80%;
     height: auto;
+}
+
+/*===================Register page=====================*/
+
+.register-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.register-img-container {
+    width: 50%;
+    height: auto;
+}
+
+.register-img {
+    width: 90%;
+    height: auto;
+}
+
+.register-input-container {
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
