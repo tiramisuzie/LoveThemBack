@@ -148,6 +148,29 @@ a.loginLink {
     margin-right: -8px;
 }
 
+/*===================review page=====================*/
+.review {
+    margin: 3% auto 0 auto;
+    width: 50%;
+}
+
+.impression {
+    width: 100%;
+}
+
+.traits {
+    padding: 10px;
+}
+
+.traits label {
+    display: block;
+    padding: 5px;
+}
+
+.submit {
+    margin-top: 10px;
+}
+
 /*===================navigation bar=====================*/
 
 .navigation {
