@@ -6,10 +6,6 @@
 }
 
 @{
-  Layout = "_Layout2";
-}
-
-@{
   string[] image = Model.GetPet.Photos.Split(",");
   Random rand = new Random();
   var aff = "";
@@ -72,31 +68,31 @@
         <h3>@Model.ReviewUser[count].Username Says:</h3>
         @if (review.Affectionate == true)
         {
-          aff = "Affectionate!";
+          aff = "Affectionate";
         }
         @if (review.Friendly == true)
         {
-          friend = "Friendly!";
+          friend = "Friendly";
         }
         @if (review.HighEnergy == true)
         {
-          energy = "High Energy!";
+          energy = "High Energy";
         }
         @if (review.Healthy == true)
         {
-          healthy = "Healthy!";
+          healthy = "Healthy";
         }
         @if (review.Intelligent == true)
         {
-          intelligent = "Intelligent!";
+          intelligent = "Intelligent";
         }
         @if (review.Cheery == true)
         {
-          cheery = "Cheery!";
+          cheery = "Cheery";
         }
         @if (review.Playful == true)
         {
-          playful = "Playful!";
+          playful = "Playful";
         }
         <p>@Model.GetPet.Name is: @aff @friend  @energy @healthy @intelligent @cheery @playful</p>
         <h5>Other Observations:</h5>
