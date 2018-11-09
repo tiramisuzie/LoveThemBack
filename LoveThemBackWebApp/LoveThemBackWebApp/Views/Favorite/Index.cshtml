@@ -2,10 +2,6 @@
 @model dynamic
 @*@model List<LoveThemBackWebApp.Models.PetPost>*@
 
-@{
-  Layout = "_Layout2";
-}
-
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
 <h1> This is the favorites index page </h1>
@@ -30,7 +26,7 @@
       <td>
         <form action="/favorite/Delete" method="post">
           <input type="hidden" name="PetID" value="@item.PetID" />
-          <button type="submit">UnFavorite</button>
+          <button type="submit">Remove</button>
         </form>
       </td>
     </tr>
