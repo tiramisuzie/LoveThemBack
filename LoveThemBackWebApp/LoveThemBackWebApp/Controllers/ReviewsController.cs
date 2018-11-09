@@ -37,7 +37,7 @@ namespace LoveThemBackWebApp.Controllers
     /// <param name="review"></param>
     /// <returns></returns>
     [HttpPost]
-    public async Task<IActionResult> Create([Bind("UserID, PetID, Impression, Affectionate, Friendly, Energy, Health, Intelligent, Cheery, Playful")] Reviews review)
+    public async Task<IActionResult> Create([Bind("UserID, PetID, Impression, Affectionate, Friendly, HighEnergy, Healthy, Intelligent, Cheery, Playful")] Reviews review)
     {
       string url = "https://lovethembackapi2.azurewebsites.net/api/Reviews";
       using (HttpClient httpClient = new HttpClient())
