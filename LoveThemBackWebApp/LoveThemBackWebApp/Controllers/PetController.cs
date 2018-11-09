@@ -55,6 +55,10 @@ namespace LoveThemBackWebApp.Controllers
     public async Task<IActionResult> Details(int? id, string search)
     {
       var userJSON = HttpContext.Session.GetString("profile");
+      if (userJSON == null)
+      {
+        return RedirectToAction("Index", "Login");
+      }
       var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
 
       if (id == null)
@@ -102,10 +106,18 @@ namespace LoveThemBackWebApp.Controllers
         string url = "http://api.petfinder.com/pet.find?key=26d124a65947581b27aa9500628f49ef&location=" + location + "&format=json";
         using (var httpClient = new HttpClient())
         {
+          var jsonstatus = await httpClient.GetAsync(url);
+          if (!jsonstatus.IsSuccessStatusCode)
+          {
+            return new List<Pet>();
+          }
           var json = await httpClient.GetStringAsync(url);
           PetJSON retrieveJSON = JsonConvert.DeserializeObject<PetJSON>(json);
-
           // Now parse with JSON.Net
+          if (retrieveJSON.petfinder.pets == null)
+          {
+            return new List<Pet>();
+          }
           return retrieveJSON.petfinder.pets.pet.ToList();
         }
       }

@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace LoveThemBackWebApp.Models.Interfaces
 {
-    public interface IReviews
-    {
-        Task<IActionResult> PostReview(Reviews review);
-    }
+  public interface IReviews
+  {
+    Task<IActionResult> PostReview(Reviews review);
+
+    Task<IActionResult> PutReview(Reviews review);
+
+  }
 }
