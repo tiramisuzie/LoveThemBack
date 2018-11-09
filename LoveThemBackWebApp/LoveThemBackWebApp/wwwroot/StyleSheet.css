@@ -196,5 +196,13 @@ a.loginLink {
 }
 
 li a:hover {
-    background-color: lawngreen;
+    background-color: #E3FF00;
+    color: black;
+}
+
+.logo {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 1.5em;
+    padding: 0;
+    padding-left: 15px;
 }
