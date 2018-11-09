@@ -27,6 +27,10 @@ namespace LoveThemBackWebApp.Controllers
     {
       dynamic Models = new ExpandoObject();
       var userJSON = HttpContext.Session.GetString("profile");
+      if (userJSON == null)
+      {
+        return RedirectToAction("Index", "Login");
+      }
       var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
       var favorites = await _context.GetFavorites(userProfile.UserID);
       Models.Favorites = favorites;
@@ -69,15 +73,5 @@ namespace LoveThemBackWebApp.Controllers
 
       return RedirectToAction(nameof(Index));
     }
-
-    //// POST: Favorite/Delete/5
-    //[HttpPost, ActionName("Delete")]
-    //[ValidateAntiForgeryToken]
-    //public async Task<IActionResult> DeleteConfirmed(int UserID, int PetID)
-    //{
-    //    await _context.DeleteFavorite(UserID, PetID);
-
-    //    return RedirectToAction(nameof(Index));
-    //}
   }
 }
