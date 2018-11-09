@@ -40,7 +40,7 @@ namespace LoveThemBackWebApp.Controllers
         //Session["profile"] = profile;
         if (profile != null)
         {
-          return RedirectToAction("Pet");
+          return RedirectToAction("Index","Pet");
         }
       }
       var error = new RegisterError();
