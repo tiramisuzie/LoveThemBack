@@ -304,3 +304,17 @@ li a:hover {
     padding: 0;
     padding-left: 15px;
 }
+
+/*===================Favorite=====================*/
+
+.favorite-photos {
+    width: 30%;
+    min-width: 150px;
+    float: right;
+    padding: 20px;
+}
+
+th, td {
+    padding: 20px;
+
+}
