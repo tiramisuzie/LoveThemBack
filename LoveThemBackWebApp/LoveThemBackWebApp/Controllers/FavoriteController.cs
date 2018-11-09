@@ -73,15 +73,5 @@ namespace LoveThemBackWebApp.Controllers
 
       return RedirectToAction(nameof(Index));
     }
-
-    //// POST: Favorite/Delete/5
-    //[HttpPost, ActionName("Delete")]
-    //[ValidateAntiForgeryToken]
-    //public async Task<IActionResult> DeleteConfirmed(int UserID, int PetID)
-    //{
-    //    await _context.DeleteFavorite(UserID, PetID);
-
-    //    return RedirectToAction(nameof(Index));
-    //}
   }
 }

@@ -15,7 +15,7 @@
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
 
-<section>
+<section class="polaroid-look">
   <img src="@image[rand.Next(0, image.Length)]" />
   <div>
     <h3>@Model.GetPet.Name</h3>
