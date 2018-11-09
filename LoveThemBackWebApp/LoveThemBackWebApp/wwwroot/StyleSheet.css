@@ -131,8 +131,12 @@ a.loginLink {
   border-radius: 5px;
 }
 
+.searchForm h3 {
+    margin: 0;
+}
+
 .input-text {
-  margin-top: 10%;
+  margin-top: 5%;
   width: 200px;
   height: 25px;
   border-radius: 5px;
@@ -305,10 +309,8 @@ th, td {
 /*===================Profile Detail =====================*/
 
 section.profile-container {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 25px auto 0 auto;
   width: 50%;
-  margin-top: 25px;
 }
 
 div.polaroid-look {
@@ -344,10 +346,8 @@ div.text-container {
 
 .review-card {
   text-align: left;
-  width: 100%;
-  margin-bottom: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 92%;
+  margin: 0 auto 20px auto;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 10px 20px;
