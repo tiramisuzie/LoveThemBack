@@ -11,41 +11,55 @@
 @{
   string[] image = Model.GetPet.Photos.Split(",");
   Random rand = new Random();
+  var aff = "";
+  var friend = "";
+  var energy = "";
+  var healthy = "";
+  var intelligent = "";
+  var cheery = "";
+  var playful = "";
 }
+
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
-
-<section class="polaroid-look">
-  <img src="@image[rand.Next(0, image.Length)]" />
-  <div>
-    <h3>@Model.GetPet.Name</h3>
-    <p>@Model.GetPet.Animal</p>
-    <p>@Model.GetPet.Description</p>
+<section class="profile-container">
+  <div class="polaroid-look">
+    <img id="profile-image" src="@image[rand.Next(0, image.Length)]" />
+    <div class="text-container">
+      <h2>@Model.GetPet.Name</h2>
+      <p>Breed: @Model.GetPet.Breed</p>
+      <p>Age: @Model.GetPet.Age</p>
+      <p>Sex: @Model.GetPet.Sex</p>
+      <p>Phone: @Model.GetPet.Phone</p>
+      <p>Email: @Model.GetPet.Email</p>
+    </div>
   </div>
 </section>
 
-<form asp-controller="Pet" asp-action="Index">
-  <p class="create">
-    <input type="hidden" name="SearchString" value="@Model.Search">
-    <input type="submit" value="Back to List" />
-  </p>
-</form>
-<form asp-controller="Pet" asp-action="AddFavorites">
-  <p class="create">
-    <input type="hidden" name="userID" value="@Model.User.UserID">
-    <input type="hidden" name="petID" value="@Model.GetPet.PetID">
-    <input type="submit" value="Add to Favorites" />
-  </p>
-</form>
-
-<section class="review">
-
-  <form method="get">
-    <input type="hidden" name="PetID" value="@Model.GetPet.PetID" />
-
-    <input type="submit" asp-action="Review" value="Add A Review" />
+<section class="profile-buttons">
+  <form class="create" asp-controller="Pet" asp-action="Index">
+    <p class="create">
+      <input type="hidden" name="SearchString" value="@Model.Search">
+      <input type="submit" value="Back to List" />
+    </p>
+  </form>
+  <form class="create" asp-controller="Pet" asp-action="AddFavorites">
+    <p class="create">
+      <input type="hidden" name="userID" value="@Model.User.UserID">
+      <input type="hidden" name="petID" value="@Model.GetPet.PetID">
+      <input type="submit" value="Add to Favorites" />
+    </p>
   </form>
 
+  <form class="create" method="get">
+    <p class="create">
+      <input type="hidden" name="PetID" value="@Model.GetPet.PetID" />
+      <input type="submit" asp-action="Review" value="Add/Edit A Review" />
+    </p>
+  </form>
+</section>
+
+<section class="review">
   <h2>Reviews</h2>
   @if (Model.GetPet.Review != null)
   {
@@ -54,36 +68,36 @@
     {
       <div class="review-card">
         <h3>@Model.ReviewUser[count].Username Says:</h3>
-
         @if (review.Affectionate == true)
         {
-          <p>@Model.GetPet.Name is Affectionate!</p>
+          aff = "Affectionate!";
         }
         @if (review.Friendly == true)
         {
-          <p>@Model.GetPet.Name is Friendly!</p>
+          friend = "Friendly!";
         }
         @if (review.HighEnergy == true)
         {
-          <p>@Model.GetPet.Name has High Energy!</p>
+          energy = "High Energy!";
         }
         @if (review.Healthy == true)
         {
-          <p>@Model.GetPet.Name is Healthy!</p>
+          healthy = "Healthy!";
         }
         @if (review.Intelligent == true)
         {
-          <p>@Model.GetPet.Name is Intelligent</p>
+          intelligent = "Intelligent!";
         }
         @if (review.Cheery == true)
         {
-          <p>@Model.GetPet.Name is Cheery!</p>
+          cheery = "Cheery!";
         }
         @if (review.Playful == true)
         {
-          <p>@Model.GetPet.Name is Playful!</p>
+          playful = "Playful!";
         }
-        <h4>Other Observations:</h4>
+        <p>@Model.GetPet.Name is: @aff @friend  @energy @healthy @intelligent @cheery @playful</p>
+        <h5>Other Observations:</h5>
 
         <p>@review.Impression</p>
       </div>
