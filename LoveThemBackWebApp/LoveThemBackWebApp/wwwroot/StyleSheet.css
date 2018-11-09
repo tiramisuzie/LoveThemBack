@@ -232,10 +232,10 @@ a.loginLink {
     padding: 10px;
 }
 
-    .traits label {
-        display: block;
-        padding: 5px;
-    }
+.traits label {
+    display: block;
+    padding: 5px;
+}
 
 .submit {
     margin-top: 10px;
@@ -314,7 +314,49 @@ li a:hover {
     padding: 20px;
 }
 
+.favCard {
+    width: 40%;
+    height: auto;
+    margin: 2% auto;
+    background-color: rgba(0,128,128, .7);
+    border-radius: 10px;
+    box-shadow: 5px 10px lightgrey;
+    text-align: center;
+}
+
+.favCard p{
+    font-weight: bolder;
+    display: inline-block;
+    margin-right: 5%;
+}
+
+.favCard .title{
+    margin-left: 25%;
+}
+
+.favCard ul {
+    list-style-type: none;
+    text-align: left;
+}
+
+.favCard li{
+    margin: 0 auto;
+}
+
+.favCard li .search-button{
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.fav_card_img {
+    width: 80%;
+    margin-top: 10px;
+    max-height: 75%;
+    border-radius: 5px;
+    margin-left: 5%;
+}
+
 th, td {
     padding: 20px;
-
 }
