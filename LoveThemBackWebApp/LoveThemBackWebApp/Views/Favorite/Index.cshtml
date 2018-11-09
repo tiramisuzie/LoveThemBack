@@ -4,31 +4,23 @@
 
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
-<h1> This is the favorites index page </h1>
-
-<table>
-  <tr>
-    <td></td>
-    <th>Animal</th>
-    <th>Breed</th>
-    <th>Name</th>
-    <th>Gender</th>
-    <th>Favorite</th>
-  </tr>
-  @foreach (var item in Model.Favorites)
-  {
-    <tr>
-      <td><img src="@item.Photos" alt="image of pet" /></td>
-      <td>@item.Animal</td>
-      <td>@item.Breed</td>
-      <td>@item.Name</td>
-      <td>@item.Sex</td>
-      <td>
-        <form action="/favorite/Delete" method="post">
-          <input type="hidden" name="PetID" value="@item.PetID" />
-          <button type="submit">Remove</button>
-        </form>
-      </td>
-    </tr>
-  }
-</table>
+<div class="deck">
+    @foreach (var item in Model.Favorites)
+    {
+        <div class="favCard">
+            <ul>
+                <li class="title">@item.Name</li>
+                <li><img class="fav_card_img" src="@item.Photos" alt="image of pet" /></li>
+                <li><p>Animal: </p>@item.Animal</li>
+                <li><p>Breed: </p>@item.Breed</li>
+                <li><p>Gender: </p>@item.Sex</li>
+                <li>
+                    <form action="/favorite/Delete" method="post">
+                        <input type="hidden" name="PetID" value="@item.PetID" />
+                        <button class="search-button" type="submit">Remove</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    }
+ </div>
