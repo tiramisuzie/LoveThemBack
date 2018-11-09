@@ -90,14 +90,27 @@
     float: right;
 }
 
-    .register-input-container input {
-        width: 150px;
-        height: 30px;
-        border-radius: 5px;
-        padding: 10px;
-        float: right;
-        margin-right: 10%;
-    }
+.register-input-container input {
+    width: 150px;
+    height: 15px;
+    border-radius: 5px;
+    padding: 10px;
+    float: right;
+    margin-right: 5%;
+}
+
+.register-title {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 2em;
+    margin: 0px;
+    color: #E3FF00;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.register-input-container label{
+    margin: 1% 0;
+}
 
 .registration-form {
     background-color: rgba(0,128,128, .7);
@@ -113,6 +126,7 @@
     padding: 10px 15px;
     background-color: #90A5A9;
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 a.loginLink {
@@ -159,6 +173,7 @@ a.loginLink {
     margin: 2% auto;
     background-color: rgba(0,128,128, .7);
     border-radius: 10px;
+    box-shadow: 5px 10px lightgrey;
 }
 
 .card:hover {
@@ -171,7 +186,8 @@ a.loginLink {
 }
 
 .card_img {
-    width: 50%;
+    width: 80%;
+    margin-top: 10px;
     max-height: 50%;
     border-radius: 5px;
 }
