@@ -289,6 +289,20 @@ li a:hover {
   padding-left: 15px;
 }
 
+/*===================Favorite=====================*/
+
+.favorite-photos {
+    width: 30%;
+    min-width: 150px;
+    float: right;
+    padding: 20px;
+}
+
+th, td {
+    padding: 20px;
+
+}
+/*===================Profile Detail =====================*/
 
 section.profile-container {
   margin-left: auto;
