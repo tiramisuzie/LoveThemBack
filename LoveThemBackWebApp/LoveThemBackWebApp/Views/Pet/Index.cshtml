@@ -15,20 +15,21 @@
     <input type="submit" value="Filter" />
   </p>
 </form>
+
 <div class="deck">
-    @if (Model != null)
-    {
-        @foreach (var pet in Model.Pets)
-        {
-            <div class="card">
-                <img class="card_img" src="@pet.media.photos.photo[2].data" />
-                <h3>@pet.name.data</h3>
-                <p>@pet.id.data</p>
-                <a asp-action="Details" asp-route-id="@pet.id.data" asp-route-search="@Model.Search">Details</a>
-            </div>
-        }
-    }
-</div>
+@if (Model.Pets != null)
+{
+  @foreach (var pet in Model.Pets)
+  {
+    <div class="card">
+      <img src="@pet.media.photos.photo[0].data" />
+      <h3>@pet.name.data</h3>
+      <p>@pet.id.data</p>
+      <a asp-action="Details" asp-route-id="@pet.id.data" asp-route-search="@Model.Search">Details</a>
+    </div>
+  }
+}
+<div>
 
 
 

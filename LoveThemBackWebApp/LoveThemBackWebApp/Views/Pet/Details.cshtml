@@ -10,12 +10,13 @@
 
 @{
   string[] image = Model.GetPet.Photos.Split(",");
+  Random rand = new Random();
 }
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
 
 <section>
-  <img src="@image[1]" />
+  <img src="@image[rand.Next(0, image.Length)]" />
   <div>
     <h3>@Model.GetPet.Name</h3>
     <p>@Model.GetPet.Animal</p>

@@ -18,6 +18,7 @@ namespace LoveThemBackWebApp.Controllers
     {
         private readonly LTBDBContext _context;
 
+
         public PetController(LTBDBContext context)
         {
             _context = context;
@@ -45,6 +46,80 @@ namespace LoveThemBackWebApp.Controllers
             Models.Search = string.IsNullOrEmpty(searchString) ? userProfile.LocationZip.ToString() : searchString;
             Models.User = userProfile;
             return View(Models);
+
+    public IActionResult Review([Bind("PetID")] Reviews review)
+    {
+      return RedirectToAction("Index", "Reviews", review);
+    }
+
+    public async Task<IActionResult> Details(int? id, string search)
+    {
+      var userJSON = HttpContext.Session.GetString("profile");
+      if (userJSON == null)
+      {
+        return RedirectToAction("Index", "Login");
+      }
+      var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
+
+      if (id == null)
+      {
+        return NotFound();
+      }
+
+      List<PetPost> PetList = await GetPetFromCustomAPI();
+      PetPost GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
+      dynamic Models = new ExpandoObject();
+      Models.Search = search;
+      Models.User = userProfile;
+
+      if (GetPet != null)
+      {
+        Models.GetPet = GetPet;
+        return View(Models);
+      }
+      else
+      {
+        await PetAPIPost(id, search);
+        PetList = await GetPetFromCustomAPI();
+        GetPet = PetList.Where(pet => pet.PetID == id).FirstOrDefault();
+        Models.GetPet = GetPet;
+        return View(Models);
+      }
+    }
+    public async Task<IActionResult> AddFavorites(int userID, int petID)
+    {
+      Favorite FavoritePet = new Favorite()
+      {
+        UserID = userID,
+        PetID = petID,
+      };
+      _context.Favorites.Add(FavoritePet);
+      await _context.SaveChangesAsync();
+
+      return RedirectToAction("Details", "Pet", new { id = petID });
+    }
+
+    public async Task<List<Pet>> GetPetListJSON(string location)
+    {
+      if (location != null)
+      {
+        string url = "http://api.petfinder.com/pet.find?key=26d124a65947581b27aa9500628f49ef&location=" + location + "&format=json";
+        using (var httpClient = new HttpClient())
+        {
+          var jsonstatus = await httpClient.GetAsync(url);
+          if (!jsonstatus.IsSuccessStatusCode)
+          {
+            return new List<Pet>();
+          }
+          var json = await httpClient.GetStringAsync(url);
+          PetJSON retrieveJSON = JsonConvert.DeserializeObject<PetJSON>(json);
+          // Now parse with JSON.Net
+          if (retrieveJSON.petfinder.pets == null)
+          {
+            return new List<Pet>();
+          }
+          return retrieveJSON.petfinder.pets.pet.ToList();
+
         }
 
         public IActionResult Review([Bind("PetID")] Reviews review)

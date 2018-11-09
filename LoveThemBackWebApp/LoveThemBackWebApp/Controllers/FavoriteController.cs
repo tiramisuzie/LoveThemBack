@@ -27,6 +27,10 @@ namespace LoveThemBackWebApp.Controllers
     {
       dynamic Models = new ExpandoObject();
       var userJSON = HttpContext.Session.GetString("profile");
+      if (userJSON == null)
+      {
+        return RedirectToAction("Index", "Login");
+      }
       var userProfile = JsonConvert.DeserializeObject<Profile>(userJSON);
       var favorites = await _context.GetFavorites(userProfile.UserID);
       Models.Favorites = favorites;
