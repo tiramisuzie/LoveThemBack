@@ -1,292 +1,308 @@
 ﻿body {
-  background-color: whitesmoke;
-  font-family: sans-serif;
-  text-align: center;
-  margin: -20px 0 0 0;
+    background-color: whitesmoke;
+    font-family: sans-serif;
+    text-align: center;
+    margin: -20px 0 0 0;
 }
 
 /*===================Login page=====================*/
 
 .title {
-  font-family: 'Pattaya', sans-serif;
-  font-size: 3em;
-  margin: 0px;
-  color: #E3FF00;
-  padding-top: 15px;
+    font-family: 'Pattaya', sans-serif;
+    font-size: 3em;
+    margin: 0px;
+    color: #E3FF00;
+    padding-top: 15px;
 }
 
 .subtitle {
-  font-family: 'Dancing Script', cursive;
-  font-size: 2em;
-  margin: 0;
-  color: whitesmoke;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    margin: 0;
+    color: whitesmoke;
 }
 
 .login-container {
-  width: 100%;
-  height: 100%;
-  background-image: url(/assets/puppies.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/puppies.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: fixed;
 }
 
 .login-form-container {
-  background-color: rgba(0,128,128, .7);
-  width: 500px;
-  height: 250px;
-  margin: 25% auto;
-  border-radius: 10px;
+    background-color: rgba(0,128,128, .7);
+    width: 500px;
+    height: 250px;
+    margin: 25% auto;
+    border-radius: 10px;
 }
 
 .login-form {
-  text-align: center;
-  padding-top: 2%;
+    text-align: center;
+    padding-top: 2%;
 }
 
-  .login-form input {
+.login-form input {
     width: 200px;
     height: 20px;
     border-radius: 5px;
     padding: 10px;
     margin-right: 10%;
-  }
+}
 
-  .login-form button {
+.login-form button {
     padding: 8px 15px;
     background-color: #90A5A9;
     border-radius: 5px;
     margin-right: 25%;
     margin: 10px;
-  }
-
-.register {
-  margin-top: 3%;
 }
 
-  .register a {
+.register {
+    margin-top: 3%;
+}
+
+.register a {
     text-decoration: none;
     color: black;
-  }
+}
 
 /*===================Register page=====================*/
 
 .register-container {
-  width: 100%;
-  height: 100%;
-  background-image: url(/assets/dog1.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/dog1.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: fixed;
 }
 
 .register-input-container {
-  width: 300px;
-  height: 50px;
-  float: right;
+    width: 300px;
+    height: 50px;
+    float: right;
 }
 
-  .register-input-container input {
+.register-input-container input {
     width: 150px;
-    height: 30px;
+    height: 15px;
     border-radius: 5px;
     padding: 10px;
     float: right;
-    margin-right: 10%;
-  }
+    margin-right: 5%;
+}
+
+.register-title {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 2em;
+    margin: 0px;
+    color: #E3FF00;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.register-input-container label{
+    margin: 1% 0;
+}
 
 .registration-form {
-  background-color: rgba(0,128,128, .7);
-  width: 300px;
-  height: 250px;
-  float: right;
-  margin-top: 10%;
-  margin-right: 10%;
-  border-radius: 10px;
+    background-color: rgba(0,128,128, .7);
+    width: 300px;
+    height: 250px;
+    float: right;
+    margin-top: 10%;
+    margin-right: 10%;
+    border-radius: 10px;
 }
 
 .register-button {
-  padding: 10px 15px;
-  background-color: #90A5A9;
-  border-radius: 5px;
+    padding: 10px 15px;
+    background-color: #90A5A9;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 a.loginLink {
-  height: 20px;
-  text-decoration: none;
-  color: black;
+    height: 20px;
+    text-decoration: none;
+    color: black;
 }
 /*==============Pet Main Page===============*/
 .searchForm {
-  text-align: center;
-  background-color: rgba(177,178,174, .5);
-  height: auto;
-  width: 30%;
-  margin: 0 auto;
-  padding: 1%;
-  border-radius: 5px;
+    text-align: center;
+    background-color: rgba(177,178,174, .5);
+    height: auto;
+    width: 30%;
+    margin: 0 auto;
+    padding: 1%;
+    border-radius: 5px;
 }
 
-.input-text {
-  margin-top: 10%;
-  width: 200px;
-  height: 25px;
-  border-radius: 5px;
+.input-text{
+    margin-top: 10%;
+    width: 200px;
+    height: 25px;
+    border-radius: 5px;
 }
 
 .search-button {
-  padding: 5px 15px;
-  background-color: #90A5A9;
-  border-radius: 5px;
+    padding: 5px 15px;
+    background-color: #90A5A9;
+    border-radius: 5px;
 }
 
 .deck {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  text-align: center;
-  width: 90%;
-  margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .card {
-  width: 250px;
-  height: auto;
-  margin: 2% auto;
-  background-color: rgba(0,128,128, .7);
-  border-radius: 10px;
+    width: 250px;
+    height: auto;
+    margin: 2% auto;
+    background-color: rgba(0,128,128, .7);
+    border-radius: 10px;
+    box-shadow: 5px 10px lightgrey;
 }
 
-  .card:hover {
+.card:hover {
     transform: scale(1.05);
     background-color: rgba(0,128,128, .7);
-  }
+}
 
 .card_content {
-  margin: 15px;
+    margin: 15px;
 }
 
 .card_img {
-  width: 50%;
-  max-height: 50%;
-  border-radius: 5px;
+    width: 80%;
+    margin-top: 10px;
+    max-height: 50%;
+    border-radius: 5px;
 }
 
 .button {
-  text-decoration: none;
-  color: whitesmoke;
-  padding: 10px 15px;
-  background-color: #90A5A9;
-  border-radius: 5px;
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 10px 15px;
+    background-color: #90A5A9;
+    border-radius: 5px;
 }
 
-  .button:hover {
+.button:hover {
     background-color: #E3FF00;
     color: black;
     padding: 12px 17px;
-  }
+}
 
 /*===================dog banner=====================*/
 .dog-banner-img {
-  height: 250px;
+    height: 250px;
 }
 
 .dog-banner-container {
-  background-color: white;
-  margin-top: -28px;
-  margin-left: -8px;
-  margin-right: -8px;
+    background-color: white;
+    margin-top: -28px;
+    margin-left: -8px;
+    margin-right: -8px;
 }
 
 /*===================review page=====================*/
 .review {
-  margin: 0 auto 0 auto;
-  width: 50%;
+    margin: 3% auto 0 auto;
+    width: 50%;
 }
 
 .impression {
-  width: 100%;
+    width: 100%;
 }
 
 .traits {
-  padding: 10px;
+    padding: 10px;
 }
 
-  .traits label {
+.traits label {
     display: block;
     padding: 5px;
-  }
+}
 
 .submit {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 /*===================navigation bar=====================*/
 
 .navigation {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: rgb(0,128,128);
-  vertical-align: middle;
-  height: 75px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(0,128,128);
+    vertical-align: middle;
+    height: 75px;
 }
 
 .nav-left {
-  float: left;
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 15px 15px;
-  text-decoration: none;
-}
-
-  .nav-left a {
+    float: left;
     display: inline-block;
     color: white;
     text-align: center;
     padding: 15px 15px;
     text-decoration: none;
-    vertical-align: top;
-  }
+}
+
+    .nav-left a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 15px 15px;
+        text-decoration: none;
+        vertical-align: top;
+    }
 
 .nav-right {
-  float: right;
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 15px 15px;
-  text-decoration: none;
-}
-
-  .nav-right a {
+    float: right;
     display: inline-block;
     color: white;
     text-align: center;
     padding: 15px 15px;
     text-decoration: none;
-    vertical-align: top;
-  }
+}
+
+    .nav-right a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 15px 15px;
+        text-decoration: none;
+        vertical-align: top;
+    }
 
 .navigation li {
-  line-height: 37.5px;
+    line-height: 37.5px;
 }
 
 li a:hover {
-  background-color: #E3FF00;
-  color: black;
+    background-color: #E3FF00;
+    color: black;
 }
 
 .logo {
-  font-family: 'Pattaya', sans-serif;
-  font-size: 1.5em;
-  padding: 0;
-  padding-left: 15px;
+    font-family: 'Pattaya', sans-serif;
+    font-size: 1.5em;
+    padding: 0;
+    padding-left: 15px;
 }
 
 /*===================Favorite=====================*/
@@ -298,10 +314,53 @@ li a:hover {
     padding: 20px;
 }
 
+.favCard {
+    width: 40%;
+    height: auto;
+    margin: 2% auto;
+    background-color: rgba(0,128,128, .7);
+    border-radius: 10px;
+    box-shadow: 5px 10px lightgrey;
+    text-align: center;
+}
+
+.favCard p{
+    font-weight: bolder;
+    display: inline-block;
+    margin-right: 5%;
+}
+
+.favCard .title{
+    margin-left: 25%;
+}
+
+.favCard ul {
+    list-style-type: none;
+    text-align: left;
+}
+
+.favCard li{
+    margin: 0 auto;
+}
+
+.favCard li .search-button{
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 20%;
+}
+
+.fav_card_img {
+    width: 80%;
+    margin-top: 10px;
+    max-height: 75%;
+    border-radius: 5px;
+    margin-left: 5%;
+}
+
 th, td {
     padding: 20px;
-
 }
+
 /*===================Profile Detail =====================*/
 
 section.profile-container {
