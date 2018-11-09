@@ -1,4 +1,5 @@
 ﻿@model dynamic
+@using System.Drawing
 
 @{
   ViewData["Title"] = "Details";
@@ -18,13 +19,14 @@
   var intelligent = "";
   var cheery = "";
   var playful = "";
+  string[] imagesplit = image[rand.Next(0, image.Length)].Split("&");
 }
 
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
 <section class="profile-container">
   <div class="polaroid-look">
-    <img id="profile-image" src="@image[rand.Next(0, image.Length)]" />
+    <img id="profile-image" src="@imagesplit[0]" />
     <div class="text-container">
       <h2>@Model.GetPet.Name</h2>
       <p>Breed: @Model.GetPet.Breed</p>
