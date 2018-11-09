@@ -13,12 +13,12 @@
     <form asp-controller="Pet" asp-action="Index">
         <p class="create">
             <input class="input-text" type="text" name="SearchString" placeholder="Enter Zip Code">
-            <input class="search-button" type="submit" value="Filter" />
+            <input class="search-button" type="submit" value="Search" />
         </p>
     </form>
 </div>
 <div class="deck">
-    @if (Model != null)
+    @if (Model.Pets != null)
     {
         @foreach (var pet in Model.Pets)
         {

@@ -10,12 +10,13 @@
 
 @{
   string[] image = Model.GetPet.Photos.Split(",");
+  Random rand = new Random();
 }
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
 
-<section>
-  <img src="@image[1]" />
+<section class="polaroid-look">
+  <img src="@image[rand.Next(0, image.Length)]" />
   <div>
     <h3>@Model.GetPet.Name</h3>
     <p>@Model.GetPet.Animal</p>
@@ -45,14 +46,48 @@
     <input type="submit" asp-action="Review" value="Add A Review" />
   </form>
 
-  <h3>Reviews</h3>
+  <h2>Reviews</h2>
   @if (Model.GetPet.Review != null)
   {
+    int count = 0;
     @foreach (var review in Model.GetPet.Review)
     {
-      <div>
+      <div class="review-card">
+        <h3>@Model.ReviewUser[count].Username Says:</h3>
+
+        @if (review.Affectionate == true)
+        {
+          <p>@Model.GetPet.Name is Affectionate!</p>
+        }
+        @if (review.Friendly == true)
+        {
+          <p>@Model.GetPet.Name is Friendly!</p>
+        }
+        @if (review.HighEnergy == true)
+        {
+          <p>@Model.GetPet.Name has High Energy!</p>
+        }
+        @if (review.Healthy == true)
+        {
+          <p>@Model.GetPet.Name is Healthy!</p>
+        }
+        @if (review.Intelligent == true)
+        {
+          <p>@Model.GetPet.Name is Intelligent</p>
+        }
+        @if (review.Cheery == true)
+        {
+          <p>@Model.GetPet.Name is Cheery!</p>
+        }
+        @if (review.Playful == true)
+        {
+          <p>@Model.GetPet.Name is Playful!</p>
+        }
+        <h4>Other Observations:</h4>
+
         <p>@review.Impression</p>
       </div>
+      count++;
     }
   }
 </section>
