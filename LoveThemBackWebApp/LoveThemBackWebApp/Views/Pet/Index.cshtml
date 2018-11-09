@@ -3,28 +3,32 @@
 @await Html.PartialAsync("_NAVPartial", (string)Model.User.Username)
 
 @{
-  Layout = "_Layout2";
+    Layout = "_Layout";
 }
 
-<h2>Welcome @Model.User.Username</h2>
+<h2>Welcome, @Model.User.Username!</h2>
 
-<h3>Enter Zip Code</h3>
-<form asp-controller="Pet" asp-action="Index">
-  <p class="create">
-    <input type="text" name="SearchString">
-    <input type="submit" value="Filter" />
-  </p>
-</form>
+<div class="searchForm">
+    <h3>New Search</h3>
+    <form asp-controller="Pet" asp-action="Index">
+        <p class="create">
+            <input class="input-text" type="text" name="SearchString" placeholder="Enter Zip Code">
+            <input class="search-button" type="submit" value="Filter" />
+        </p>
+    </form>
+</div>
 <div class="deck">
     @if (Model != null)
     {
         @foreach (var pet in Model.Pets)
         {
             <div class="card">
-                <img class="card_img" src="@pet.media.photos.photo[2].data" />
-                <h3>@pet.name.data</h3>
-                <p>@pet.id.data</p>
-                <a asp-action="Details" asp-route-id="@pet.id.data" asp-route-search="@Model.Search">Details</a>
+                <div class="card_content">
+                    <img class="card_img" src="@pet.media.photos.photo[2].data" />
+                    <h3>@pet.name.data</h3>
+                    <p>@pet.id.data</p>
+                    <a class="button" asp-action="Details" asp-route-id="@pet.id.data" asp-route-search="@Model.Search">Details</a>
+                </div>
             </div>
         }
     }

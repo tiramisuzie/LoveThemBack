@@ -46,21 +46,21 @@
     padding-top: 2%;
 }
 
-.login-form input {
-    width: 150px;
-    height: 30px;
-    border-radius: 5px;
-    padding: 10px;
-    margin-right: 10%;
-}
+    .login-form input {
+        width: 150px;
+        height: 30px;
+        border-radius: 5px;
+        padding: 10px;
+        margin-right: 10%;
+    }
 
-.login-form button {
-    padding: 8px 15px;
-    background-color: #90A5A9;
-    border-radius: 5px;
-    margin-right: 25%;
-    margin: 10px;
-}
+    .login-form button {
+        padding: 8px 15px;
+        background-color: #90A5A9;
+        border-radius: 5px;
+        margin-right: 25%;
+        margin: 10px;
+    }
 
 .register a {
     text-decoration: none;
@@ -86,14 +86,14 @@
     float: right;
 }
 
-.register-input-container input {
-    width: 150px;
-    height: 30px;
-    border-radius: 5px;
-    padding: 10px;
-    float: right;
-    margin-right: 10%;
-}
+    .register-input-container input {
+        width: 150px;
+        height: 30px;
+        border-radius: 5px;
+        padding: 10px;
+        float: right;
+        margin-right: 10%;
+    }
 
 .registration-form {
     background-color: rgba(0,128,128, .7);
@@ -117,23 +117,73 @@ a.loginLink {
     color: black;
 }
 /*==============Pet Main Page===============*/
-.deck{
+.searchForm {
+    text-align: center;
+    background-color: rgba(177,178,174, .5);
+    height: auto;
+    width: 30%;
+    margin: 0 auto;
+    padding: 1%;
+    border-radius: 5px;
+}
+
+.input-text{
+    margin-top: 10%;
+    width: 200px;
+    height: 25px;
+    border-radius: 5px;
+}
+
+.search-button {
+    padding: 5px 15px;
+    background-color: #90A5A9;
+    border-radius: 5px;
+}
+
+.deck {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     text-align: center;
-
+    width: 90%;
+    margin: 0 auto;
 }
 
 .card {
     width: 250px;
-    height: 255px;
-    margin: 2%;
-    background-color: teal;
+    height: auto;
+    margin: 2% auto;
+    background-color: rgba(0,128,128, .7);
+    border-radius: 10px;
 }
 
-.card_img{
+.card:hover {
+    transform: scale(1.05);
+    background-color: rgba(0,128,128, .7);
+}
+
+.card_content {
+    margin: 15px;
+}
+
+.card_img {
     width: 50%;
+    max-height: 50%;
+    border-radius: 5px;
+}
+
+.button {
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 10px 15px;
+    background-color: #90A5A9;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #E3FF00;
+    color: black;
+    padding: 12px 17px;
 }
 
 /*===================dog banner=====================*/
@@ -162,10 +212,10 @@ a.loginLink {
     padding: 10px;
 }
 
-.traits label {
-    display: block;
-    padding: 5px;
-}
+    .traits label {
+        display: block;
+        padding: 5px;
+    }
 
 .submit {
     margin-top: 10px;
@@ -192,14 +242,14 @@ a.loginLink {
     text-decoration: none;
 }
 
-.nav-left a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 15px 15px;
-    text-decoration: none;
-    vertical-align: top;
-}
+    .nav-left a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 15px 15px;
+        text-decoration: none;
+        vertical-align: top;
+    }
 
 .nav-right {
     float: right;
@@ -210,14 +260,14 @@ a.loginLink {
     text-decoration: none;
 }
 
-.nav-right a {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 15px 15px;
-    text-decoration: none;
-    vertical-align: top;
-}
+    .nav-right a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 15px 15px;
+        text-decoration: none;
+        vertical-align: top;
+    }
 
 .navigation li {
     line-height: 37.5px;
