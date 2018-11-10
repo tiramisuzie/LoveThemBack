@@ -22,6 +22,7 @@ namespace LoveThemBackAPI.Controllers
     }
 
     // GET: api/Reviews
+    [HttpGet]
     public ActionResult<IEnumerable<Review>> Get()
     {
       return _context.GetAll();
