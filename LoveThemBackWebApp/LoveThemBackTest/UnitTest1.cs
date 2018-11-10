@@ -302,5 +302,108 @@ namespace LoveThemBackTest
         Assert.Null(TestFavorite);
       }
     }
+
+    /// <summary>
+    /// tests JSON get/set
+    /// </summary>
+    [Fact]
+    public void PetJSONGetSetTest()
+    {
+      PetJSON Pet = new PetJSON();
+      Pet.petfinder = new Petfinder();
+      Pet.petfinder.pet = new Pet();
+      Pet.petfinder.pet.name = new Name();
+      Pet.petfinder.pet.name.data = "This is a note.";
+
+      Assert.Equal("This is a note.", Pet.petfinder.pet.name.data);
+    }
+
+    /// <summary>
+    /// tests JSON updates
+    /// </summary>
+    [Fact]
+    public void PetJSONGetUpdateTest()
+    {
+      PetJSON Pet = new PetJSON();
+      Pet.petfinder = new Petfinder();
+      Pet.petfinder.pet = new Pet();
+      Pet.petfinder.pet.name = new Name();
+      Pet.petfinder.pet.name.data = "This is a note.";
+      Pet.petfinder.pet.name.data = "This is an updated note.";
+
+      Assert.Equal("This is an updated note.", Pet.petfinder.pet.name.data);
+    }
+
+    /// <summary>
+    /// tests PetReview Get/set
+    /// </summary>
+    [Fact]
+    public void PetReviewGetSetTest()
+    {
+      PetReview Pet = new PetReview();
+      Pet.Impression = "This impression";
+      Assert.Equal("This impression", Pet.Impression);
+    }
+
+    /// <summary>
+    /// tests PetReview updates
+    /// </summary>
+    [Fact]
+    public void PetReviewGetUpdateTest()
+    {
+      PetReview Pet = new PetReview();
+      Pet.Impression = "This impression";
+      Pet.Impression = "This is not";
+
+
+      Assert.Equal("This is not", Pet.Impression);
+    }
+
+
+    /// <summary>
+    /// tests Registererror
+    /// </summary>
+    [Fact]
+    public void RegisterErrorGetSetTest()
+    {
+      RegisterError Error = new RegisterError();
+      Error.userExist = false;
+      Assert.False(Error.userExist);
+    }
+
+    /// <summary>
+    /// tests register error updates
+    /// </summary>
+    [Fact]
+    public void RegisterErrorGetUpdateTest()
+    {
+      RegisterError Error = new RegisterError();
+      Error.userExist = false;
+      Error.userExist = true;
+      Assert.True(Error.userExist);
+    }
+
+    /// <summary>
+    /// tests PetPost get/set
+    /// </summary>
+    [Fact]
+    public void PetPostGetSetTest()
+    {
+      PetPost Pet = new PetPost();
+      Pet.Name = "Fluffy";
+      Assert.Equal("Fluffy", Pet.Name);
+    }
+
+    /// <summary>
+    /// tests PetPost updates
+    /// </summary>
+    [Fact]
+    public void PetPostGetUpdateTest()
+    {
+      PetPost Pet = new PetPost();
+      Pet.Name = "Fluffy";
+      Pet.Name = "Daany";
+      Assert.Equal("Daany", Pet.Name);
+    }
   }
 }

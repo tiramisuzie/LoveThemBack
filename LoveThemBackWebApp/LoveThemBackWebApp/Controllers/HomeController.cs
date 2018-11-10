@@ -10,21 +10,25 @@ using System.Threading.Tasks;
 
 namespace LoveThemBackWebApp.Controllers
 {
-    public class HomeController : Controller
+  public class HomeController : Controller
+  {
+    /// <summary>
+    /// Test check to pass ID
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public IActionResult Index(string id)
     {
+      ViewBag.username = id;
+      var value = HttpContext.Session.GetString("profile");
+      Profile result;
+      if (value != null)
+      {
+        result = JsonConvert.DeserializeObject<Profile>(value);
+      }
 
-        public IActionResult Index(string id)
-        {
-            ViewBag.username = id;
-            var value = HttpContext.Session.GetString("profile");
-            Profile result;
-            if (value != null)
-            {
-                result = JsonConvert.DeserializeObject<Profile>(value);
-            }
-
-            return View();
-        }
-        
+      return View();
     }
+
+  }
 }

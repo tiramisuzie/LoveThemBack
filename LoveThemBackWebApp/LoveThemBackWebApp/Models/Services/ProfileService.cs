@@ -8,25 +8,29 @@ using System.Threading.Tasks;
 
 namespace LoveThemBackWebApp.Models.Services
 {
-    public class ProfileService : IProfiles
+  public class ProfileService : IProfiles
+  {
+    private LTBDBContext _context;
+
+    public ProfileService(LTBDBContext context)
     {
-        private LTBDBContext _context;
-
-        public ProfileService(LTBDBContext context)
-        {
-            _context = context;
-        }
-
-        public async Task<Profile> GetProfile (string username)
-        {
-            return await _context.Profiles.FirstOrDefaultAsync(x => x.Username == username);
-        }
-
-        // Saves userprofile to database
-        public async Task CreateProfile(Profile profile)
-        {
-            _context.Profiles.Add(profile);
-            await _context.SaveChangesAsync();
-        }
+      _context = context;
     }
+    /// <summary>
+    ///retrieves user profile
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
+    public async Task<Profile> GetProfile(string username)
+    {
+      return await _context.Profiles.FirstOrDefaultAsync(x => x.Username == username);
+    }
+
+    // Saves userprofile to database
+    public async Task CreateProfile(Profile profile)
+    {
+      _context.Profiles.Add(profile);
+      await _context.SaveChangesAsync();
+    }
+  }
 }

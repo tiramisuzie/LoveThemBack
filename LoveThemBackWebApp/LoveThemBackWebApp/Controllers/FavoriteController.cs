@@ -20,8 +20,9 @@ namespace LoveThemBackWebApp.Controllers
     {
       _context = context;
     }
-
-    //Get list of favorites
+    /// <summary>
+    /// Get list of favorites
+    /// </summary>
     [HttpGet]
     public async Task<IActionResult> Index()
     {
@@ -38,7 +39,9 @@ namespace LoveThemBackWebApp.Controllers
       return View(Models);
     }
 
-    //Post to update new favorite
+    /// <summary>
+    ///     Post to update new favorite
+    /// </summary>
     [HttpPost]
     public async Task<IActionResult> Update(int PetID, string Notes)
     {
