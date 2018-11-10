@@ -11,6 +11,7 @@ using LoveThemBackAPI.Models.Interfaces;
 using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 
 namespace XUnitTestWebAPI
@@ -64,27 +65,183 @@ namespace XUnitTestWebAPI
     }
 
     /// <summary>
-    /// tests create list
+    /// tests create and read Pets in database using services
     /// </summary>
     [Fact]
-    public void CreateToDoList()
+    public void CreatePet()
     {
-      DbContextOptions<Pet> options =
-             new DbContextOptionsBuilder<Pet>().UseInMemoryDatabase("CreateToDoItem")
+      DbContextOptions<LoveThemBackAPIDbContext> options =
+             new DbContextOptionsBuilder<LoveThemBackAPIDbContext>().UseInMemoryDatabase("CreatePet")
              .Options;
 
 
-      using (ToDoContext context = new ToDoContext(options))
+      using (LoveThemBackAPIDbContext context = new LoveThemBackAPIDbContext(options))
       {
-        var list = new ToDoList();
-        list.ListID = 1;
-        list.ListName = "Dummy List";
+        var TestPet = new Pet();
+        TestPet.PetID = 1;
+        TestPet.Name = "Snooky";
 
-        var controllerCreate = new ToDoListController(context);
-        controllerCreate.Create(list);
-        var getList = controllerCreate.GetById(1);
+        var ServicesCreate = new PetsService(context);
+        ServicesCreate.AddPet(TestPet);
+        var getPet = ServicesCreate.GetById(1);
 
-        Assert.Equal(list, getList.Value);
+        Assert.Equal("Snooky", getPet.Value.Name);
+      }
+    }
+
+    /// <summary>
+    /// tests update Pet operation
+    /// </summary>
+    [Fact]
+    public void UpdatePet()
+    {
+      DbContextOptions<LoveThemBackAPIDbContext> options =
+             new DbContextOptionsBuilder<LoveThemBackAPIDbContext>().UseInMemoryDatabase("UpdatePet")
+             .Options;
+
+
+      using (LoveThemBackAPIDbContext context = new LoveThemBackAPIDbContext(options))
+      {
+        Pet TestPet = new Pet();
+        TestPet.PetID = 1;
+        TestPet.Name = "Snooky";
+
+        var ServicesCreate = new PetsService(context);
+        ServicesCreate.AddPet(TestPet);
+
+        Pet UpdatePet = new Pet();
+        UpdatePet.PetID = 1;
+        UpdatePet.Name = "Coolio";
+
+        ServicesCreate.UpdatePet(1, UpdatePet);
+        var getPet = ServicesCreate.GetById(1);
+
+        Assert.Equal("Coolio", getPet.Value.Name);
+      }
+    }
+
+    /// <summary>
+    /// tests delete Pet operation
+    /// </summary>
+    [Fact]
+    public void DeletePet()
+    {
+      DbContextOptions<LoveThemBackAPIDbContext> options =
+             new DbContextOptionsBuilder<LoveThemBackAPIDbContext>().UseInMemoryDatabase("DeletePet")
+             .Options;
+
+
+      using (LoveThemBackAPIDbContext context = new LoveThemBackAPIDbContext(options))
+      {
+        Pet TestPet = new Pet();
+        TestPet.PetID = 1;
+        TestPet.Name = "Snooky";
+
+        var ServicesCreate = new PetsService(context);
+        ServicesCreate.AddPet(TestPet);
+        ServicesCreate.DeletePet(1, 8675309);
+        var getPet = context.Pets.FirstOrDefault(x => x.PetID == 1);
+
+        Assert.Null(getPet);
+      }
+    }
+
+    /// <summary>
+    /// tests create and read Review usings services
+    /// </summary>
+    [Fact]
+    public async void CreateReview()
+    {
+      DbContextOptions<LoveThemBackAPIDbContext> options =
+             new DbContextOptionsBuilder<LoveThemBackAPIDbContext>().UseInMemoryDatabase("CreateReview")
+             .Options;
+
+
+      using (LoveThemBackAPIDbContext context = new LoveThemBackAPIDbContext(options))
+      {
+        var Review = new Review();
+        Review.PetID = 1;
+        Review.UserID = 2;
+        Review.Impression = "Snooky";
+
+        var ServicesCreate = new ReviewsService(context);
+        await ServicesCreate.AddReview(Review);
+        //READ//
+        var getReview = ServicesCreate.GetById(1);
+
+        string impression;
+        foreach (var item in getReview.Value)
+        {
+          impression = item.Impression;
+          Assert.Equal("Snooky", impression);
+        }
+      }
+    }
+
+    /// <summary>
+    /// tests update review operation
+    /// </summary>
+    [Fact]
+    public async void UpdateReviewOp()
+    {
+      DbContextOptions<LoveThemBackAPIDbContext> options =
+             new DbContextOptionsBuilder<LoveThemBackAPIDbContext>().UseInMemoryDatabase("UpdateReview")
+             .Options;
+
+
+      using (LoveThemBackAPIDbContext context = new LoveThemBackAPIDbContext(options))
+      {
+        Review Review = new Review();
+        Review.PetID = 1;
+        Review.UserID = 2;
+        Review.Impression = "Snooky";
+
+        var ServicesCreate = new ReviewsService(context);
+        await ServicesCreate.AddReview(Review);
+
+        Review newReview = new Review();
+
+        newReview.PetID = 1;
+        newReview.UserID = 2;
+        newReview.Impression = "Updates";
+
+        ServicesCreate.UpdateReview(2, 1, newReview);
+        var getReview = ServicesCreate.GetById(1);
+        string impression;
+        foreach (var item in getReview.Value)
+        {
+          impression = item.Impression;
+          Assert.Equal("Updates", impression);
+        }
+      }
+    }
+  
+
+    /// <summary>
+    /// tests delete Review
+    /// </summary>
+    [Fact]
+    public async void DeleteReview()
+    {
+      DbContextOptions<LoveThemBackAPIDbContext> options =
+             new DbContextOptionsBuilder<LoveThemBackAPIDbContext>().UseInMemoryDatabase("DeletePet")
+             .Options;
+
+
+      using (LoveThemBackAPIDbContext context = new LoveThemBackAPIDbContext(options))
+      {
+        Review Review = new Review();
+        Review.PetID = 1;
+        Review.UserID = 2;
+        Review.Impression = "Snooky";
+
+        var ServicesCreate = new ReviewsService(context);
+        await ServicesCreate.AddReview(Review);
+
+        ServicesCreate.DeleteReview(2, 1);
+        var getReview = context.Reviews.FirstOrDefault(x => x.PetID == 1 && x.UserID == 2);
+
+        Assert.Null(getReview);
       }
     }
   }

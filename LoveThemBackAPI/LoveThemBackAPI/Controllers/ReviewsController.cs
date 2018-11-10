@@ -35,7 +35,11 @@ namespace LoveThemBackAPI.Controllers
 
       return Ok(reviews);
     }
-
+    /// <summary>
+    /// adds a review to the database
+    /// </summary>
+    /// <param name="review"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<ActionResult> Create(Review review)
     {
@@ -60,7 +64,12 @@ namespace LoveThemBackAPI.Controllers
 
       return CreatedAtRoute("GetReview", new { id = review.PetID }, review);
     }
-
+    /// <summary>
+    /// deletes a review based on pet and user id
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="petId"></param>
+    /// <returns></returns>
     [HttpDelete("{userId}/{petId}")]
     public ActionResult Delete(int userId, int petId)
     {
