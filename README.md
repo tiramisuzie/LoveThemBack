@@ -4,6 +4,12 @@ Code Fellows 401 Mid-Term Group Project
 ## Team Members:
  Aaron Frank, Carlos Cadena, Danul De Leon, Suzanne Su, Vinh Nguyen
 
+## Deployed Web App and API
+### Web App
+https://lovethembackwebapp.azurewebsites.net/
+### API
+https://lovethembackapi2.azurewebsites.net/
+
 ## Version History:
 * 1.0.0 - Initial Version
 
