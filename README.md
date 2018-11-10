@@ -13,6 +13,23 @@ https://lovethembackapi2.azurewebsites.net/
 ## Version History:
 * 1.0.0 - Initial Version
 
+## Tools Used:
+* Microsoft .NET Core MVC with Entity Framework
+* Visual Studio
+* Swagger
+* Postman
+* Github
+* Slack
+
+## Contributors
+* Amanda, Molly, Jeff, and Greg for being available to help when needed
+* The rest of our class for being great rubber ducks and helping solve problems
+* The Pet Finder API for giving us all the cute pets within our app
+
+## License
+### MIT License
+https://opensource.org/licenses/MIT
+
 ## Problem Domain:
 A useful web application to help users find and review animals in animal shelters for others to review.
 
@@ -97,3 +114,4 @@ There is an edit view specifically for updating animal notes made by users.
 1. Sharing notes made/pets visited on social media.
 2. Using Bing API to give directions to the shelter which the animal is located.
 3. Link a user to online reading of a specific animal type so that they can learn more before commiting
+
