@@ -4,8 +4,31 @@ Code Fellows 401 Mid-Term Group Project
 ## Team Members:
  Aaron Frank, Carlos Cadena, Danul De Leon, Suzanne Su, Vinh Nguyen
 
+## Deployed Web App and API
+### Web App
+https://lovethembackwebapp.azurewebsites.net/
+### API
+https://lovethembackapi2.azurewebsites.net/
+
 ## Version History:
 * 1.0.0 - Initial Version
+
+## Tools Used:
+* Microsoft .NET Core MVC with Entity Framework
+* Visual Studio
+* Swagger
+* Postman
+* Github
+* Slack
+
+## Contributors
+* Amanda, Molly, Jeff, and Greg for being available to help when needed
+* The rest of our class for being great rubber ducks and helping solve problems
+* The Pet Finder API for giving us all the cute pets within our app
+
+## License
+### MIT License
+https://opensource.org/licenses/MIT
 
 ## Problem Domain:
 A useful web application to help users find and review animals in animal shelters for others to review.
@@ -35,6 +58,10 @@ The Pet table will store information for each pet that is coming from the PetFin
 ![Web App Database Schema](assets/DBSchema/WebAppDBSchema.PNG)
 
 The Front end of the web application will store the user profiles consisting of the UserId, the UserName, password(conditional), and zip-code (used for narrowing the pet search down).  This will have a one-to-many relationship to the Favorites table.  This will be a join table consisting of the UserId and the PetId which will be coming from the API.  An additional payload will consist of the Notes made by the user for pets they choose to visit.
+
+## API Endpoints:
+https://lovethembackapi2.azurewebsites.net/swagger<br><br>
+![API Endpoints](assets/swagger.PNG)
 
 ## User Stories:
 
@@ -88,3 +115,4 @@ There is an edit view specifically for updating animal notes made by users.
 1. Sharing notes made/pets visited on social media.
 2. Using Bing API to give directions to the shelter which the animal is located.
 3. Link a user to online reading of a specific animal type so that they can learn more before commiting
+
