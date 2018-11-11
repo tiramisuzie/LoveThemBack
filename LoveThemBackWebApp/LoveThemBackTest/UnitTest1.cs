@@ -6,6 +6,7 @@ using Xunit;
 using LoveThemBackWebApp.Models.Interfaces;
 using LoveThemBackWebApp.Controllers;
 using LoveThemBackWebApp.Models.Services;
+using System.Linq;
 
 namespace LoveThemBackTest
 {
@@ -244,7 +245,7 @@ namespace LoveThemBackTest
         favorites.PetID = 2;
         favorites.Notes = "Did this test pass?";
         await TestService.CreateFavorite(favorites);
-        var TestFavorite = await TestService.GetFavorite(favorites.UserID, favorites.PetID);
+        var TestFavorite = await TestService.GetFavorite(1,2);
         Assert.Equal("Did this test pass?", TestFavorite.Notes);
       }
     }
@@ -341,8 +342,28 @@ namespace LoveThemBackTest
     public void PetReviewGetSetTest()
     {
       PetReview Pet = new PetReview();
+      Pet.Intelligent = true;
+      Pet.HighEnergy = true;
+      Pet.Healthy = true;
+      Pet.Playful = true;
+      Pet.UserID = 1;
+      Pet.PetID = 2;
+      Pet.Cheery = true;
+      Pet.Drool = true;
+      Pet.Affectionate = true;
+      Pet.Friendly = true;
       Pet.Impression = "This impression";
       Assert.Equal("This impression", Pet.Impression);
+      Assert.True(Pet.Intelligent);
+      Assert.True(Pet.Healthy);
+      Assert.True(Pet.Playful);
+      Assert.True(Pet.Cheery);
+      Assert.True(Pet.Drool);
+      Assert.True(Pet.HighEnergy);
+      Assert.True(Pet.Affectionate);
+      Assert.True(Pet.Friendly);
+      Assert.Equal(1, Pet.UserID);
+      Assert.Equal(2, Pet.PetID);
     }
 
     /// <summary>
@@ -354,8 +375,36 @@ namespace LoveThemBackTest
       PetReview Pet = new PetReview();
       Pet.Impression = "This impression";
       Pet.Impression = "This is not";
-
-
+      Pet.Intelligent = true;
+      Pet.HighEnergy = true;
+      Pet.Healthy = true;
+      Pet.Playful = true;
+      Pet.UserID = 1;
+      Pet.PetID = 2;
+      Pet.Cheery = true;
+      Pet.Drool = true;
+      Pet.Affectionate = true;
+      Pet.Friendly = true;
+      Pet.Intelligent = false;
+      Pet.HighEnergy = false;
+      Pet.Healthy = false;
+      Pet.Playful = false;
+      Pet.UserID = 2;
+      Pet.PetID = 3;
+      Pet.Cheery = false;
+      Pet.Drool = false;
+      Pet.Affectionate = false;
+      Pet.Friendly = false;
+      Assert.False(Pet.Intelligent);
+      Assert.False(Pet.Healthy);
+      Assert.False(Pet.Playful);
+      Assert.False(Pet.Cheery);
+      Assert.False(Pet.Drool);
+      Assert.False(Pet.HighEnergy);
+      Assert.False(Pet.Affectionate);
+      Assert.False(Pet.Friendly);
+      Assert.Equal(2, Pet.UserID);
+      Assert.Equal(3, Pet.PetID);
       Assert.Equal("This is not", Pet.Impression);
     }
 
@@ -391,6 +440,15 @@ namespace LoveThemBackTest
     {
       PetPost Pet = new PetPost();
       Pet.Name = "Fluffy";
+      Pet.Mix = "Fluffy";
+      Pet.PetID = 1;
+      Pet.Phone="Fluffy";
+      Pet.Photos = "Fluffy";
+      Pet.ShelterID = "Fluffy";
+      Assert.Equal("Fluffy", Pet.Mix);
+      Assert.Equal("Fluffy", Pet.Phone);
+      Assert.Equal("Fluffy", Pet.Photos);
+      Assert.Equal("Fluffy", Pet.ShelterID);
       Assert.Equal("Fluffy", Pet.Name);
     }
 

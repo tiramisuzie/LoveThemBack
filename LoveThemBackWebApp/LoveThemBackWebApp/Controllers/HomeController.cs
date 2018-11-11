@@ -13,9 +13,10 @@ namespace LoveThemBackWebApp.Controllers
   public class HomeController : Controller
   {
     /// <summary>
-    /// Test check to pass ID
+    /// testing user profile data transfer for backend. Not to use
+    /// in actual website
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="id">userid</param>
     /// <returns></returns>
     public IActionResult Index(string id)
     {

@@ -97,8 +97,9 @@ namespace LoveThemBackWebApp.Models.Services
       _context.Favorites.Update(favorite);
       await _context.SaveChangesAsync();
     }
-
-    //Custom API call to get pets in a list
+    /// <summary>
+    ///     Custom API call to get pets in a list
+    /// </summary>
     public async Task<List<PetPost>> GetJSON()
     {
       string url = "https://lovethembackapi2.azurewebsites.net/api/Pets";

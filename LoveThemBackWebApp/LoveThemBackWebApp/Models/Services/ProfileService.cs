@@ -17,7 +17,7 @@ namespace LoveThemBackWebApp.Models.Services
       _context = context;
     }
     /// <summary>
-    ///retrieves user profile
+    ///retrieves user profile from database
     /// </summary>
     /// <param name="username"></param>
     /// <returns></returns>
@@ -26,7 +26,12 @@ namespace LoveThemBackWebApp.Models.Services
       return await _context.Profiles.FirstOrDefaultAsync(x => x.Username == username);
     }
 
-    // Saves userprofile to database
+
+    /// <summary>
+    /// Saves userprofile to database
+    /// </summary>
+    /// <param name="profile">user profile</param>
+    /// <returns></returns>
     public async Task CreateProfile(Profile profile)
     {
       _context.Profiles.Add(profile);

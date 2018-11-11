@@ -21,7 +21,7 @@ namespace LoveThemBackWebApp.Models.Services
     /// <summary>
     /// method called to create new reviews
     /// </summary>
-    /// <param name="review"></param>
+    /// <param name="review">review from user</param>
     /// <returns></returns>
     public async Task<IActionResult> PostReview(Reviews review)
     {
@@ -40,7 +40,7 @@ namespace LoveThemBackWebApp.Models.Services
     /// <summary>
     /// method called to edit existing review
     /// </summary>
-    /// <param name="review"></param>
+    /// <param name="review">review with edit contents</param>
     /// <returns></returns>
     public async Task<IActionResult> PutReview(Reviews review)
     {
