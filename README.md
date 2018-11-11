@@ -1,11 +1,17 @@
 # Love Them Back
 Code Fellows 401 Mid-Term Group Project
 
+## Problem Domain:
+A useful web application to help users find and review animals in animal shelters for others to view in an effort to make saving lonely animals easier.  This will allow users to provide a substantial opinion based on personal interactions with the potential pet.
+
 ## Deployed Web App and API
 ### Web App
 https://lovethembackwebapp.azurewebsites.net/
-### API
+
+### API / Endpoints
 https://lovethembackapi2.azurewebsites.net/
+
+![API endpoints](assets/swagger.PNG)
 
 ## Team Members:
  Aaron Frank, Carlos Cadena, Danul De Leon, Suzanne Su, Vinh Nguyen
@@ -34,11 +40,7 @@ https://lovethembackapi2.azurewebsites.net/
 ### MIT License
 https://opensource.org/licenses/MIT
 
-## Problem Domain:
-A useful web application to help users find and review animals in animal shelters for others to review.
-
 ## Screen Shots:
-
 ### Login Page
 ![Login](assets/ScreenShots/midterm01.PNG)
 
