@@ -16,7 +16,10 @@ namespace LoveThemBackAPI.Models.Services
     {
       _context = context;
     }
-
+    /// <summary>
+    /// returns all reviews ever posted
+    /// </summary>
+    /// <returns></returns>
     public ActionResult<IEnumerable<Review>> GetAll()
     {
       return _context.Reviews.ToList();
@@ -33,7 +36,11 @@ namespace LoveThemBackAPI.Models.Services
 
       return reviews;
     }
-
+    /// <summary>
+    /// allows api posting of a review
+    /// </summary>
+    /// <param name="review"></param>
+    /// <returns></returns>
     public async Task<ActionResult> AddReview(Review review)
     {
       await _context.Reviews.AddAsync(review);

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LoveThemBackAPI.Controllers
 {
+
   [Route("api/Reviews")]
   [ApiController]
   public class ReviewsController : ControllerBase
@@ -22,12 +23,21 @@ namespace LoveThemBackAPI.Controllers
     }
 
     // GET: api/Reviews
+    /// <summary>
+    /// controller connects with interface to get all reviews
+    /// </summary>
+    /// <returns></returns>
     public ActionResult<IEnumerable<Review>> Get()
     {
       return _context.GetAll();
     }
 
     // GET: api/Reviews/Pet=id
+    /// <summary>
+    /// gets a review by id using interface
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("{id}", Name = "GetReview")]
     public ActionResult<IEnumerable<Review>> Get(int id)
     {
