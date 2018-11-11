@@ -1,14 +1,62 @@
 # Love Them Back
 Code Fellows 401 Mid-Term Group Project
 
+## Deployed Web App and API
+### Web App
+https://lovethembackwebapp.azurewebsites.net/
+### API
+https://lovethembackapi2.azurewebsites.net/
+
 ## Team Members:
  Aaron Frank, Carlos Cadena, Danul De Leon, Suzanne Su, Vinh Nguyen
 
+## Contributors
+* Amanda, Molly, Jeff, and Greg for being available to help when needed
+* The rest of our class for being great rubber ducks and helping solve problems
+* The Pet Finder API for giving us all the cute pets within our app
+
+## Tools Used:
+* Microsoft .NET Core MVC with Entity Framework
+* Visual Studio
+* Swagger
+* Postman
+* Github
+* Slack
+
 ## Version History:
+* 1.0.4 - Styled site
+* 1.0.3 - Site pulling from API
+* 1.0.2 - Site has base functionality
+* 1.0.1 - Deployed Sites
 * 1.0.0 - Initial Version
+
+## License
+### MIT License
+https://opensource.org/licenses/MIT
 
 ## Problem Domain:
 A useful web application to help users find and review animals in animal shelters for others to review.
+
+## Screen Shots:
+
+### Login Page
+![Login](assets/ScreenShots/midterm01.PNG)
+
+### Register Page
+![Register](assets/ScreenShots/midterm02.PNG)
+
+### Pet Search Page
+![Pet Search](assets/ScreenShots/midterm03.PNG)
+
+### Pet Details Page
+![Pet Details top](assets/ScreenShots/midterm04.PNG)
+![Pet Details bottom](assets/ScreenShots/midterm05.PNG)
+
+### Favorite Page
+![Favorites](assets/ScreenShots/midterm07.PNG)
+
+### Create Review Page
+![Create Review](assets/ScreenShots/midterm06.PNG)
 
 ## WireFrames:
 
@@ -26,15 +74,13 @@ A useful web application to help users find and review animals in animal shelter
 
 ## Database Schema:
 
-### API DB Schema
-![API Database Schema](assets/DBSchema/APIDBSchema.PNG)
+![API Database Schema](assets/DBSchema/ProjectPetSchema.PNG)
 
-The Pet table will store information for each pet that is coming from the PetFinder API.  The Name, Gender, Description of the pet will come from the third party API.  The Reviews will come from the web app.  Users will create new notes for the pets and it will be stored. The Reviews table will combine the UserId from the front end and the PEt ID from the other table.  An additional payload will consist of the impression and characteristics of the pet coming from the user.
+### API DB Schema
+The Pet table will store information for each pet that is coming from the PetFinder API.  The Name, Gender, Description of the pet will come from the third party API.  The Reviews will come from the web app.  Users will create new notes for the pets and it will be stored. The Reviews table will combine the UserId from the front end and the Pet ID from the other table.  An additional payload will consist of the impression and characteristics of the pet coming from the user.
 
 ### Web App DB Schema
-![Web App Database Schema](assets/DBSchema/WebAppDBSchema.PNG)
-
-The Front end of the web application will store the user profiles consisting of the UserId, the UserName, password(conditional), and zip-code (used for narrowing the pet search down).  This will have a one-to-many relationship to the Favorites table.  This will be a join table consisting of the UserId and the PetId which will be coming from the API.  An additional payload will consist of the Notes made by the user for pets they choose to visit.
+The Front end of the web application will store the user profiles consisting of the UserId, the UserName, password(conditional), and zip-code (used for narrowing the pet search down).  This will have a one-to-many relationship to the Favorites table.  This will be a join table consisting of the UserId and the PetId which will be coming from the API.  An additional payload will consist of the Notes made by the user for pets they choose to visit (conditional).
 
 ## User Stories:
 
