@@ -19,7 +19,10 @@ namespace LoveThemBackWebApp.Controllers
     {
       _context = context;
     }
-
+    /// <summary>
+    /// login page, redirects to pet page if user profile exists
+    /// </summary>
+    /// <returns></returns>
     public IActionResult Index()
     {
       var userJSON = HttpContext.Session.GetString("profile");
@@ -29,13 +32,20 @@ namespace LoveThemBackWebApp.Controllers
       }
       return View();
     }
-
+    /// <summary>
+    /// clears user profile and redirects to login
+    /// </summary>
+    /// <returns></returns>
     public IActionResult Logout()
     {
       HttpContext.Session.Clear();
       return RedirectToAction("Index", "Login");
     }
-
+    /// <summary>
+    /// stores user profile in database
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> Index(string username)
     {

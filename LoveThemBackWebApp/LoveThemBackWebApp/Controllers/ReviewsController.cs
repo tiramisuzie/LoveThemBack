@@ -21,7 +21,11 @@ namespace LoveThemBackWebApp.Controllers
     {
       _context = context;
     }
-
+    /// <summary>
+    /// main review page
+    /// </summary>
+    /// <param name="review"></param>
+    /// <returns></returns>
     public IActionResult Index(Reviews review)
     {
       var userJSON = HttpContext.Session.GetString("profile");

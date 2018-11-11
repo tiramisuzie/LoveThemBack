@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LoveThemBackAPI.Controllers
 {
+
   [Route("api/Reviews")]
   [ApiController]
   public class ReviewsController : ControllerBase
@@ -22,6 +23,10 @@ namespace LoveThemBackAPI.Controllers
     }
 
     // GET: api/Reviews
+    /// <summary>
+    /// controller connects with interface to get all reviews
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     public ActionResult<IEnumerable<Review>> Get()
     {
@@ -29,6 +34,11 @@ namespace LoveThemBackAPI.Controllers
     }
 
     // GET: api/Reviews/Pet=id
+    /// <summary>
+    /// gets a review by id using interface
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet("{id}", Name = "GetReview")]
     public ActionResult<IEnumerable<Review>> Get(int id)
     {
@@ -36,7 +46,11 @@ namespace LoveThemBackAPI.Controllers
 
       return Ok(reviews);
     }
-
+    /// <summary>
+    /// adds a review to the database
+    /// </summary>
+    /// <param name="review"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<ActionResult> Create(Review review)
     {
@@ -61,7 +75,12 @@ namespace LoveThemBackAPI.Controllers
 
       return CreatedAtRoute("GetReview", new { id = review.PetID }, review);
     }
-
+    /// <summary>
+    /// deletes a review based on pet and user id
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <param name="petId"></param>
+    /// <returns></returns>
     [HttpDelete("{userId}/{petId}")]
     public ActionResult Delete(int userId, int petId)
     {
