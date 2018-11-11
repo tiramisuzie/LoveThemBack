@@ -18,12 +18,20 @@ namespace LoveThemBackWebApp.Controllers
     {
       _context = context;
     }
-
+    /// <summary>
+    /// main create account page
+    /// </summary>
+    /// <returns></returns>
     public IActionResult Index()
     {
       return View();
     }
-
+    /// <summary>
+    /// creates user profile from information user inputs
+    /// </summary>
+    /// <param name="username"></param>
+    /// <param name="locationZip"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> Index(string username, int locationZip)
     {

@@ -25,6 +25,11 @@ namespace LoveThemBackWebApp.Controllers
     }
 
     private List<Pet> PetCollections { get; set; }
+    /// <summary>
+    /// main pet search page to render list of all pets based on zip code
+    /// </summary>
+    /// <param name="searchString"></param>
+    /// <returns></returns>
     public async Task<IActionResult> Index(string searchString)
     {
       var userJSON = HttpContext.Session.GetString("profile");
@@ -47,7 +52,12 @@ namespace LoveThemBackWebApp.Controllers
       Models.User = userProfile;
       return View(Models);
     }
-
+    /// <summary>
+    /// takes you to main detail page, adds pet to api database
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="search"></param>
+    /// <returns></returns>
     public async Task<IActionResult> Details(int? id, string search)
     {
       var userJSON = HttpContext.Session.GetString("profile");
@@ -91,6 +101,12 @@ namespace LoveThemBackWebApp.Controllers
         return View(Models);
       }
     }
+    /// <summary>
+    /// adds pet to favorite table database
+    /// </summary>
+    /// <param name="userID"></param>
+    /// <param name="petID"></param>
+    /// <returns></returns>
     public async Task<IActionResult> AddFavorites(int userID, int petID)
     {
       Favorite favorite = await _context.Favorites.FirstOrDefaultAsync(x => x.UserID == userID && x.PetID == petID);
@@ -107,7 +123,11 @@ namespace LoveThemBackWebApp.Controllers
 
       return RedirectToAction("Details", "Pet", new { id = petID });
     }
-
+    /// <summary>
+    /// petfinder api call to render pet list
+    /// </summary>
+    /// <param name="location"></param>
+    /// <returns></returns>
     public async Task<List<Pet>> GetPetListJSON(string location)
     {
       if (location != null)
@@ -132,12 +152,20 @@ namespace LoveThemBackWebApp.Controllers
       }
       return new List<Pet>();
     }
-
+    /// <summary>
+    /// redirects to review page with petid of pet being viewed in details
+    /// </summary>
+    /// <param name="review"></param>
+    /// <returns></returns>
     public IActionResult Review([Bind("PetID")] Reviews review)
     {
       return RedirectToAction("Index", "Reviews", review);
     }
-
+    /// <summary>
+    /// third party API call for specific pet. Maybe of use later.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public async Task<Pet> GetPetByIDJSON(int? id)
     {
       string url = $"http://api.petfinder.com/pet.get?key=26d124a65947581b27aa9500628f49ef&id=" + id + "&format=json";
@@ -148,7 +176,10 @@ namespace LoveThemBackWebApp.Controllers
         return retrieveJSON.petfinder.pet;
       }
     }
-
+    /// <summary>
+    /// custom api call for reviews
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<PetReview>> GetReviewJSON()
     {
       string url = "https://lovethembackapi2.azurewebsites.net/api/Reviews";
@@ -159,7 +190,10 @@ namespace LoveThemBackWebApp.Controllers
         return retrieveJSON;
       }
     }
-
+    /// <summary>
+    /// custom api call for list of pets
+    /// </summary>
+    /// <returns></returns>
     public async Task<List<PetPost>> GetPetFromCustomAPI()
     {
       string url = $"https://lovethembackapi2.azurewebsites.net/api/Pets/";

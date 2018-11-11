@@ -84,6 +84,10 @@ The Pet table will store information for each pet that is coming from the PetFin
 ### Web App DB Schema
 The Front end of the web application will store the user profiles consisting of the UserId, the UserName, password(conditional), and zip-code (used for narrowing the pet search down).  This will have a one-to-many relationship to the Favorites table.  This will be a join table consisting of the UserId and the PetId which will be coming from the API.  An additional payload will consist of the Notes made by the user for pets they choose to visit (conditional).
 
+## API Endpoints:
+https://lovethembackapi2.azurewebsites.net/swagger<br><br>
+![API Endpoints](assets/swagger.PNG)
+
 ## User Stories:
 
 ### Web App:
@@ -136,3 +140,4 @@ There is an edit view specifically for updating animal notes made by users.
 1. Sharing notes made/pets visited on social media.
 2. Using Bing API to give directions to the shelter which the animal is located.
 3. Link a user to online reading of a specific animal type so that they can learn more before commiting
+

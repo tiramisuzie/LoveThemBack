@@ -20,8 +20,9 @@ namespace LoveThemBackWebApp.Controllers
     {
       _context = context;
     }
-
-    //Get list of favorites
+    /// <summary>
+    /// Get list of favorites for specific user, renders on favorities page
+    /// </summary>
     [HttpGet]
     public async Task<IActionResult> Index()
     {
@@ -38,7 +39,9 @@ namespace LoveThemBackWebApp.Controllers
       return View(Models);
     }
 
-    //Post to update new favorite
+    /// <summary>
+    /// Post to update new favorite, Notes feature not implemented yet
+    /// </summary>
     [HttpPost]
     public async Task<IActionResult> Update(int PetID, string Notes)
     {
@@ -57,6 +60,11 @@ namespace LoveThemBackWebApp.Controllers
     }
 
     // GET: Favorites/Delete/5
+    /// <summary>
+    /// deletes a pet from favorities page
+    /// </summary>
+    /// <param name="PetID"></param>
+    /// <returns></returns>
     [HttpPost]
     public async Task<IActionResult> Delete(int PetID)
     {
